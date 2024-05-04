@@ -1,8 +1,9 @@
-# cse110-sp23-group16
+# CSE 112: Group 7 (Spring 2024)
 
-### Team 16: The Al Dente Armadillos
+### Team 7: Lorem Ipsum
 
 This application is Team 16's project for Professor Powell's Spring 2023 CSE-110 Software Engineering course at UCSD.
+This application is Team 7's extension of Team 16's original Stargazer found [here](https://github.com/cse110-sp23-group16/cse110-sp23-group16)
 
 View [Demo](https://www.youtube.com/watch?v=vcf0brKmHaY) here!
 
