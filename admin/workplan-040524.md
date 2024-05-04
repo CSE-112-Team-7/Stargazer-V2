@@ -1,0 +1,34 @@
+# **Workplan for Week 5 (5/4/24)**
+
+> ## **Sprint Process:**
+
+- `Spring Length:` 1 week
+- `Planning:` during the sprint meeting, we can consult our previous work plan and the list of tasks we want to get done to decide on which features/issues to take on in the next sprint
+- `Reviews/Retrospectives:` meet at the end of the week to discuss the previous week’s sprint, what still needs to be done, issues that will be tackled in the upcoming sprint, and any changes/improvements that could be made to how sprints are done
+- `Reports:` We will use Github Projects to create our burndown charts to report our work for the sprints
+
+> ## **Work Effort:**
+
+- Feature Planning:
+  - [ ] Braindump: Brainstorm a list of possible features to implements  
+    - [4/30: Feature Braindump](https://docs.google.com/document/u/0/d/1VwPLW1DNZEDs-PD9frZeo_VBeYBrv_13SK6nAnEjSFI/edit)
+  - [ ] Breakdown: Select features to implement for the next sprint, group them by complexity, scope, and category (big/small feature, quality of life, etc)
+    - [4/30: Feature Breakdown](https://docs.google.com/document/u/0/d/1o2mMGg8FiU7k7IMkwWujQGLlm4GzbTpUWFHYrXLfoL8/edit)
+- [ ] Deep Repository Analysis:
+  - [ ] Look at how functions/classes are organized and created
+  - [ ] Look for potential bugs
+  - [ ] Look for potential extensions and improvements
+- [ ] Setup Repository:
+  - [ ] Fork existing repository
+  - [ ] Invite team members
+  - [ ] Setup Github Board/Issues
+
+> ## **Estimations and Priorites:**
+- Feature Planning (`HIGH`)
+- Deep Repository Analysis (`LOW`)
+- Setup Repository (`MEDIUM`)
+
+> ## **Sequencing:**
+- Feature Planning (`1st`)
+- Setup Repository (`2nd`)
+- Deep Repository Analysis (`3rd`)
