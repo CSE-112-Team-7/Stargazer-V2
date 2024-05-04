@@ -17,7 +17,7 @@
 - [x] Deep Repository Analysis:
   - [x] Look at how functions/classes are organized and created
   - [x] Look for potential bugs
-  - [x]Look for potential extensions and improvements
+  - [x] Look for potential extensions and improvements
 - [ ] Setup Repository:
   - [x] Fork existing repository
   - [x] Invite team members
