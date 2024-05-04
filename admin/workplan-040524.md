@@ -13,7 +13,7 @@
   - [x] Braindump: Brainstorm a list of possible features to implements  
     - [4/30: Feature Braindump](4_30_Feature_Braindump.pdf)
   - [x] Breakdown: Select features to implement for the next sprint, group them by complexity, scope, and category (big/small feature, quality of life, etc)
-    - [4/30: Feature Breakdown](https://docs.google.com/document/u/0/d/1o2mMGg8FiU7k7IMkwWujQGLlm4GzbTpUWFHYrXLfoL8/edit)
+    - [4/30: Feature Breakdown](4_30_Feature_Breakdown.pdf)
 - [x] Deep Repository Analysis:
   - [x] Look at how functions/classes are organized and created
   - [x] Look for potential bugs
