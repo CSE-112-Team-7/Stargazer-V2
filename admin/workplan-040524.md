@@ -9,18 +9,18 @@
 
 > ## **Work Effort:**
 
-- Feature Planning:
-  - [ ] Braindump: Brainstorm a list of possible features to implements  
-    - [4/30: Feature Braindump](https://docs.google.com/document/u/0/d/1VwPLW1DNZEDs-PD9frZeo_VBeYBrv_13SK6nAnEjSFI/edit)
-  - [ ] Breakdown: Select features to implement for the next sprint, group them by complexity, scope, and category (big/small feature, quality of life, etc)
-    - [4/30: Feature Breakdown](https://docs.google.com/document/u/0/d/1o2mMGg8FiU7k7IMkwWujQGLlm4GzbTpUWFHYrXLfoL8/edit)
-- [ ] Deep Repository Analysis:
-  - [ ] Look at how functions/classes are organized and created
-  - [ ] Look for potential bugs
-  - [ ] Look for potential extensions and improvements
+- [x]Feature Planning:
+  - [x] Braindump: Brainstorm a list of possible features to implements  
+    - [x/30: Feature Braindump](https://docs.google.com/document/u/0/d/1VwPLW1DNZEDs-PD9frZeo_VBeYBrv_13SK6nAnEjSFI/edit)
+  - [x] Breakdown: Select features to implement for the next sprint, group them by complexity, scope, and category (big/small feature, quality of life, etc)
+    - [x/30: Feature Breakdown](https://docs.google.com/document/u/0/d/1o2mMGg8FiU7k7IMkwWujQGLlm4GzbTpUWFHYrXLfoL8/edit)
+- [x] Deep Repository Analysis:
+  - [x] Look at how functions/classes are organized and created
+  - [x] Look for potential bugs
+  - [x]Look for potential extensions and improvements
 - [ ] Setup Repository:
-  - [ ] Fork existing repository
-  - [ ] Invite team members
+  - [x] Fork existing repository
+  - [x] Invite team members
   - [ ] Setup Github Board/Issues
 
 > ## **Estimations and Priorites:**
