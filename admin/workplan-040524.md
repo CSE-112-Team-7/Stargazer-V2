@@ -18,10 +18,10 @@
   - [x] Look at how functions/classes are organized and created
   - [x] Look for potential bugs
   - [x] Look for potential extensions and improvements
-- [ ] Setup Repository:
+- [x] Setup Repository:
   - [x] Fork existing repository
   - [x] Invite team members
-  - [ ] Setup Github Board/Issues
+  - [x] Setup Github Board/Issues
 
 > ## **Estimations and Priorites:**
 - Feature Planning (`HIGH`)
