@@ -9,7 +9,7 @@
 
 > ## **Work Effort:**
 
-- [x]Feature Planning:
+- [x] Feature Planning:
   - [x] Braindump: Brainstorm a list of possible features to implements  
     - [x/30: Feature Braindump](https://docs.google.com/document/u/0/d/1VwPLW1DNZEDs-PD9frZeo_VBeYBrv_13SK6nAnEjSFI/edit)
   - [x] Breakdown: Select features to implement for the next sprint, group them by complexity, scope, and category (big/small feature, quality of life, etc)
