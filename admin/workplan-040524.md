@@ -11,7 +11,7 @@
 
 - [x] Feature Planning:
   - [x] Braindump: Brainstorm a list of possible features to implements  
-    - [4/30: Feature Braindump](https://docs.google.com/document/u/0/d/1VwPLW1DNZEDs-PD9frZeo_VBeYBrv_13SK6nAnEjSFI/edit)
+    - [4/30: Feature Braindump](admin/4_30 Feature_Braindump.pdf)
   - [x] Breakdown: Select features to implement for the next sprint, group them by complexity, scope, and category (big/small feature, quality of life, etc)
     - [4/30: Feature Breakdown](https://docs.google.com/document/u/0/d/1o2mMGg8FiU7k7IMkwWujQGLlm4GzbTpUWFHYrXLfoL8/edit)
 - [x] Deep Repository Analysis:
