@@ -1,0 +1,158 @@
+html {
+  background: url("../../assets/background/PreviewMap.png") no-repeat center
+    fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 2%;
+}
+
+main > * {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+div.top-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+img#myth-image {
+  border-style: solid;
+  border-color: beige;
+  width: 30vw;
+  height: 75vh;
+  border-radius: 2%;
+}
+
+div#explanation {
+  width: 35vw;
+  color: beige;
+  text-align: left;
+  border-style: solid;
+  border-radius: 2%;
+  padding: 1em 2em 1em 2em;
+  overflow: auto;
+  height: 70vh;
+}
+
+div.img_container {
+  background-color: rgba(0, 0, 1, 0.5);
+  width: 30vw;
+  border-style: solid;
+  border-radius: 2%;
+  border-color: beige;
+  filter: brightness(700%);
+  overflow: hidden;
+  height: 75vh;
+}
+
+#constellation-image {
+  width: 20vw;
+  border-radius: 2%;
+  padding-top: 30%;
+  padding-bottom: 20%;
+}
+
+div.bot-container {
+  display: flex;
+  justify-content: center;
+}
+
+button.continue {
+  margin-top: 4vh;
+}
+
+/* Animation */
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 600px) {
+  html {
+    overflow: auto;
+  }
+  div.top-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  img#myth-image {
+    width: auto;
+    margin-bottom: 2%;
+  }
+  div#explanation {
+    width: 300px;
+    margin-bottom: 2%;
+    padding: 0.5em 1em 0.5em 1em;
+  }
+  div.img_container {
+    width: 333px;
+  }
+}
+
+/* Media Query for Medium Screens */
+@media (min-width: 601px) and (max-width: 1200px) {
+  html {
+    overflow: auto;
+  }
+  h1.custom-heading {
+    font-size: 40px; /* Adjust font size for medium screens */
+  }
+  h3 {
+    font-size: 22px; /* Adjust font size for large screens */
+  }
+  div.top-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  img#myth-image {
+    width: auto;
+    margin-bottom: 2%;
+  }
+  div#explanation {
+    margin-bottom: 2%;
+  }
+  div.img_container {
+    width: auto;
+  }
+}
+
+/* Media Query for Large Screens */
+@media (min-width: 1201px) {
+  h1 {
+    font-size: 55px; /* Adjust font size for large screens */
+  }
+
+  h3 {
+    font-size: 25px; /* Adjust font size for large screens */
+  }
+
+  #input-text {
+    width: 50%; /* Adjust width for large screens */
+  }
+
+  #question-prompt {
+    font-size: 22px;
+  }
+}

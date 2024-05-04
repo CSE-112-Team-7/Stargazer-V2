@@ -1,0 +1,28 @@
+name: Continuous Integration Tests
+
+on: [push]
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        nodeversion: [16]
+        jestversion: [29.5]
+        jestpuppeteerversion: [9.0.0]
+        puppeteerversion: [20.5.0]
+        httpserverversion: [14.1.1]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.nodeversion }}
+      - name: Install JEST
+        run: npm install jest@${{ matrix.jestversion }} jest-puppeteer@${{ matrix.jestpuppeteerversion }} puppeteer@${{ matrix.puppeteerversion }} http-server@${{ matrix.httpserverversion }}
+      - name: Host Server
+        run: $(npm bin)/http-server -c-1 &
+      - name: Run tests
+        run: $(npm bin)/jest --config ./source/tests/jest.config.json

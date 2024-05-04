@@ -1,0 +1,88 @@
+html {
+  background: url("../../assets/background/PreviewMap.png") no-repeat center
+    fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+body {
+  margin: 2%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Set the text color to white */
+body,
+.site-header__title,
+p {
+  color: white;
+}
+
+/* Center the content */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+div.main-content {
+  text-align: center;
+  width: 1000px;
+}
+
+img {
+  display: block;
+  margin: 20px auto;
+  max-width: 40%;
+}
+
+h1 {
+  font-size: 40pt;
+}
+
+p {
+  font-size: 16pt;
+}
+
+img#fortune-teller-image {
+  width: 14vw;
+}
+
+button.continue {
+  height: 9vh;
+  line-height: 6vh;
+  margin-top: 5vh;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 30pt;
+  }
+  div.main-content {
+    width: 80%;
+  }
+  img#fortune-teller-image {
+    width: auto;
+  }
+  button.continue {
+    height: 50px;
+    line-height: 30px;
+  }
+}
+
+/* Media Query for Medium Screens */
+@media (min-width: 601px) and (max-width: 1200px) {
+  h1 {
+    font-size: 30pt;
+  }
+  div.main-content {
+    width: 80%;
+  }
+  button.continue {
+    height: 50px;
+    line-height: 30px;
+  }
+}
