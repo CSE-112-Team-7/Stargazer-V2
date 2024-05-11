@@ -11,7 +11,7 @@
 > ## **Work Effort:**
 
 - [x] Decide on Features for the Week
-    - [x] Look at Features From [4/30 Actionable Items](https://docs.google.com/document/d/1hwhq7ibQjWJYssQBBdxAG86LIwOKfw8UUtkbsWo5R6I/edit?usp=sharing)
+    - [x] Look at Features From [4/30 Actionable Items](4_30_Notes.pdf)
     - [x] Decide which we are going to do
 - [x] Decide Tasks
     - [x] Come up with subtasks from Features
