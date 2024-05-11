@@ -23,10 +23,10 @@
   - [x] Invite team members
   - [x] Setup Github Board/Issues
 
-> ## **Estimations and Priorites:**
-- Feature Planning (`HIGH`)
-- Deep Repository Analysis (`LOW`)
-- Setup Repository (`MEDIUM`)
+> ## **Estimations and Priorities:**
+- Feature Planning (`HIGH`): *10 hours*
+- Deep Repository Analysis (`LOW`) *5 hours*
+- Setup Repository (`MEDIUM`) *1 hour*
 
 > ## **Sequencing:**
 - Feature Planning (`1st`)
