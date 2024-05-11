@@ -19,7 +19,7 @@
     - [x] Make Issues from subtasks
 - [x] Begin working on tasks
 
-> ## **Estimations and Priorites:**
+> ## **Estimations and Priorities:**
 - Decide on Features (`HIGH`): *5 hours*
   - Reason: we cannot get to work if we do not know what features we need to implement
 - Decide Tasks (`MEDIUM`): *2 hours*
