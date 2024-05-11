@@ -13,18 +13,18 @@
 - [x] Decide on Features for the Week
     - [x] Look at Features From [4/30 Actionable Items](https://docs.google.com/document/d/1hwhq7ibQjWJYssQBBdxAG86LIwOKfw8UUtkbsWo5R6I/edit?usp=sharing)
     - [x] Decide which we are going to do
-- [ ] Decide Tasks
-    - [ ] Come up with subtasks from Features
-- [ ] Create Github Issues & Board
-    - [ ] Make Issues from subtasks
-- [ ] Begin working on tasks
+- [x] Decide Tasks
+    - [x] Come up with subtasks from Features
+- [x] Create Github Issues & Board
+    - [x] Make Issues from subtasks
+- [x] Begin working on tasks
 
 > ## **Estimations and Priorites:**
-- Decide on Features (`HIGH`)
+- Decide on Features (`HIGH`): *5 hours*
   - Reason: we cannot get to work if we do not know what features we need to implement
-- Decide Tasks (`MEDIUM`)
+- Decide Tasks (`MEDIUM`): *2 hours*
   - Reason: tasks give developers direction
-- Create Github Issues & Board (`LOW`)
+- Create Github Issues & Board (`LOW`): *1 hour*
   - Reason: a way to organize our tasks
 
 > ## **Sequencing:**
