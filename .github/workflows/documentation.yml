@@ -8,7 +8,9 @@ jobs:
 
     permissions:
       # Lets this job push the docs to the repository
-      contents: write
+      contents: read
+      pages: write
+
     strategy:
       matrix:
         nodeversion: [16]
@@ -21,10 +23,10 @@ jobs:
       - name: Checkout documentation repo
         uses: actions/checkout@v3
         with:
-          repository: "cse110-sp23-group16/cse110-sp23-group16-docs"
+          repository: "CSE-112-Team-7/CSE-112-Team-7-Docs"
           path: "dest"
           persist-credentials: true
-          token: ${{ secrets.BOT_ORG_ACCESS }}
+          token: ${{ secrets.DOCS_ACCESS }}
       - name: Set up node
         uses: actions/setup-node@v3
         with:
