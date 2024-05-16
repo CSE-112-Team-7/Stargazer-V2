@@ -142,7 +142,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../thankyou_page/thankyou.html")
+    () => (window.location.href = "../thankyou_page/thankyou.html"),
   );
   stopSpeechSynthesis();
 }

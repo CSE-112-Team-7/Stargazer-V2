@@ -17,25 +17,25 @@
 - [ ] Language settings (different language support)
 
 > ## **Estimations and Priorities:**
-- Button on landing page to redirect to the to-be history page (`LOW`): *1 hour*
-- [Work on user history](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62340421) (`HIGH`): *7 days*
-- [Work on light/dark mode](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62341421) (`MEDIUM`): *3-4 days*
-- [Sprite following mouse](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62569890) (`LOW`): *2 hours*
-- [Volume control](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62570202) (`MEDIUM`): *1-2 days*
-- [Language settings (different language support)](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62570460) (`MEDIUM`): *7 days*
+
+- Button on landing page to redirect to the to-be history page (`LOW`): _1 hour_
+- [Work on user history](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62340421) (`HIGH`): _7 days_
+- [Work on light/dark mode](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62341421) (`MEDIUM`): _3-4 days_
+- [Sprite following mouse](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62569890) (`LOW`): _2 hours_
+- [Volume control](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62570202) (`MEDIUM`): _1-2 days_
+- [Language settings (different language support)](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62570460) (`MEDIUM`): _7 days_
 
 > ## **Sequencing:**
+
 - Work on user history (`1st`)
-    - Adrian, Shol, Jason
+  - Adrian, Shol, Jason
 - Work on light/dark mode (`2nd`)
-    - Pramodya, Mary
+  - Pramodya, Mary
 - Volume control (`3rd`)
-    - Kenry
+  - Kenry
 - Sprite following mouse (`4th`)
-    - Jason
-- Button on landing page to redirect to the to-be history page (`5th`) 
-    - Adrian, Shol
+  - Jason
+- Button on landing page to redirect to the to-be history page (`5th`)
+  - Adrian, Shol
 - Language settings (different language support) (`6th`)
-    - Mark
-
-
+  - Mark
