@@ -21,7 +21,7 @@ jobs:
       - name: Checkout documentation repo
         uses: actions/checkout@v3
         with:
-          repository: "CSE-112-Team-7/CSE112-Team-7-Docs"
+          repository: "CSE-112-Team-7/CSE-112-Team-7-Docs"
           path: "dest"
           persist-credentials: true
           token: ${{ secrets.GITHUB_TOKEN }}
