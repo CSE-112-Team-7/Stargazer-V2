@@ -21,7 +21,7 @@ jobs:
       - name: Checkout documentation repo
         uses: actions/checkout@v3
         with:
-          repository: "cse110-sp23-group16/cse110-sp23-group16-docs"
+          repository: "CSE-112-Team-7/CSE112-Team-7-Docs"
           path: "dest"
           persist-credentials: true
           token: ${{ secrets.BOT_ORG_ACCESS }}
