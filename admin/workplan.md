@@ -11,9 +11,9 @@
 
 - [ ] Button on landing page to redirect to the to-be history page
 - [ ] Work on user history
-- [ ] Work on light/dark mode
+- [x] Work on light/dark mode
 - [ ] Sprite following mouse
-- [ ] Volume control
+- [x] Volume control
 - [ ] Language settings (different language support)
 
 > ## **Estimations and Priorities:**
