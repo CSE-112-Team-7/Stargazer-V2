@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="../toplevel.css" />
     <link rel="stylesheet" href="./landing.css" />
     <script type="module" src="./landing.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/Draggable.min.js"></script>
   </head>
   <body>
+    
     <div id="cover-div" class="hidden">
       <div id="teller-effect" class="half-transparent">
         <div id="eye-left" class="eyes"></div>
@@ -54,7 +57,14 @@
           </div>
         </button>
       </div>
+      <div id="volumeBar"></div>
 
+      <div class="volume">
+        Volume:
+      </div>
+      <div class="container">
+        <img class="wheel" src="../../assets/Icons/Wagonwheel.png" height="550" width="550"/>
+      </div>
       <div id="action-div" class="hidden">
         <div id="prompt-div" class="prompt">Select a category</div>
         <div id="category-icon-div">
@@ -79,6 +89,7 @@
           <button id="continue-button" class="continue">
             Let the stars guide you
           </button>
+          <button id="voice-control" class="continue">Voice control</button>
           <button id="voice-button" class="continue">Voicing Text</button>
           <select name="voice" id="voice-select">
             <option value="select" disabled selected>Select Voice:</option>

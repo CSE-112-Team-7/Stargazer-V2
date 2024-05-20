@@ -13,6 +13,17 @@ body {
   background-size: cover;
 }
 
+#wheel {
+  height: 300px;
+  margin-top: 20px;
+}
+
+#volumeBar {
+  height: 15px;
+  background-color: #00FF00;
+  display: inline-block;
+}
+
 header {
   position: relative;
   z-index: 1;
@@ -154,6 +165,34 @@ div.category-icon {
   background-image: url("");
   background-size: cover;
 }
+
+div#volumeBar {
+  position: absolute;
+  z-index: 1000;
+  top: 45.1%; /* Center vertically */
+  left: 53.3%; /* Center horizontally */
+  height: 15px;
+  background-color: #00FF00;
+  display: inline-block;
+  width: 50px;
+  display: none;
+}
+.container {
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  top: 61%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%) scale(0.5); /* Centering and scaling */
+}
+.volume {
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  top: 45%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+}
+
 
 div#category-icon-change {
   background-color: #b0c7d1;

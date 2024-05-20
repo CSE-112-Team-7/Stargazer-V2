@@ -13,18 +13,18 @@ const dailyIconURL = "../../assets/Icons/DailyHoroscope.png";
 const carrerIconURL = "../../assets/Icons/Career.png";
 const healthIconURL = "../../assets/Icons/Health.png";
 const relationshipIconURL = "../../assets/Icons/Relationship.png";
-
+const  Wagonwheel = "../../assets/Icons/Wagonwheel.png";
+var key = 0;
 /**
  * @Property {Function} initialize function, called once whole DOM is parsed
  */
 function init() {
   backgroundMusic = document.getElementById("background-music");
-
+  backgroundMusic.volume = 0.5;
   // localStorage cleared to reset question type and constellation
   localStorage.clear();
   populateDropdown();
   initializeVoicing();
-
   // Create a new session for analytics, tag with page name
   analyticsManager.setEmptySession();
 
@@ -37,10 +37,12 @@ function init() {
   const relationshipButton = document.getElementById("relationship-button");
   const careerButton = document.getElementById("career-button");
   const healthButton = document.getElementById("health-button");
+  const voiceButton = document.getElementById("voice-control");
   setCategoryEffect(dailyButton, "daily", dailyIconURL);
   setCategoryEffect(relationshipButton, "relationship", relationshipIconURL);
   setCategoryEffect(careerButton, "career", carrerIconURL);
   setCategoryEffect(healthButton, "health", healthIconURL);
+  setVoiceControl(voiceButton, "health", Wagonwheel);
 
   // Attach onclick to start and continue
   const startButton = document.getElementById("start-button");
@@ -58,24 +60,88 @@ function setCategoryEffect(categoryButton, categoryName, iconURL) {
   const categoryIconSet = document.getElementById("category-icon-set");
   const categoryIconChange = document.getElementById("category-icon-change");
   const continueButton = document.getElementById("continue-button");
+  const wheel = document.querySelector('.container');
+  const volumeBar = document.getElementById("volumeBar");
+  const volume = document.querySelector('.volume');
   categoryButton.addEventListener("click", function () {
     selectedCategory = categoryName;
     clickSound = document.getElementById("clickSound");
-    playClickSound(clickSound, selectedCategory);
+    playClickSound(clickSound, selectedCategory, 0, null, backgroundMusic.volume);
     categoryIconSet.style.backgroundImage = `url(${iconURL})`;
     setSelection(categoryButton, continueButton);
+    wheel.style.display = 'none';
+    volume.style.display = 'none';
+    volumeBar.style.display = 'none';
+    key = 0;
   });
   categoryButton.addEventListener("mouseover", function () {
     categoryIconChange.style.backgroundImage = `url(${iconURL})`;
     categoryIconChange.classList.remove("transparent");
     categoryIconChange.classList.remove("fade-out-fast");
     categoryIconChange.classList.add("fade-in-fast");
+    wheel.style.display = 'none';
+    volume.style.display = 'none';
+    volumeBar.style.display = 'none';
+    key = 0;
   });
   categoryButton.addEventListener("mouseout", function () {
     categoryIconChange.classList.add("transparent");
     categoryIconChange.classList.remove("fade-in-fast");
     categoryIconChange.classList.add("fade-out-fast");
+    wheel.style.display = 'none';
+    volume.style.display = 'none';
+    volumeBar.style.display = 'none';
+    key = 0;
   });
+}
+var volumeTickWidth = 0.00046296;
+var maxRotation = 1080;
+var minRotation = -1080;
+var volumeBar = [];
+var wheelDrag = {};
+
+function onWheelDrag() {
+  let temp = 0;
+  temp = 0.5 + wheelDrag.rotation * volumeTickWidth;
+  volumeBar = document.getElementById("volumeBar");
+  volumeBar.style.width = backgroundMusic.volume * 100 + "px";
+  if(temp > 1) temp = 1;
+  else if(temp < 0) temp = 0;
+  backgroundMusic.volume = temp;
+}
+
+function setVoiceControl(categoryButton, categoryName, iconURL) {
+  const wheel = document.querySelector('.container');
+  const volume = document.querySelector('.volume');
+  categoryButton.addEventListener("click", function () {
+    selectedCategory = categoryName;
+    key = 1;
+    clickSound = document.getElementById("clickSound");
+    volumeBar = document.getElementById("volumeBar");
+    volumeBar.style.display = 'inline';
+    volumeBar.style.width = backgroundMusic.volume*100 + "px";
+    wheel.style.display = 'inline';
+    volume.style.display = 'inline';
+    playClickSound(clickSound, selectedCategory, 0, null, backgroundMusic.volume);
+    wheelDrag = Draggable.create(".wheel", {
+      type: "rotation",
+      bounds: { minRotation: minRotation, maxRotation: maxRotation }
+    })[0];
+    wheelDrag.addEventListener("drag", onWheelDrag);
+  });
+  categoryButton.addEventListener("mouseover", function () {
+    wheel.style.display = 'inline';
+    wheel.classList.remove("fade-out-fast");
+    wheel.classList.add("fade-in-fast");
+  });
+  categoryButton.addEventListener("mouseout", function () {
+    if(key == 0) {
+      wheel.classList.remove("fade-in-fast");
+      wheel.classList.add("fade-out-fast");
+      wheel.style.display = 'none';
+    }
+  });
+  
 }
 
 /**
@@ -145,6 +211,7 @@ function toSkyMapPage() {
     tellerEffect.classList.add("transparent");
     // Go to next page
     localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
+    localStorage.setItem("musicVolume", backgroundMusic.volume);
     window.location.href = "../skymap_page/skymap.html";
   });
   // Set category

@@ -3,7 +3,8 @@ export default function playClickSound(
   clickSound,
   category,
   bgMusicPlayTime = 0,
-  callback = null
+  callback = null,
+  volume = null
 ) {
   const categoryToSoundPath = {
     daily: "../../assets/music/dailyClick.mp3",
@@ -12,6 +13,12 @@ export default function playClickSound(
     health: "../../assets/music/healthClick.mp3",
   };
   clickSound.src = categoryToSoundPath[category];
+  if(volume != null) {
+    clickSound.volume = volume;
+  }
+  else if(localStorage.getItem("musicVolume") != null) {
+    clickSound.volume = localStorage.getItem("musicVolume");
+  }
   if (callback !== null) {
     clickSound.onended = callback;
   }
