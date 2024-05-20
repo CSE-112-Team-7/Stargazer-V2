@@ -1,16 +1,28 @@
+:root {
+  --background-color: linear-gradient(180deg, rgba(36,0,23,1) 6%, rgba(9,63,121,1) 100%, rgba(0,212,255,1) 100%);
+  --button-background: #003348;
+  --button-border: #d2b78e;
+  --button-hover-background: #016f9c;
+}
+
 * {
-  font-family: papyrus;
+  font-family: 'Roman';
   color: beige;
   margin: 0px;
   text-align: center;
+  background-color: var(--background-color);
 }
 
-button.continue {
-  background-color: rgb(255, 252, 213);
-  border: none;
-  box-shadow: 0px 0px 5px beige;
+@font-face {
+  font-family: 'Roman';
+  src: url(../assets/fonts/GideonRoman-Regular.ttf);
+}
+
+button {
+  background-color: var(--button-background);
+  color: var(--button-border);
+  border-color: var(--button-border);
   border-radius: 12px;
-  color: rgb(19, 28, 63);
   font-size: 22pt;
   line-height: 40px;
   height: 60px;
@@ -21,8 +33,10 @@ button.continue {
 }
 
 button.continue:hover {
-  background-color: rgb(143, 143, 137);
+  background-color: var(--button-hover-background);
   border-radius: 12px;
+  border-color: var(--button-border);
+  box-shadow: 0rem 0rem 0.5rem beige;
   color: beige;
   padding: 0.5em;
   transition: 0.3s;

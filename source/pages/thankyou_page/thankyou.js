@@ -1,12 +1,10 @@
-import { setShootingStars } from "../shootingStar.js";
-import * as analyticsManager from "../analyticsmanager.js";
 import playClickSound from "../../utils/playClickSound.js";
 import playBgMusic from "../../utils/playBgMusic.js";
 
-const analyticsPageName = "thankYou";
-const analyticsStatus = 0;
+//const analyticsPageName = "thankYou";
+//const analyticsStatus = 0;
 let backgroundMusic;
-analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
+//analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
 
 /**
  * @property {Function} toLandingPage sends user back to landing page
@@ -20,7 +18,7 @@ function toLandingPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../landing_page/landing.html"),
+    () => (window.location.href = "../landing_page/landing.html")
   );
 }
 
@@ -33,6 +31,5 @@ window.addEventListener("DOMContentLoaded", init);
 async function init() {
   backgroundMusic = document.getElementById("background-music");
   playBgMusic(backgroundMusic);
-  new setShootingStars(document);
   window.toLandingPage = toLandingPage;
 }
