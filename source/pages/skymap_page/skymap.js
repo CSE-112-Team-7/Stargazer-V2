@@ -82,11 +82,11 @@ async function init() {
         cloc[name],
         ratio,
         canvas.width,
-        canvas.height
-      )
+        canvas.height,
+      ),
   );
   canvas.addEventListener("click", (event) =>
-    handleClickCanvas(event, constellation_arr, sky_background)
+    handleClickCanvas(event, constellation_arr, sky_background),
   );
   // Begin animation
   animate(canvas, ctx, constellation_arr, sky_background, cameraOffset);
@@ -107,7 +107,7 @@ function setRatio() {
   let desiredHeight = screenHeight * 2;
   return Math.max(
     Math.ceil(desiredHeight / defaultHeight),
-    Math.ceil(desiredWidth / defaultWidth)
+    Math.ceil(desiredWidth / defaultWidth),
   );
 }
 
@@ -268,7 +268,7 @@ function zoomOutCanvas(finalConstellation) {
       : canvas.height - 1080 * rate;
 
   constellation_arr.forEach((constellation) =>
-    constellation.updateRatio(ratio)
+    constellation.updateRatio(ratio),
   );
 }
 
@@ -303,9 +303,9 @@ function decideConstellation(constellation_arr, sky_background) {
     finalConstellation,
     constellationList[
       constellationList.findIndex(
-        (item) => item.name === finalConstellation.name
+        (item) => item.name === finalConstellation.name,
       )
-    ].imageLink
+    ].imageLink,
   );
 
   // Show button to next page
@@ -321,7 +321,7 @@ function decideConstellation(constellation_arr, sky_background) {
  */
 function animate(canvas, ctx, constellation_arr, sky_background, cameraOffset) {
   requestAnimationFrame(() =>
-    animate(canvas, ctx, constellation_arr, sky_background, cameraOffset)
+    animate(canvas, ctx, constellation_arr, sky_background, cameraOffset),
   );
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   sky_background.update(cameraOffset.x, cameraOffset.y, ratio);
@@ -343,7 +343,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../explanation_page/explanation.html")
+    () => (window.location.href = "../explanation_page/explanation.html"),
   );
 }
 

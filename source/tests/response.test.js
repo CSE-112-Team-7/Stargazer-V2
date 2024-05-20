@@ -7,7 +7,7 @@ describe("Default Jest Test", () => {
 describe("toggleText", () => {
   beforeAll(async () => {
     await page.goto(
-      "http://127.0.0.1:8080/source/pages/response_page/response.html"
+      "http://127.0.0.1:8080/source/pages/response_page/response.html",
     );
   });
   it("should hide the triggering button and unhide next button", async () => {
@@ -28,7 +28,7 @@ describe("toggleText", () => {
 
     // Assert that the next page button is visible
     const nextPageButtonClass = await page.$eval("#hiddenButton", (el) =>
-      el.classList.contains("hidden")
+      el.classList.contains("hidden"),
     );
     expect(nextPageButtonClass).toBe(false);
   });

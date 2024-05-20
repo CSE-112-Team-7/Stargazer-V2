@@ -114,7 +114,7 @@ function initializeConstellation() {
   const chosenConstellation =
     constellationList[
       constellationList.findIndex(
-        (item) => item.name === chosenConstellationName
+        (item) => item.name === chosenConstellationName,
       )
     ];
   console.log(chosenConstellation);
@@ -136,7 +136,7 @@ continueButton.addEventListener("click", function () {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../response_page/response.html")
+    () => (window.location.href = "../response_page/response.html"),
   );
   stopSpeechSynthesis();
 });

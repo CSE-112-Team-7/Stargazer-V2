@@ -1,4 +1,4 @@
-# **Workplan for Week 7 (5/13/24)**
+# **Workplan for Week 8 (5/20/24)**
 
 > ## **Sprint Process:**
 
@@ -9,33 +9,88 @@
 
 > ## **Work Effort:**
 
-- [ ] Button on landing page to redirect to the to-be history page
+- [ ] History page
+  - [ ] Button on landing page to redirect to the to-be history page
+  - [ ] Wireframe
+  - [ ] Pull info from database
 - [ ] Work on user history
-- [ ] Work on light/dark mode
+  - [ ] Login screen
+  - [ ] Database to store user information
+  - [ ] Securely pass login info from login page to database
+  - [ ] Securely verify users
+  - [ ] Store:
+    - [ ] Horoscope
+    - [ ] Category
+    - [ ] Constellation
+    - [ ] Date/time
+- [ ] Light/dark mode
+  - [ ] Figure out what tests are failing and add documentation 
+  - [ ] Fix failed tests
 - [ ] Sprite following mouse
-- [ ] Volume control
+  - [ ] Change custom mouse (have a mouse that has a sprite and mouse)
+- [ ] Volume control (add to all pages)
+- [ ] Fix DOM tree
+  - [ ] Removing animations
+  - [ ] Restructre HTML
 - [ ] Language settings (different language support)
+- [ ] General settings panel
+<!-- - [ ] Setup linter or change Prettier rules -->
 
 > ## **Estimations and Priorities:**
-- Button on landing page to redirect to the to-be history page (`LOW`): *1 hour*
-- [Work on user history](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62340421) (`HIGH`): *7 days*
-- [Work on light/dark mode](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62341421) (`MEDIUM`): *3-4 days*
-- [Sprite following mouse](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62569890) (`LOW`): *2 hours*
-- [Volume control](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62570202) (`MEDIUM`): *1-2 days*
-- [Language settings (different language support)](https://github.com/orgs/CSE-112-Team-7/projects/1/views/1?pane=issue&itemId=62570460) (`MEDIUM`): *7 days*
+- [History page](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/12) (`MEDIUM`): _3 days_
+  - Button on landing page to redirect to the to-be history page (`LOW`)
+  - Wireframe (`MEDIUM`)
+  - Pull info from database (`HIGH`)
+- [Work on user history](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/13) (`HIGH`): _7 days_
+  - Login screen (`HIGH`)
+  - Database to store user information (`HIGH`)
+  - Securely pass login info from login page to database (`HIGH`)
+  - Securely verify users (`LOW`)
+  - Store: 
+    - Horoscope
+    - Category
+    - Constellation
+    - Date/time
+- [Light/dark mode](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/6) (`MEDIUM`): _3 days_
+  - Figure out what tests are failing and add documentation (`HIGH`)
+  - Fix failed tests (`MEDIUM`)
+- [Sprite following mouse](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/7) (`LOW`): _1 day_
+  - Change custom mouse (have a mouse that has a sprite and mouse)
+- [Volume control](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/8) (add to all pages) (`LOW`): _1 day_
+- [Fix DOM tree](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/14) (`HIGH`): _7 days_
+  - Removing animations (`MEDIUM`)
+    - "Just press backspace"
+  - Restructure HTML (`HIGH`)
+- [Language settings](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/9) (different language support) (`LOW`): _5 day_
+- [General settings panel](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/15) (`HIGH`): _2 days_
+<!-- - Setup linter or change Prettier rules (`LOW`): _1 day_ -->
 
 > ## **Sequencing:**
-- Work on user history (`1st`)
-    - Adrian, Shol, Jason
-- Work on light/dark mode (`2nd`)
-    - Pramodya, Mary
-- Volume control (`3rd`)
-    - Kenry
-- Sprite following mouse (`4th`)
-    - Jason
-- Button on landing page to redirect to the to-be history page (`5th`) 
-    - Adrian, Shol
-- Language settings (different language support) (`6th`)
-    - Mark
 
-
+- Light/dark mode (`1st`): _Pram, Mary_
+  - Figure out what tests are failing and add documentation
+  - Fix failed tests
+- Volume control (add to all pages) (`2nd`): _Kenry_
+- Sprite following mouse (`3rd`): _Jason_
+  - Change custom mouse (have a mouse that has a sprite and mouse)
+- Work on user history (`4th`): _Barak, Cole, Shole, Adrian_
+  - Login screen
+  - Database to store user information
+  - Securely pass login info from login page to database
+  - Securely verify users
+  - Store: 
+    - Horoscope
+    - Category
+    - Constellation
+    - Date/time
+- History page (`5th`) _Shole, Cole, Jason_
+  - Button on landing page to redirect to the to-be history page
+  - Wireframe
+  - Pull info from database
+- Language settings (different language support) (`6th`): _Mark_
+- Fix DOM tree (`7th`): _EVERYONE_
+  - Removing animations
+    - "Just press backspace"
+  - Restructre HTML
+- General settings panel (`8th`): _Mark_
+<!-- - Setup linter or change Prettier rules (`LOW`) -->

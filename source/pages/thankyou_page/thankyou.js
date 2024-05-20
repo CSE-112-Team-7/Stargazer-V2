@@ -20,7 +20,7 @@ function toLandingPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../landing_page/landing.html")
+    () => (window.location.href = "../landing_page/landing.html"),
   );
 }
 

@@ -217,7 +217,7 @@ function defaultPageAnalytics(pageName, status) {
       pageName,
       event.error.name,
       event.error.message,
-      event.error.stack
+      event.error.stack,
     );
   });
 }

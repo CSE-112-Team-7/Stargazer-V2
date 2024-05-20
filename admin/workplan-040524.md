@@ -10,7 +10,7 @@
 > ## **Work Effort:**
 
 - [x] Feature Planning:
-  - [x] Braindump: Brainstorm a list of possible features to implements  
+  - [x] Braindump: Brainstorm a list of possible features to implements
     - [4/30: Feature Braindump](4_30_Feature_Braindump.pdf)
   - [x] Breakdown: Select features to implement for the next sprint, group them by complexity, scope, and category (big/small feature, quality of life, etc)
     - [4/30: Feature Breakdown](4_30_Feature_Breakdown.pdf)
@@ -24,11 +24,13 @@
   - [x] Setup Github Board/Issues
 
 > ## **Estimations and Priorities:**
-- Feature Planning (`HIGH`): *10 hours*
-- Deep Repository Analysis (`LOW`) *5 hours*
-- Setup Repository (`MEDIUM`) *1 hour*
+
+- Feature Planning (`HIGH`): _10 hours_
+- Deep Repository Analysis (`LOW`) _5 hours_
+- Setup Repository (`MEDIUM`) _1 hour_
 
 > ## **Sequencing:**
+
 - Feature Planning (`1st`)
 - Setup Repository (`2nd`)
 - Deep Repository Analysis (`3rd`)

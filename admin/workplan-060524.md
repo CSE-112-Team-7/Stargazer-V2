@@ -1,6 +1,5 @@
 # **Workplan for Week 6 (5/6/24)**
 
-
 > ## **Sprint Process:**
 
 - `Sprint Length:` 1 week
@@ -11,23 +10,25 @@
 > ## **Work Effort:**
 
 - [x] Decide on Features for the Week
-    - [x] Look at Features From [4/30 Actionable Items](4_30_Notes.pdf)
-    - [x] Decide which we are going to do
+  - [x] Look at Features From [4/30 Actionable Items](4_30_Notes.pdf)
+  - [x] Decide which we are going to do
 - [x] Decide Tasks
-    - [x] Come up with subtasks from Features
+  - [x] Come up with subtasks from Features
 - [x] Create Github Issues & Board
-    - [x] Make Issues from subtasks
+  - [x] Make Issues from subtasks
 - [x] Begin working on tasks
 
 > ## **Estimations and Priorities:**
-- Decide on Features (`HIGH`): *5 hours*
+
+- Decide on Features (`HIGH`): _5 hours_
   - Reason: we cannot get to work if we do not know what features we need to implement
-- Decide Tasks (`MEDIUM`): *2 hours*
+- Decide Tasks (`MEDIUM`): _2 hours_
   - Reason: tasks give developers direction
-- Create Github Issues & Board (`LOW`): *1 hour*
+- Create Github Issues & Board (`LOW`): _1 hour_
   - Reason: a way to organize our tasks
 
 > ## **Sequencing:**
+
 - Decide on Features (`1st`)
 - Decide Tasks (`2nd`)
 - Create Github Issues & Board (`3rd`)
