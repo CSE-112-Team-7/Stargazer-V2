@@ -1,32 +1,10 @@
-// Imports for express mongo and dotenv
-import dotenv from "dotenv";
-import { MongoClient } from "mongodb";
+// Import  express 
 import express from "express";
 import cors from "cors";
 
-// Imports for https
-import { createServer } from "https";
-import { readFileSync } from "fs";
-
-// Setup dotenv
-dotenv.config({ path: ".env" });
-
-// Create a MongoClient with the server string
-const connectionString = process.env.ATLAS_URI || "";
-const client = new MongoClient(connectionString);
-
-// Attempt a connection with the MongoDB Client
-let conn;
-try {
-  console.log("Connecting to MongoDB");
-  conn = await client.connect();
-  console.log("Connection to MongoDB Secured");
-} catch (e) {
-  console.error(e);
-}
-
-// Get a database for the Analytics Collection
-let db = conn.db("Analytics");
+const login_dir = 'pages/login_page/'
+const login_index_dir = 'pages/login_index_page/'
+const signup_dir = 'pages/signup_page/'
 
 // Set up node js and routes
 const app = express();
@@ -35,31 +13,30 @@ const port = 4000;
 app.use(express.json());
 app.use(cors());
 
-// This route is for error tracking.
-app.post("/error", async (req, res) => {
-  let newDocument = {
-    error: req.body.error,
-  };
-  let collection = await db.collection("TestErrors");
-  let result = await collection.insertOne(newDocument);
-  res.send(result).status(204);
-});
 
-// This route is for Analytics
-app.post("/analytics", async (req, res) => {
-  let newDocument = req.body;
-  let collection = await db.collection("Sessions");
-  let result = await collection.replaceOne({ id: req.body.id }, newDocument, {
-    upsert: true,
-  });
-  res.send(result).status(204);
-});
+app.listen(port, () => {
+  console.log('stargazer listening on port ' + port)
+})
 
-const options = {
-  key: readFileSync("/etc/letsencrypt/live/stargazer.rest/privkey.pem"),
-  cert: readFileSync("/etc/letsencrypt/live/stargazer.rest/fullchain.pem"),
-};
 
-createServer(options, app).listen(port, () => {
-  console.log(`Server Started at ${port}`);
-});
+// FOREIGN PAGE GET REQUESTS
+app.get('/login', (req, res) => {
+  console.log('RECIEVED LOGIN PAGE REQUEST')
+  res.sendFile(login_dir + 'login.html', { root: '../source'})
+})
+
+
+app.get('/login_index', (req, res) => {
+  console.log('RECIEVED LOGIN INDEX PAGE REQUEST')
+  res.sendFile(login_index_dir + 'login_index.html', {root: '../source'} )
+})
+
+app.get('/signup', (req, res) => {
+  console.log('RECIEVED SIGNUP PAGE REQUEST')
+  res.sendFile(signup_dir + 'signup.html', {root: '../source'} )
+})
+
+
+
+
+
