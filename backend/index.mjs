@@ -1,6 +1,8 @@
 // Import  express 
 import express from "express";
 import cors from "cors";
+import cookie_parser from 'cookie-parser';
+
 
 // MONGO VARIABLES
 import { MongoClient } from 'mongodb';
@@ -8,11 +10,6 @@ const client_url = 'mongodb+srv://bahorowitz:HxfQTvBgarDEoXTE@stargazercluster.j
 const db_name = 'Stargazer'
 const users_collection_name = 'users'
 const client = new MongoClient(client_url, { useNewUrlParser: true, useUnifiedTopology: true });
-
-// PAGE DIRECTORY VARIABLES
-const login_dir = 'pages/login_page/'
-const login_index_dir = 'pages/login_index_page/'
-const signup_dir = 'pages/signup_page/'
 
 // MONGODB CODE
 
@@ -50,6 +47,11 @@ async function check_credentials(username, password) {
   }
 }
 
+// PAGE DIRECTORY VARIABLES
+const login_dir = 'pages/login_page/'
+const login_index_dir = 'pages/login_index_page/'
+const signup_dir = 'pages/signup_page/'
+
 
 // SERVER SETUP
 // Set up node js and routes
@@ -58,9 +60,10 @@ const port = 4000;
 
 app.use(express.json());
 app.use(cors());
-
 // Middleware to parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
+// Middleware to parse cookies
+app.use(cookie_parser())
 
 
 
@@ -79,6 +82,8 @@ app.get('/login', (req, res) => {
 app.get('/login_index', (req, res) => {
   console.log('RECIEVED LOGIN INDEX PAGE REQUEST')
   res.sendFile(login_index_dir + 'login_index.html', {root: '../source'} )
+  console.log("ACTIVE COOKIES")
+  console.log(req.cookies)
 })
 
 app.get('/signup', (req, res) => {
@@ -89,19 +94,26 @@ app.get('/signup', (req, res) => {
 
 
 // POST REQUEST ATTEMPTING TO LOG IN A USER
+// async and await used to ensure database is checked before continuing
 app.post('/login_attempt', async (req, res) => {
   console.log("RECIEVED LOGIN ATTEMPT!")
   const {rec_username, rec_password} = req.body
   console.log('username attempted to login with ' + rec_username)
   console.log('password attempted to login with ' + rec_password)
-  if(await(check_credentials(rec_username, rec_password))) {
-    console.log('SUCCESSFUL LOGIN!')
-    res.send('LOGIN SUCCESSFUL')
-  } else {
-    console.log('FAILED LOGIN!')
-    res.send('LOGIN FAILED')
-  }
+  if (await check_credentials(rec_username, rec_password)) {
+    console.log('SUCCESSFUL LOGIN!');
+    res.status(200)
+    res.cookie('loggedin', 'true')
+    res.cookie('username', rec_username)
+    res.end("LOGIN SUCCEEDED") 
+  } else { 
+    console.log('FAILED LOGIN!');
+    res.status(401)
+    res.cookie('loggedin', 'false')
+    res.end('LOGIN FAILED')
+  } 
 })
+
 
 
 
