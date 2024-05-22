@@ -33,16 +33,50 @@ run().catch(console.dir);
 // given a username and a password, checks whether or not the user exists in users database
 async function check_credentials(username, password) {
   try {
-    console.log("CHECKING CREDENTIALS")
+    console.log('CHECKING IF USERNAME AND PASSWORD COMBO EXISTS IN DB')
     const database = client.db(db_name)
     const collection = database.collection(users_collection_name)
     console.log('WAITING FOR RESULT FROM DB')
-    const user = await collection.findOne({ username: username, password: password })
+    const user = await collection.findOne({ username:username, password:password })
     console.log("RESULT RECIEVED")
     console.log(user)
     return user != null
   } catch(error) {
-    console.error("ERROR WHILE CHECKING CREDENTIALS:", error)
+    console.error("ERROR WHILE CHECKING USERNAME AND PASSWORD:", error)
+    return false
+  }
+}
+
+// given a username, check whether the username is already in use
+async function check_username(username) {
+  try {
+    console.log('CHECKING IF USERNAME IS ALREADY TAKEN IN DB')
+    const database = client.db(db_name)
+    const collection = database.collection(users_collection_name)
+    console.log('WAITING FOR RESULT FROM DB')
+    const user = await collection.findOne({ username:username })
+    console.log("RESULT RECIEVED")
+    console.log(user)
+    return user != null
+  } catch(error) {
+    console.error("ERROR WHILE CHECKING USERNAME", error)
+    return true
+  }
+}
+
+// given a username which is not already in our database
+// and a password, place the pair in our database
+async function place_credentials(username, password) {
+  try {
+    console.log('ATTEMPTING TO ADD NEW USER TO DB')
+    const database = client.db(db_name)
+    const collection = database.collection(users_collection_name)
+    console.log('WAITING FOR PLACEMENT IN DB TO FINISH')
+    const success = await collection.insertOne({ username:username, password:password})
+    console.log("SUCCESS STATUS: " + success)
+    return success
+  } catch(error) {
+    console.error("ERROR WHILE PLACING NEW USER IN DATABASE", error)
     return false
   }
 }
@@ -106,12 +140,44 @@ app.post('/login_attempt', async (req, res) => {
     res.cookie('loggedin', 'true')
     res.cookie('username', rec_username)
     res.end("LOGIN SUCCEEDED") 
+    console.log(res)
   } else { 
     console.log('FAILED LOGIN!');
     res.status(401)
     res.cookie('loggedin', 'false')
     res.end('LOGIN FAILED')
+    console.log(res)
   } 
+})
+
+// POST REQUEST ATTEMPTING TO MAKE A NEW USER
+app.post('/signup_attempt', async (req, res) => {
+  console.log('RECIEVED SIGNUP ATTEMPT')
+  const {new_username, new_password, new_password_conf} = req.body
+  console.log('username attempted to signup with ' + new_username)
+  console.log('password attempted to signup with ' + new_password)
+  console.log('password confirmation attempted to signup with ' + new_password_conf)
+  if(new_password != new_password_conf) {
+    res.status(400)
+    res.end("ERROR: PASSWORD VALUES ARE NOT THE SAME")
+    return 
+  }
+  if(await check_username(new_username)) {
+    res.status(200)
+    res.end("SIGNUP FAILED: USERNAME IS ALREADY TAKEN")
+    return 
+  }
+  if(await place_credentials(new_username, new_password)) {
+    res.status(200)
+    res.cookie('loggedin', 'true')
+    res.cookie('username', new_username)
+    res.end('SIGNUP SUCCEEDED: REGISTERED NEW USER')
+    return 
+  } else {
+    res.status(204)
+    res.end("ERROR: UNABLE TO CREATE USER FOR UNKNOWN REASONS")
+    return 
+  }
 })
 
 
