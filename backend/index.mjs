@@ -4,42 +4,51 @@ import cors from "cors";
 
 // MONGO VARIABLES
 import { MongoClient } from 'mongodb';
-const db_url = 'mongodb+srv://bahorowitz:HxfQTvBgarDEoXTE@stargazercluster.j46iehf.mongodb.net/?retryWrites=true&w=majority&appName=stargazerCluster'
+const client_url = 'mongodb+srv://bahorowitz:HxfQTvBgarDEoXTE@stargazercluster.j46iehf.mongodb.net/?retryWrites=true&w=majority&appName=stargazerCluster'
+const db_name = 'Stargazer'
+const users_collection_name = 'users'
+const client = new MongoClient(client_url, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // PAGE DIRECTORY VARIABLES
 const login_dir = 'pages/login_page/'
 const login_index_dir = 'pages/login_index_page/'
 const signup_dir = 'pages/signup_page/'
 
+// MONGODB CODE
 
-const stored_username = 'username'
-
-const stored_password = 'password'
-
-// DB CONNECTION
-async function main() {
-  const client = new MongoClient(db_url)
+// creating a mongoDB connection pool so that a connection between db and server can be maintained at all times
+async function run() {
   try {
     await client.connect()
-    await listDatabases(client)
-  } catch (e) {
-    console.error(e)
-  }
-  finally {
-    await client.close();
+    console.log('SUCCESSFULLY CONNECTED TO ATLAS')
+  } catch(err) {
+    console.log(err.stack)
   }
 }
 
-main().catch(console.error)
-
-async function listDatabases(client){
-  const databasesList = await client.db().admin().listDatabases();
-
-  console.log("Databases:");
-  databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+run().catch(console.dir);
 
 
+
+
+
+
+// given a username and a password, checks whether or not the user exists in users database
+async function check_credentials(username, password) {
+  try {
+    console.log("CHECKING CREDENTIALS")
+    const database = client.db(db_name)
+    const collection = database.collection(users_collection_name)
+    console.log('WAITING FOR RESULT FROM DB')
+    const user = await collection.findOne({ username: username, password: password })
+    console.log("RESULT RECIEVED")
+    console.log(user)
+    return user != null
+  } catch(error) {
+    console.error("ERROR WHILE CHECKING CREDENTIALS:", error)
+    return false
+  }
+}
 
 
 // SERVER SETUP
@@ -60,7 +69,7 @@ app.listen(port, () => {
 })
 
 
-// FOREIGN PAGE GET REQUESTS
+// GET REQUESTS GRABBING PAGE ASSETS
 app.get('/login', (req, res) => {
   console.log('RECIEVED LOGIN PAGE REQUEST')
   res.sendFile(login_dir + 'login.html', { root: '../source'})
@@ -77,19 +86,21 @@ app.get('/signup', (req, res) => {
   res.sendFile(signup_dir + 'signup.html', {root: '../source'} )
 })
 
-app.post('/login_attempt', (req, res) => {
+
+
+// POST REQUEST ATTEMPTING TO LOG IN A USER
+app.post('/login_attempt', async (req, res) => {
   console.log("RECIEVED LOGIN ATTEMPT!")
   const {rec_username, rec_password} = req.body
   console.log('username attempted to login with ' + rec_username)
   console.log('password attempted to login with ' + rec_password)
-  if(rec_username == stored_username && rec_password == stored_password) {
+  if(await(check_credentials(rec_username, rec_password))) {
     console.log('SUCCESSFUL LOGIN!')
     res.send('LOGIN SUCCESSFUL')
   } else {
     console.log('FAILED LOGIN!')
     res.send('LOGIN FAILED')
   }
-  
 })
 
 
