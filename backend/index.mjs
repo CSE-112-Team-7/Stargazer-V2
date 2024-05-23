@@ -1,15 +1,15 @@
-// Import  express
-import express from "express";
+ // express and cors used to handle http request, cookie parser used to generate cookies 
+import express from "express"
 import cors from "cors";
 import cookie_parser from "cookie-parser";
 
 // MONGO VARIABLES
 import { MongoClient } from "mongodb";
-const client_url =
+const client_url = // URL where mongodb is stored
   "mongodb+srv://bahorowitz:HxfQTvBgarDEoXTE@stargazercluster.j46iehf.mongodb.net/?retryWrites=true&w=majority&appName=stargazerCluster";
-const db_name = "Stargazer";
-const users_collection_name = "users";
-const client = new MongoClient(client_url, {
+const db_name = "Stargazer"; // name of database
+const users_collection_name = "users"; // name of user table in database
+const client = new MongoClient(client_url, { // construct a new client 
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -35,7 +35,7 @@ async function check_credentials(username, password) {
     const database = client.db(db_name);
     const collection = database.collection(users_collection_name);
     console.log("WAITING FOR RESULT FROM DB");
-    const user = await collection.findOne({
+    const user = await collection.findOne({ 
       username: username,
       password: password,
     });
@@ -128,17 +128,17 @@ app.get("/signup", (req, res) => {
 // async and await used to ensure database is checked before continuing
 app.post("/login_attempt", async (req, res) => {
   console.log("RECIEVED LOGIN ATTEMPT!");
-  const { rec_username, rec_password } = req.body;
+  const { rec_username, rec_password } = req.body; // unpack request into variables
   console.log("username attempted to login with " + rec_username);
   console.log("password attempted to login with " + rec_password);
-  if (await check_credentials(rec_username, rec_password)) {
-    console.log("SUCCESSFUL LOGIN!");
+  if (await check_credentials(rec_username, rec_password)) { // check if the credentials exist in db
+    console.log("SUCCESSFUL LOGIN!"); // if they do assign cookies and return a success
     res.status(200);
     res.cookie("loggedin", "true");
     res.cookie("username", rec_username);
     res.end("LOGIN SUCCEEDED");
     console.log(res);
-  } else {
+  } else { // if they don't assign different cookies and return in failure 
     console.log("FAILED LOGIN!");
     res.status(401);
     res.cookie("loggedin", "false");
@@ -150,29 +150,29 @@ app.post("/login_attempt", async (req, res) => {
 // POST REQUEST ATTEMPTING TO MAKE A NEW USER
 app.post("/signup_attempt", async (req, res) => {
   console.log("RECIEVED SIGNUP ATTEMPT");
-  const { new_username, new_password, new_password_conf } = req.body;
+  const { new_username, new_password, new_password_conf } = req.body; // unpack request into variables
   console.log("username attempted to signup with " + new_username);
   console.log("password attempted to signup with " + new_password);
   console.log(
     "password confirmation attempted to signup with " + new_password_conf,
   );
-  if (new_password != new_password_conf) {
+  if (new_password != new_password_conf) { // make sure password and confirmation are same
     res.status(400);
     res.end("ERROR: PASSWORD VALUES ARE NOT THE SAME");
     return;
   }
-  if (await check_username(new_username)) {
+  if (await check_username(new_username)) { // if username is already in database don't let user register
     res.status(200);
     res.end("SIGNUP FAILED: USERNAME IS ALREADY TAKEN");
     return;
   }
-  if (await place_credentials(new_username, new_password)) {
+  if (await place_credentials(new_username, new_password)) { // if username and password are valid add them to database set cookies and return 
     res.status(200);
     res.cookie("loggedin", "true");
     res.cookie("username", new_username);
     res.end("SIGNUP SUCCEEDED: REGISTERED NEW USER");
     return;
-  } else {
+  } else { // if there was some issue in the process of creating the credentials let the user know
     res.status(204);
     res.end("ERROR: UNABLE TO CREATE USER FOR UNKNOWN REASONS");
     return;
