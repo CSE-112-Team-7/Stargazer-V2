@@ -1,24 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <link rel="stylesheet" href="signup.css">
-    <script defer src="signup.js"> </script>
-</head>
-<body> 
-    SIGN UP PAGE <br>
+  <head>
+    <link rel="stylesheet" href="signup.css" />
+    <script defer src="signup.js"></script>
+  </head>
+  <body>
+    SIGN UP PAGE <br />
 
-    RETURN TO LOGIN INDEX <br>
-    <a href = "http://localhost:4000/login_index"> link to login index </a> <br>
-    
+    RETURN TO LOGIN INDEX <br />
+    <a href="http://localhost:4000/login_index"> link to login index </a> <br />
+
     <form action="/signup_attempt" method="post">
-        <label for="new_username"> Input your Username: </label> <br>
-        <input type="text" id="new_username" name="new_username"> <br>
-        <label for="new_password"> Input your Password: </label> <br>
-        <input type="text" id="new_password" name="new_password"> <br>
-        <label for="new_password_conf"> Confirm your Password: </label> <br>
-        <input type="text" id="new_password_conf" name="new_password_conf">
-        <!-- TODO: ADD CHECK TO ENSURE CONFIRMATION AND NEW PASSWORD ARE THE SAME + SANITIZE INPUT-->
-        <input type="submit" value="Submit">
+      <label for="new_username"> Input your Username: </label> <br />
+      <input type="text" id="new_username" name="new_username" /> <br />
+      <label for="new_password"> Input your Password: </label> <br />
+      <input type="text" id="new_password" name="new_password" /> <br />
+      <label for="new_password_conf"> Confirm your Password: </label> <br />
+      <input type="text" id="new_password_conf" name="new_password_conf" />
+      <!-- TODO: ADD CHECK TO ENSURE CONFIRMATION AND NEW PASSWORD ARE THE SAME + SANITIZE INPUT-->
+      <input type="submit" value="Submit" />
     </form>
-</body>
+  </body>
 </html>
