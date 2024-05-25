@@ -1,4 +1,4 @@
-# **Workplan for Week 8 (5/20/24)**
+# **Workplan for Week 8 (5/27/24)**
 
 > ## **Sprint Process:**
 
