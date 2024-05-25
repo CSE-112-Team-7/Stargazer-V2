@@ -10,9 +10,9 @@
 > ## **Work Effort:**
 
 - [ ] History page
-  - [ ] Button on the landing page to redirect to the to-be history page
+  - [x] Button on the landing page to redirect to the to-be history page
   - [x] Wireframe
-  - [ ] Pull info from database
+  - [x] Pull info from the database
   - [ ] Logout on the settings panel
 - [ ] Work on user history
   - [ ] Login screen/sign-up screen
@@ -82,9 +82,9 @@
   - Figure out what tests are failing and add documentation
   - Fix failed tests
 - Volume control (add to all pages) (`2nd`): _Kenry_
-- Sprite following mouse (`3rd`): _Jason_
+- Sprite following mouse (`5th`): _Jason_
   - Change custom mouse (have a mouse that has a sprite and mouse)
-- Work on user history (`4th`): _Barak, Cole, Shole, Adrian_
+- Work on user history (`3rd`): _Barak, Cole, Shole, Adrian_
   - Login screen
   - Database to store user information
   - Securely pass login info from login page to database
@@ -94,15 +94,15 @@
     - Category
     - Constellation
     - Date/time
-- History page (`5th`) _Shole, Cole, Jason_
+- History page (`4th`) _Shole, Cole, Jason_
   - Button on landing page to redirect to the to-be history page
   - Wireframe
   - Pull info from database
-- Language settings (different language support) (`6th`): _Mark_
-- Fix DOM tree (`7th`): _EVERYONE_
+- Language settings (different language support) (`8th`): _Mark_
+- Fix DOM tree (`6th`): _EVERYONE_
   - Removing animations
     - "Just press backspace"
   - Restructre HTML
 - UI Makeover : _Mary, Pram_
-- General settings panel (`8th`): _Mark_
+- General settings panel (`7th`): _Mark_
 <!-- - Setup linter or change Prettier rules (`LOW`) -->
