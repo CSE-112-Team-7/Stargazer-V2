@@ -13,7 +13,6 @@
   - [x] Button on the landing page to redirect to the to-be history page
   - [x] Wireframe
   - [x] Pull info from the database
-  - [ ] Logout on the settings panel
 - [ ] Work on user history
   - [ ] Login screen/sign-up screen
     - [ ] Sanitize user info (Front-end)
@@ -29,17 +28,18 @@
     - [ ] Date/time
 - [ ] Sprite following mouse
   - [ ] Change custom mouse (have a mouse that has a sprite and mouse)
-- [x] Volume control (add to all pages)
 - [ ] Fix DOM tree
-  - [ ] Removing animations
-  - [ ] Restructre HTML
+  - [x] Removing animations
+  - [x] Restructure HTML
   - [ ] UI Makeover
-    - [ ] General settings panel
     - [x] Wireframe for UI
     - [x] Implement Wireframe Changes
-    - [ ] Light/dark mode
+- [ ] General settings panel
+  - [ ] Light/dark mode
       - [x] Figure out what tests are failing and add documentation 
       - [ ] Fix failed tests
+  - [ ] Logout on the settings panel
+  - [x] Volume control (add to all pages)
 <!-- - [ ] Language settings (different language support) -->
 
 <!-- - [ ] Setup linter or change Prettier rules -->
