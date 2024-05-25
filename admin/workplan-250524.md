@@ -11,12 +11,12 @@
 
 - [ ] History page
   - [ ] Button on landing page to redirect to the to-be history page
-  - [ ] Wireframe
+  - [x] Wireframe
   - [ ] Pull info from database
 - [ ] Work on user history
   - [ ] Login screen
-  - [ ] Database to store user information
-  - [ ] Securely pass login info from login page to database
+  - [x] Database to store user information
+  - [x] Securely pass login info from login page to database
   - [ ] Securely verify users
   - [ ] Store:
     - [ ] Horoscope
@@ -24,11 +24,11 @@
     - [ ] Constellation
     - [ ] Date/time
 - [ ] Light/dark mode
-  - [ ] Figure out what tests are failing and add documentation 
+  - [x] Figure out what tests are failing and add documentation 
   - [ ] Fix failed tests
 - [ ] Sprite following mouse
   - [ ] Change custom mouse (have a mouse that has a sprite and mouse)
-- [ ] Volume control (add to all pages)
+- [x] Volume control (add to all pages)
 - [ ] Fix DOM tree
   - [ ] Removing animations
   - [ ] Restructre HTML
