@@ -21,13 +21,13 @@ main {
 }
 
 img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    padding-bottom: 63px;
-    display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  padding-bottom: 63px;
+  display: none;
 }
 
 button {
@@ -37,24 +37,24 @@ button {
 }
 
 .button {
-    display: none;
-    position: absolute;
-    bottom: 100px;
-    width: 150px;
-    font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
+  display: none;
+  position: absolute;
+  bottom: 100px;
+  width: 150px;
+  font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
 }
 
 @media screen and (max-width: 479px) {
-    #selection-buttons {
-        display: flex;
-        flex-direction: column;
-        row-gap: 30px;
-    }
+  #selection-buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
 
-    img {
-        bottom: 70px;
-        top: auto;
-        left: auto;
-        transform: none;
-    }
+  img {
+    bottom: 70px;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
 }
