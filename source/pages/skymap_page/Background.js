@@ -53,7 +53,7 @@ export class Background {
           user_x,
           user_y,
           1920 * scale,
-          1080 * scale,
+          1080 * scale
         );
       }
     });

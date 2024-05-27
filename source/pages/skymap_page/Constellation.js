@@ -41,8 +41,8 @@ export class Constellation {
           swell_ratio,
           color,
           selected_color,
-          ratio,
-        ),
+          ratio
+        )
       );
     }
   }
@@ -54,7 +54,7 @@ export class Constellation {
    */
   click(x, y) {
     this.stars.forEach((star) =>
-      star.click(x - this.offset_x, y - this.offset_y),
+      star.click(x - this.offset_x, y - this.offset_y)
     );
   }
 

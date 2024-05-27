@@ -24,7 +24,7 @@
     - [ ] Constellation
     - [ ] Date/time
 - [ ] Light/dark mode
-  - [ ] Figure out what tests are failing and add documentation 
+  - [ ] Figure out what tests are failing and add documentation
   - [ ] Fix failed tests
 - [ ] Sprite following mouse
   - [ ] Change custom mouse (have a mouse that has a sprite and mouse)
@@ -37,6 +37,7 @@
 <!-- - [ ] Setup linter or change Prettier rules -->
 
 > ## **Estimations and Priorities:**
+
 - [History page](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/12) (`MEDIUM`): _3 days_
   - Button on landing page to redirect to the to-be history page (`LOW`)
   - Wireframe (`MEDIUM`)
@@ -46,7 +47,7 @@
   - Database to store user information (`HIGH`)
   - Securely pass login info from login page to database (`HIGH`)
   - Securely verify users (`LOW`)
-  - Store: 
+  - Store:
     - Horoscope
     - Category
     - Constellation
@@ -78,7 +79,7 @@
   - Database to store user information
   - Securely pass login info from login page to database
   - Securely verify users
-  - Store: 
+  - Store:
     - Horoscope
     - Category
     - Constellation
