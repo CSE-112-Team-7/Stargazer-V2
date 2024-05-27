@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../toplevel.css" />
+    <link rel="stylesheet" href="signup.css" />
+    <script defer src="signup.js"></script>
+  </head>
+  <body>
+    <header>
+        <h1>STARGAZER</h1>
+    </header>
+
+    <!-- Old link to login index-->
+    <!-- <a href="http://localhost:4000/login_index"> link to login index </a>  -->
+
+    <section>
+        <h2>SIGNUP</h2>
+        <form action="/signup_attempt" method="post">
+        <label for="new_username" hidden></label> 
+        <input type="text" id="new_username" name="new_username" title="username" placeholder="username" required/> 
+        <label for="new_password" hidden> </label>
+        <input type="password" id="new_password" name="new_password" title="password" placeholder="password" required/>
+        <label for="new_password_conf" hidden> </label>
+        <input type="password" id="new_password_conf" name="new_password_conf" title="confirm password" placeholder="confirm password" required/>
+        <!-- TODO: ADD CHECK TO ENSURE CONFIRMATION AND NEW PASSWORD ARE THE SAME + SANITIZE INPUT-->
+        <input class="button" type="submit" title="submit" value="Submit" />
+        </form>
+    </section>
+
+    <a class="back" title="back to menu" href="../starting_page/starting.html">back to menu</a> 
+
+  </body>
+</html>
