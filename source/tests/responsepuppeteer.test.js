@@ -1,7 +1,7 @@
 describe("Response page tests", () => {
   beforeAll(async () => {
     await page.goto(
-      "http://127.0.0.1:8080/source/pages/response_page/response.html",
+      "http://127.0.0.1:8080/source/pages/response_page/response.html"
     );
   });
 

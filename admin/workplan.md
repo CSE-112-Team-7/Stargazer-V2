@@ -45,6 +45,7 @@
 <!-- - [ ] Setup linter or change Prettier rules -->
 
 > ## **Estimations and Priorities:**
+
 - [History page](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/12) (`MEDIUM`): _3 days_
   - Button on landing page to redirect to the to-be history page (`LOW`)
   - Wireframe (`MEDIUM`)
@@ -89,7 +90,7 @@
   - Database to store user information
   - Securely pass login info from login page to database
   - Securely verify users
-  - Store: 
+  - Store:
     - Horoscope
     - Category
     - Constellation

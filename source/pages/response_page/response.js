@@ -1,11 +1,5 @@
-import { setShootingStars } from "../shootingStar.js";
 import playClickSound from "../../utils/playClickSound.js";
-import * as analyticsManager from "../analyticsmanager.js";
 import playBgMusic from "../../utils/playBgMusic.js";
-
-const analyticsPageName = "response";
-const analyticsStatus = 1;
-analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
 
 let synth;
 let synthExist = -1;
@@ -142,7 +136,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../thankyou_page/thankyou.html"),
+    () => (window.location.href = "../thankyou_page/thankyou.html")
   );
   stopSpeechSynthesis();
 }
@@ -181,8 +175,6 @@ window.addEventListener("load", function () {
   const randomSentence =
     openingSentences[Math.floor(Math.random() * openingSentences.length)];
   h2Element.textContent = randomSentence;
-
-  new setShootingStars(document);
 
   window.toggleText = toggleText;
   window.goToPage = goToPage;

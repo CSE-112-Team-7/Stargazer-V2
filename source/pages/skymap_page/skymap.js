@@ -1,12 +1,5 @@
 import { Background } from "./Background.js";
 import { Constellation } from "./Constellation.js";
-import playClickSound from "../../utils/playClickSound.js";
-import playBgMusic from "../../utils/playBgMusic.js";
-
-import * as analyticsManager from "../analyticsmanager.js";
-const analyticsPageName = "skymap";
-const analyticsStatus = 1;
-analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
 
 const debug = false;
 
@@ -44,7 +37,7 @@ const constellationList = [
     imageLink: "../../assets/constellations/UrsaMajor.png",
   },
 ];
-let backgroundMusic;
+
 let cameraOffset;
 let constellation_arr;
 
@@ -55,15 +48,6 @@ window.addEventListener("DOMContentLoaded", init);
  * @Property {Function} Starts the program, all function calls trace back here
  */
 async function init() {
-  backgroundMusic = document.getElementById("background-music");
-  playBgMusic(document.getElementById("background-music"));
-
-  //Set up the tutorial dialog and buttons
-  let dialog = document.querySelector("dialog");
-  dialog.showModal();
-  tutorialSetup();
-  /* Canvas Setup */
-  // Get Canvas, Context, and set the canvas width and height
   const { cloc, connect } = await loadJsonData();
   const canvas = document.querySelector("canvas");
   const ctx = canvas.getContext("2d");
@@ -82,16 +66,14 @@ async function init() {
         cloc[name],
         ratio,
         canvas.width,
-        canvas.height,
-      ),
+        canvas.height
+      )
   );
   canvas.addEventListener("click", (event) =>
-    handleClickCanvas(event, constellation_arr, sky_background),
+    handleClickCanvas(event, constellation_arr, sky_background)
   );
   // Begin animation
   animate(canvas, ctx, constellation_arr, sky_background, cameraOffset);
-  // Set next button to go to next page
-  document.getElementById("next-button").onclick = goToPage;
 }
 
 /**
@@ -107,7 +89,7 @@ function setRatio() {
   let desiredHeight = screenHeight * 2;
   return Math.max(
     Math.ceil(desiredHeight / defaultHeight),
-    Math.ceil(desiredWidth / defaultWidth),
+    Math.ceil(desiredWidth / defaultWidth)
   );
 }
 
@@ -223,6 +205,7 @@ function handleClickCanvas(event, constellation_arr, sky_background) {
   for (const constellation of constellation_arr) {
     constellation.click(x, y);
     total += constellation.selected_number;
+    document.querySelector("span").innerHTML = total;
   }
   // If 5 stars are selected, start calculating which constellation has the most stars.
   if (total == 5) {
@@ -268,7 +251,7 @@ function zoomOutCanvas(finalConstellation) {
       : canvas.height - 1080 * rate;
 
   constellation_arr.forEach((constellation) =>
-    constellation.updateRatio(ratio),
+    constellation.updateRatio(ratio)
   );
 }
 
@@ -303,13 +286,14 @@ function decideConstellation(constellation_arr, sky_background) {
     finalConstellation,
     constellationList[
       constellationList.findIndex(
-        (item) => item.name === finalConstellation.name,
+        (item) => item.name === finalConstellation.name
       )
-    ].imageLink,
+    ].imageLink
   );
 
   // Show button to next page
-  document.getElementById("next-button").classList.remove("hidden");
+  document.querySelector("a").style.display = "block";
+  document.querySelector("#hint").style.display = "none";
 
   // Record the result to the local storage
   finalConstellation.setChosen(true);
@@ -321,7 +305,7 @@ function decideConstellation(constellation_arr, sky_background) {
  */
 function animate(canvas, ctx, constellation_arr, sky_background, cameraOffset) {
   requestAnimationFrame(() =>
-    animate(canvas, ctx, constellation_arr, sky_background, cameraOffset),
+    animate(canvas, ctx, constellation_arr, sky_background, cameraOffset)
   );
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   sky_background.update(cameraOffset.x, cameraOffset.y, ratio);
@@ -336,18 +320,6 @@ function animate(canvas, ctx, constellation_arr, sky_background, cameraOffset) {
 }
 
 /**
- * @Property {Function} Navigation
- */
-function goToPage() {
-  playClickSound(
-    document.getElementById("clickSound"),
-    localStorage.getItem("questionType"),
-    backgroundMusic.currentTime,
-    () => (window.location.href = "../explanation_page/explanation.html"),
-  );
-}
-
-/**
  * @Property {Function} Helper function to load json data for constellation and stars
  * @return cloc, connect constellation location and connect
  */
@@ -357,24 +329,4 @@ async function loadJsonData() {
   const connectResponse = await fetch("./connected_stars_pair.json");
   const connect = await connectResponse.json();
   return { cloc, connect };
-}
-
-/**
- * @Property {Function} Set up the tutorial dialog
- */
-function tutorialSetup() {
-  let gotIt = document.getElementById("confirm");
-  let tutorial = document.getElementById("tutorial");
-  let hide = document.getElementById("hide");
-  let dialog = document.querySelector("dialog");
-  gotIt.addEventListener("click", () => {
-    dialog.close();
-  });
-  tutorial.addEventListener("click", () => {
-    dialog.showModal();
-  });
-  hide.addEventListener("click", () => {
-    dialog.close();
-    tutorial.setAttribute("hidden", "hidden");
-  });
 }
