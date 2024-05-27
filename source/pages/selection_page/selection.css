@@ -20,20 +20,28 @@ main {
     padding-top: 50px;
 }
 
+img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    padding-bottom: 63px;
+    display: none;
+}
+
 button {
     font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
     width: clamp(180px, 151px + 8.9vw, 280px);
     z-index: 1;
 }
 
-a {
+.button {
     display: none;
     position: absolute;
-    bottom: 0;
-}
-
-img {
-    height: clamp(216px, 193px + 7.4vw, 300px);
+    bottom: 100px;
+    width: 150px;
+    font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
 }
 
 @media screen and (max-width: 479px) {
@@ -41,5 +49,12 @@ img {
         display: flex;
         flex-direction: column;
         row-gap: 30px;
+    }
+
+    img {
+        bottom: 70px;
+        top: auto;
+        left: auto;
+        transform: none;
     }
 }
