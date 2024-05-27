@@ -27,7 +27,7 @@ export class ConstellationStar {
     swell_ratio,
     color,
     selected_color,
-    ratio,
+    ratio
   ) {
     this.ctx = ctx;
     this.x = x;
@@ -63,7 +63,7 @@ export class ConstellationStar {
       this.radius,
       0,
       Math.PI * 2,
-      false,
+      false
     );
     this.ctx.fill();
     this.ctx.stroke();

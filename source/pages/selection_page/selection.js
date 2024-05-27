@@ -7,10 +7,10 @@ const startButton = document.querySelector('a');
 let selectedButton = null;
 
 function init() {
-    localStorage.clear();
-    selectionButtons.forEach(function(element) {
-        element.addEventListener("click", handleSelection);
-    });
+  localStorage.clear();
+  selectionButtons.forEach(function (element) {
+    element.addEventListener("click", handleSelection);
+  });
 }
 
 function handleSelection(element) {
