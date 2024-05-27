@@ -1,6 +1,6 @@
 h1 {
     padding-top: 90px;
-    font-size: clamp(1.25rem, 0.9rem + 1.8vw, 2.5rem);
+    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.5rem);
 }
 
 main {
@@ -15,13 +15,14 @@ main {
     grid-template-rows: auto auto;
     justify-items: center;
     align-items: center;
-    height: 60vh;
+    height: 50vh;
     width: 90vw;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 
 button {
-    width: 280px;
+    font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
+    width: clamp(180px, 151px + 8.9vw, 280px);
     z-index: 1;
 }
 
@@ -32,5 +33,13 @@ a {
 }
 
 img {
-    height: 300px;
+    height: clamp(216px, 193px + 7.4vw, 300px);
+}
+
+@media screen and (max-width: 479px) {
+    #selection-buttons {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+    }
 }

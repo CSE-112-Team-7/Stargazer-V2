@@ -15,7 +15,7 @@ main {
 }
 
 main .button {
-    width: clamp(9.4rem, 6.7rem + 13.4vw, 18.8rem);
+    width: clamp(150px, 107px + 13.4vw, 300px);
     font-size: clamp(1.5rem, 1.4rem + 0.04vw, 2rem);
 }
 
