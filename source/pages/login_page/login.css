@@ -1,0 +1,33 @@
+h1 {
+    padding-top: 50px;
+    font-size: clamp(2.5rem, 1.8rem + 3.6vw, 5rem);
+}
+
+h1 span {
+    font-size: clamp(1.25rem, 0.9rem + 1.8vw, 2.5rem);
+}
+
+
+
+form {
+    margin: 3rem;
+    
+}
+
+form label{
+    font-size: clamp(1.5rem, 1.4rem + 0.04vw, 2rem);
+    width: clamp(150px, 107px + 13.4vw, 300px);     
+}
+
+form button{
+    display: inline-block;
+}
+
+form input{
+    background-color: var(--button-background);
+    color: var(--general-border);
+    border-color: var(--general-border);
+    border-radius: 12px;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
