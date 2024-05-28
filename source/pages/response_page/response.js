@@ -1,7 +1,7 @@
-import { setShootingStars } from "../shootingStar.js";
-import playClickSound from "../../utils/playClickSound.js";
+import { setShootingStars } from "/assets/shootingstars/script";
+import playClickSound from "/assets/utils/playclick/script";
 import * as analyticsManager from "../analyticsmanager.js";
-import playBgMusic from "../../utils/playBgMusic.js";
+import playBgMusic from "/assets/utils/playmusic/script";
 
 const analyticsPageName = "response";
 const analyticsStatus = 1;
@@ -67,7 +67,7 @@ function toggleText() {
     const answer = errorMsg;
     displayText(answer, text);
     setTimeout(() => {
-      redirectToPage("../landing_page/landing.html");
+      redirectToPage("landing/page");
     }, 5000);
   }
 }
@@ -142,7 +142,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../thankyou_page/thankyou.html"),
+    () => (window.location.href = "thankyou/page"),
   );
   stopSpeechSynthesis();
 }

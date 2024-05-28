@@ -1,4 +1,4 @@
-import { BackgroundStar } from "./BackgroundStar.js";
+import { BackgroundStar } from "BackgroundStar.js";
 
 /**
  * This class draws the background hill and gradient given a
@@ -21,9 +21,9 @@ export class Background {
     // Load background images
     this.load_image(
       "sky_gradient",
-      "../../assets/skymap/Stargazer-background.png",
+      "/assets/skymap/gaze_background/img",
     );
-    this.load_image("terrian", "../../assets/skymap/Stargazer-asset.png");
+    this.load_image("terrian", "/assets/skymap/gaze_asset/img");
   }
 
   /**

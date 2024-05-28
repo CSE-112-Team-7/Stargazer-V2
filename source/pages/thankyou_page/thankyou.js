@@ -1,7 +1,7 @@
-import { setShootingStars } from "../shootingStar.js";
+import { setShootingStars } from "/assets/shootingstars/script";
 import * as analyticsManager from "../analyticsmanager.js";
-import playClickSound from "../../utils/playClickSound.js";
-import playBgMusic from "../../utils/playBgMusic.js";
+import playClickSound from "/assets/utils/playclick/script";
+import playBgMusic from "/assets/utils/playmusic/script";
 
 const analyticsPageName = "thankYou";
 const analyticsStatus = 0;
@@ -20,7 +20,7 @@ function toLandingPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../landing_page/landing.html"),
+    () => (window.location.href = "/landing/page"),
   );
 }
 

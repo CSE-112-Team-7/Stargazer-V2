@@ -1,7 +1,7 @@
-import { Background } from "./Background.js";
-import { Constellation } from "./Constellation.js";
-import playClickSound from "../../utils/playClickSound.js";
-import playBgMusic from "../../utils/playBgMusic.js";
+import { Background } from "/skymap/background/script";
+import { Constellation } from "/skymap/constellation/script";
+import playClickSound from "/assets/utils/playclick/script";
+import playBgMusic from "/assets/utils/playmusic/script";
 
 import * as analyticsManager from "../analyticsmanager.js";
 const analyticsPageName = "skymap";
@@ -13,35 +13,35 @@ const debug = false;
 const constellationList = [
   {
     name: "Aries",
-    imageLink: "../../assets/constellations/Aries.png",
+    imageLink: "/assets/constellation/aries/base/img",
   },
   {
     name: "Canis Major",
-    imageLink: "../../assets/constellations/CanisMajor.png",
+    imageLink: "/assets/constellation/canis/base/img",
   },
   {
     name: "Crux",
-    imageLink: "../../assets/constellations/Crux.png",
+    imageLink: "/assets/constellation/crux/base/img",
   },
   {
     name: "Orion",
-    imageLink: "../../assets/constellations/Orion.png",
+    imageLink: "/assets/constellation/orion/base/img",
   },
   {
     name: "Armadillo Dragon",
-    imageLink: "../../assets/constellations/ArmadilloDragon.png",
+    imageLink: "/assets/constellation/armadillo/base/img",
   },
   {
     name: "Carina",
-    imageLink: "../../assets/constellations/Carina.png",
+    imageLink: "/assets/constellation/carina/base/img",
   },
   {
     name: "Ophiuchus",
-    imageLink: "../../assets/constellations/Ophiuchus.png",
+    imageLink: "/assets/constellation/ophi/base/img",
   },
   {
     name: "Ursa Major",
-    imageLink: "../../assets/constellations/UrsaMajor.png",
+    imageLink: "/assets/constellation/ursa/base/img",
   },
 ];
 let backgroundMusic;
@@ -343,7 +343,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../explanation_page/explanation.html"),
+    () => (window.location.href = "/explanation/page"),
   );
 }
 

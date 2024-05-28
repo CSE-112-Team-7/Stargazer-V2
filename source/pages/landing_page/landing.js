@@ -1,6 +1,6 @@
 import * as analyticsManager from "../analyticsmanager.js";
-import playClickSound from "../../utils/playClickSound.js";
-import playBgMusic from "../../utils/playBgMusic.js";
+import playClickSound from "/utils/playclick/script";
+import playBgMusic from "/utils/playmusic/script";
 const analyticsPageName = "landing";
 const analyticsStatus = 1;
 analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
