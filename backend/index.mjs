@@ -328,6 +328,12 @@ app.get("/landing/script", (req, res) => {
   res.sendFile(landing_js, { root: root_dir })
 })
 
+app.get("/landing/assets/teller/ball/img", (req, res) => {
+  console.log("RECIEVED TELLER BACKGROUND IMAGE REQUEST")
+  res.set('Content-Type', 'image/png')
+  res.sendFile(ball_img, { root: root_dir })
+})
+
 // MAIN PAGE
 app.get('/response/page', (req, res) => {
   console.log("RECIEVED RESPONSE PAGE REQUEST")
@@ -398,7 +404,7 @@ app.get('/thankyou/style', (req, res) => {
   res.sendFile(thankyou_css, { root: root_dir })
 })
 
-app.get('thankyou/script', (req, res) => {
+app.get('/thankyou/script', (req, res) => {
   console.log("RECIEVED THANK YOU SCRIPT REQUEST")
   res.set('Content-Type', 'text/javascript')
   res.sendFile(thankyou_js, { root: root_dir })
@@ -809,6 +815,7 @@ app.get('/assets/utils/playmusic/script', (req, res) => {
   res.sendFile(play_music_script, { root: root_dir })
 
 })
+
 
 
 // POST REQUEST ATTEMPTING TO LOG IN A USER
