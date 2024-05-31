@@ -1,6 +1,5 @@
 html {
-  background: url("/assets/background/preview/img") no-repeat center
-    fixed;
+  background: url("/assets/background/preview/img") no-repeat center fixed;
   background-size: cover;
   overflow: hidden;
 }

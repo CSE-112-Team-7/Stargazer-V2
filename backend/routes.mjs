@@ -1,212 +1,224 @@
 // PAGE DIRECTORY VARIABLES
 
-const login_dir = "pages/login_page/"
+const login_dir = "pages/login_page/";
 const login_page = login_dir + "login.html";
-const login_js = login_dir + "login.js"
-const login_css = login_dir + "login.css"
+const login_js = login_dir + "login.js";
+const login_css = login_dir + "login.css";
 
-const login_index_dir = "pages/login_index_page/"
+const login_index_dir = "pages/login_index_page/";
 const login_index_page = login_index_dir + "login_index.html";
-const login_index_js = login_dir + "login_index.js"
-const login_index_css = login_dir + "login_index.css"
+const login_index_js = login_dir + "login_index.js";
+const login_index_css = login_dir + "login_index.css";
 
-const signup_dir = "pages/signup_page/"
+const signup_dir = "pages/signup_page/";
 const signup_page = signup_dir + "signup.html";
-const signup_js = signup_dir + "signup.js"
-const signup_css = signup_dir + "signup.css"
+const signup_js = signup_dir + "signup.js";
+const signup_css = signup_dir + "signup.css";
 
-const explanation_dir = "pages/explanation_page/"
-const explanation_page = explanation_dir + "explanation.html"
-const explanation_css = explanation_dir + "explanation.css"
-const explanation_js = explanation_dir + "explanation.js"
+const explanation_dir = "pages/explanation_page/";
+const explanation_page = explanation_dir + "explanation.html";
+const explanation_css = explanation_dir + "explanation.css";
+const explanation_js = explanation_dir + "explanation.js";
 
-const landing_dir = "pages/landing_page/"
-const landing_page = landing_dir + "landing.html"
-const landing_css = landing_dir + "landing.css"
-const landing_js = landing_dir + "landing.js"
+const landing_dir = "pages/landing_page/";
+const landing_page = landing_dir + "landing.html";
+const landing_css = landing_dir + "landing.css";
+const landing_js = landing_dir + "landing.js";
 
-const response_dir = "pages/response_page/"
-const response_page = response_dir + "response.html"
-const response_css = response_dir + "response.css"
-const response_js = response_dir + "response.js"
+const response_dir = "pages/response_page/";
+const response_page = response_dir + "response.html";
+const response_css = response_dir + "response.css";
+const response_js = response_dir + "response.js";
 
-const skymap_dir = "pages/skymap_page/"
-const skymap_page = skymap_dir + "skymap.html"
-const skymap_background_js = skymap_dir + "Background.js"
-const skymap_constellation_js = skymap_dir + "Constellation.js"
-const skymap_constellation_star_js = skymap_dir + "ConstellationStar.js"
-const skymap_js = skymap_dir + "skymap.js"
-const skymap_css = skymap_dir + "skymap.css"
+const skymap_dir = "pages/skymap_page/";
+const skymap_page = skymap_dir + "skymap.html";
+const skymap_background_js = skymap_dir + "Background.js";
+const skymap_constellation_js = skymap_dir + "Constellation.js";
+const skymap_constellation_star_js = skymap_dir + "ConstellationStar.js";
+const skymap_js = skymap_dir + "skymap.js";
+const skymap_css = skymap_dir + "skymap.css";
 
-const thankyou_dir = "pages/thankyou_page/"
-const thankyou_page =  thankyou_dir + "thankyou.html"
-const thankyou_css = thankyou_dir + "thankyou.css"
-const thankyou_js = thankyou_dir + "thankyou.js"
+const thankyou_dir = "pages/thankyou_page/";
+const thankyou_page = thankyou_dir + "thankyou.html";
+const thankyou_css = thankyou_dir + "thankyou.css";
+const thankyou_js = thankyou_dir + "thankyou.js";
 
 // GENERAL ASSETS
-const toplevel_css = "pages/toplevel.css"
-const shootingstars_css = "pages/shootingStars.css"
-const shootingstars_js = "pages/shootingStar.js"
-const favicon_img = "assets/favicon.ico"
-const background_img = "assets/background/PreviewMap.png"
-const teller_img = "assets/background/Teller-shack-background.png"
-const constellation_dir = "assets/constellations/"
-const aries_exp_img = constellation_dir + "Aries-explanation.png"
-const aries_star_img = constellation_dir + "Aries-star.png"
-const aries_base_img = constellation_dir + "Aries.png"
-const armadillo_exp_img = constellation_dir + "ArmadilloDragon-explanation.png"
-const armadillo_star_img = constellation_dir + "ArmadilloDragon-star.png"
-const armadillo_base_img = constellation_dir + "ArmadilloDragon.png"
-const canis_exp_img = constellation_dir + "CanisMajor-explanation.png"
-const canis_star_img = constellation_dir + "CanisMajor-star.png"
-const canis_base_img = constellation_dir + "CanisMajor.png"
-const carina_exp_png = constellation_dir + "Carina-explanation.png"
-const carina_star_img = constellation_dir + "Carina-star.png"
-const carina_base_img = constellation_dir + "Carina.png"
-const crux_exp_img = constellation_dir + "Crux-explanation.png"
-const crux_star_img = constellation_dir + "Crux-star.png"
-const crux_base_img = constellation_dir + "Crux.png"
-const ophi_exp_img = constellation_dir + "Ophiuchus-explanation.png"
-const ophi_star_img = constellation_dir + "Ophiuchus-star.png"
-const ophi_base_img = constellation_dir + "Ophiuchus.png"
-const orion_exp_img = constellation_dir + "Orion-explanation.png"
-const orion_star_img = constellation_dir + "Orion-star.png"
-const orion_base_img = constellation_dir + "Orion.png"
-const ursa_exp_img = constellation_dir + "UrsaMajor-explanation.png"
-const ursa_star_img = constellation_dir + "UrsaMajor-star.png"
-const ursa_base_img = constellation_dir + "UrsaMajor.png"
+const toplevel_css = "pages/toplevel.css";
+const shootingstars_css = "pages/shootingStars.css";
+const shootingstars_js = "pages/shootingStar.js";
+const favicon_img = "assets/favicon.ico";
+const background_img = "assets/background/PreviewMap.png";
+const teller_img = "assets/background/Teller-shack-background.png";
+const constellation_dir = "assets/constellations/";
+const aries_exp_img = constellation_dir + "Aries-explanation.png";
+const aries_star_img = constellation_dir + "Aries-star.png";
+const aries_base_img = constellation_dir + "Aries.png";
+const armadillo_exp_img = constellation_dir + "ArmadilloDragon-explanation.png";
+const armadillo_star_img = constellation_dir + "ArmadilloDragon-star.png";
+const armadillo_base_img = constellation_dir + "ArmadilloDragon.png";
+const canis_exp_img = constellation_dir + "CanisMajor-explanation.png";
+const canis_star_img = constellation_dir + "CanisMajor-star.png";
+const canis_base_img = constellation_dir + "CanisMajor.png";
+const carina_exp_png = constellation_dir + "Carina-explanation.png";
+const carina_star_img = constellation_dir + "Carina-star.png";
+const carina_base_img = constellation_dir + "Carina.png";
+const crux_exp_img = constellation_dir + "Crux-explanation.png";
+const crux_star_img = constellation_dir + "Crux-star.png";
+const crux_base_img = constellation_dir + "Crux.png";
+const ophi_exp_img = constellation_dir + "Ophiuchus-explanation.png";
+const ophi_star_img = constellation_dir + "Ophiuchus-star.png";
+const ophi_base_img = constellation_dir + "Ophiuchus.png";
+const orion_exp_img = constellation_dir + "Orion-explanation.png";
+const orion_star_img = constellation_dir + "Orion-star.png";
+const orion_base_img = constellation_dir + "Orion.png";
+const ursa_exp_img = constellation_dir + "UrsaMajor-explanation.png";
+const ursa_star_img = constellation_dir + "UrsaMajor-star.png";
+const ursa_base_img = constellation_dir + "UrsaMajor.png";
 
-const icons_dir = "assets/Icons"
-const career_img = icons_dir + "Career.png"
-const daily_scope_img = icons_dir + "DailyHoroscope.png"
-const health_img = "Health.png"
-const rel_img = "Relationship.png"
+const icons_dir = "assets/Icons";
+const career_img = icons_dir + "Career.png";
+const daily_scope_img = icons_dir + "DailyHoroscope.png";
+const health_img = "Health.png";
+const rel_img = "Relationship.png";
 
-const music_dir = "assets/music/"
-const career_mp = music_dir + "careerClick.mp3"
-const daily_mp = music_dir + "dailyClick.mp3"
-const default_mp = music_dir + "defaultClick.mp3"
-const health_mp = music_dir + "healthClick.mp3"
-const rel_mp = music_dir + "relationshipClick.mp3"
-const gaze_mp = music_dir + "starGazingBGMusic.mp3"
+const music_dir = "assets/music/";
+const career_mp = music_dir + "careerClick.mp3";
+const daily_mp = music_dir + "dailyClick.mp3";
+const default_mp = music_dir + "defaultClick.mp3";
+const health_mp = music_dir + "healthClick.mp3";
+const rel_mp = music_dir + "relationshipClick.mp3";
+const gaze_mp = music_dir + "starGazingBGMusic.mp3";
 
-const myths_dir = "assets/myths"
-const aries_myth_img = myths_dir + "Aries-myth.jpeg"
-const armadillo_myth_img = myths_dir + "ArmadilloDragon-myth.jpeg"
-const canis_myth_img = myths_dir + "CanisMajor-myth.jpeg"
-const carina_myth_img = myths_dir + "Carina-myth.jpeg"
-const crux_myth_img = myths_dir + "Crux-myth.jpeg"
-const ophi_myth_img = myths_dir + "Ophiuchus-myth.jpeg"
-const orion_myth_img = myths_dir + "Orion-myth.jpeg"
-const ursa_myth_img = myths_dir + "UrsaMajor-myth.jpeg"
+const myths_dir = "assets/myths";
+const aries_myth_img = myths_dir + "Aries-myth.jpeg";
+const armadillo_myth_img = myths_dir + "ArmadilloDragon-myth.jpeg";
+const canis_myth_img = myths_dir + "CanisMajor-myth.jpeg";
+const carina_myth_img = myths_dir + "Carina-myth.jpeg";
+const crux_myth_img = myths_dir + "Crux-myth.jpeg";
+const ophi_myth_img = myths_dir + "Ophiuchus-myth.jpeg";
+const orion_myth_img = myths_dir + "Orion-myth.jpeg";
+const ursa_myth_img = myths_dir + "UrsaMajor-myth.jpeg";
 
-const sky_dir = "assets/skymap"
-const gaze_asset_img = sky_dir + "Stargazer-asset.img"
-const gaze_background_img = sky_dir + "Stargazer-background.png"
-const gaze_background_psd = sky_dir + "Stargazer-background.psd"
-const gaze_stars_img = sky_dir + "Stargazer-fillerStars.png"
+const sky_dir = "assets/skymap";
+const gaze_asset_img = sky_dir + "Stargazer-asset.img";
+const gaze_background_img = sky_dir + "Stargazer-background.png";
+const gaze_background_psd = sky_dir + "Stargazer-background.psd";
+const gaze_stars_img = sky_dir + "Stargazer-fillerStars.png";
 
-const teller_dir = "assets/teller/"
-const arm_left_img = teller_dir + "armadillo-claw-left.png"
-const arm_right_img = teller_dir + "armadillo-claw-right.png"
-const ball_img = teller_dir + "CrystalBall.png"
-const fortune_img = teller_dir + "FortuneTeller.png"
-const response_img = teller_dir + "responseTeller.png"
-const thankyou_img = teller_dir +"ThankYou_teller.png"
+const teller_dir = "assets/teller/";
+const arm_left_img = teller_dir + "armadillo-claw-left.png";
+const arm_right_img = teller_dir + "armadillo-claw-right.png";
+const ball_img = teller_dir + "CrystalBall.png";
+const fortune_img = teller_dir + "FortuneTeller.png";
+const response_img = teller_dir + "responseTeller.png";
+const thankyou_img = teller_dir + "ThankYou_teller.png";
 
-const util_dir = "utils/"
-const play_music_script = util_dir + "playBgMusic.js"
-const play_clicksound_script = util_dir + "playClickSound.js"
+const util_dir = "utils/";
+const play_music_script = util_dir + "playBgMusic.js";
+const play_clicksound_script = util_dir + "playClickSound.js";
 
 const routes = [
-    { path: "/login/page", file: login_page },
-    { path: "/login/style", file: login_css },
-    { path: "/login/script", file: login_js },
-    { path: "/login_index/page", file: login_index_page },
-    { path: "/login_index/style", file: login_index_css },
-    { path: "/login_index/script", file: login_index_js },
-    { path: "/signup/page", file: signup_page },
-    { path: "/signup/style", file: signup_css },
-    { path: "/signup/script", file: signup_js },
-    { path: "/explanation/page", file: explanation_page },
-    { path: "/explanation/style", file: explanation_css },
-    { path: "/explanation/script", file: explanation_js },
-    { path: "/landing/page", file: landing_page },
-    { path: "/landing/style", file: landing_css },
-    { path: "/landing/script", file: landing_js },
-    { path: "/landing/assets/teller/ball/img", file: ball_img },
-    { path: "/response/page", file: response_page },
-    { path: "/response/style", file: response_css },
-    { path: "/response/script", file: response_js },
-    { path: "/skymap/page", file: skymap_page },
-    { path: "/skymap/style", file: skymap_css },
-    { path: "/skymap/script", file: skymap_js },
-    { path: "/skymap/background/script", file: skymap_background_js },
-    { path: "/skymap/constellation/script", file: skymap_constellation_js },
-    { path: "/skymap/constellation_star/script", file: skymap_constellation_star_js },
-    { path: "/thankyou/page", file: thankyou_page },
-    { path: "/thankyou/style", file: thankyou_css },
-    { path: "/thankyou/script", file: thankyou_js },
-    { path: "/assets/toplevel/style", file: toplevel_css },
-    { path: "/assets/favicon/img", file: favicon_img },
-    { path: "/assets/shootingstars/style", file: shootingstars_css },
-    { path: "/assets/shootingstars/script", file: shootingstars_js },
-    { path: "/assets/background/preview/img", file: background_img },
-    { path: "/assets/background/teller/img", file: teller_img },
-    { path: "/assets/constellation/aries/exp/img", file: aries_exp_img },
-    { path: "/assets/constellation/aries/star/img", file: aries_star_img },
-    { path: "/assets/constellation/aries/base/img", file: aries_base_img },
-    { path: "/assets/constellation/aries/myth/img", file: aries_myth_img },
-    { path: "/assets/constellation/armadillo/exp/img", file: armadillo_exp_img },
-    { path: "/assets/constellation/armadillo/star/img", file: armadillo_star_img },
-    { path: "/assets/constellation/armadillo/base/img", file: armadillo_base_img },
-    { path: "/assets/constellation/armadillo/myth/img", file: armadillo_myth_img },
-    { path: "/assets/constellation/canis/exp/img", file: canis_exp_img },
-    { path: "/assets/constellation/canis/star/img", file: canis_star_img },
-    { path: "/assets/constellation/canis/base/img", file: canis_base_img },
-    { path: "/assets/constellation/canis/myth/img", file: canis_myth_img },
-    { path: "/assets/constellation/carina/exp/img", file: carina_exp_png },
-    { path: "/assets/constellation/carina/star/img", file: carina_star_img },
-    { path: "/assets/constellation/carina/base/img", file: carina_base_img },
-    { path: "/assets/constellation/carina/myth/img", file: carina_myth_img },
-    { path: "/assets/constellation/crux/exp/img", file: crux_exp_img },
-    { path: "/assets/constellation/crux/star/img", file: crux_star_img },
-    { path: "/assets/constellation/crux/base/img", file: crux_base_img },
-    { path: "/assets/constellation/crux/myth/img", file: crux_myth_img },
-    { path: "/assets/constellation/ophi/exp/img", file: ophi_exp_img },
-    { path: "/assets/constellation/ophi/star/img", file: ophi_star_img },
-    { path: "/assets/constellation/ophi/base/img", file: ophi_base_img },
-    { path: "/assets/constellation/ophi/myth/img", file: ophi_myth_img },
-    { path: "/assets/constellation/orion/exp/img", file: orion_exp_img },
-    { path: "/assets/constellation/orion/star/img", file: orion_star_img },
-    { path: "/assets/constellation/orion/base/img", file: orion_base_img },
-    { path: "/assets/constellation/orion/myth/img", file: orion_myth_img },
-    { path: "/assets/constellation/ursa/exp/img", file: ursa_exp_img },
-    { path: "/assets/constellation/ursa/star/img", file: ursa_star_img },
-    { path: "/assets/constellation/ursa/base/img", file: ursa_base_img },
-    { path: "/assets/constellation/ursa/nyth/img", file: ursa_myth_img },
-    { path: "/assets/icons/career/img", file: career_img },
-    { path: "/assets/icons/daily_scope/img", file: daily_scope_img },
-    { path: "/assets/icons/health/img", file: health_img },
-    { path: "/assets/icons/rel/img", file: rel_img},
-    { path: "/assets/music/career/mp", file: career_mp },
-    { path: "/assets/music/daily/mp", file: daily_mp },
-    { path: "/assets/music/default/mp", file: default_mp },
-    { path: "/assets/music/health/mp", file: health_mp },
-    { path: "/assets/music/rel/mp", file: rel_mp },
-    { path: "/assets/music/gae/mp", file: gaze_mp },
-    { path: "/assets/skymap/gaze_asset/img", file: gaze_asset_img },
-    { path: "/assets/skymap/gaze_background_img", file: gaze_background_img },
-    { path: "/assets/skymap/gaze_background/psd", file: gaze_background_psd },
-    { path: "/assets/skymap/gaze_stars/img", file: gaze_stars_img },
-    { path: "/assets/teller/arms/left/img", file: arm_left_img },
-    { path: "/assets/teller/arms/right/img", file: arm_right_img },
-    { path: "/assets/teller/ball/img", file: ball_img},
-    { path: "/assets/teller/fortune/img", file: fortune_img },
-    { path: "/assets/teller/response/img", file: response_img },
-    { path: "/assets/teller/thankyou/img", file: thankyou_img },
-    { path: "/assets/utils/playclick/script", file: play_clicksound_script },
-    { path: "/assets/utils/playmusic/script", file: play_music_script },
-]
+  { path: "/login/page", file: login_page },
+  { path: "/login/style", file: login_css },
+  { path: "/login/script", file: login_js },
+  { path: "/login_index/page", file: login_index_page },
+  { path: "/login_index/style", file: login_index_css },
+  { path: "/login_index/script", file: login_index_js },
+  { path: "/signup/page", file: signup_page },
+  { path: "/signup/style", file: signup_css },
+  { path: "/signup/script", file: signup_js },
+  { path: "/explanation/page", file: explanation_page },
+  { path: "/explanation/style", file: explanation_css },
+  { path: "/explanation/script", file: explanation_js },
+  { path: "/landing/page", file: landing_page },
+  { path: "/landing/style", file: landing_css },
+  { path: "/landing/script", file: landing_js },
+  { path: "/landing/assets/teller/ball/img", file: ball_img },
+  { path: "/response/page", file: response_page },
+  { path: "/response/style", file: response_css },
+  { path: "/response/script", file: response_js },
+  { path: "/skymap/page", file: skymap_page },
+  { path: "/skymap/style", file: skymap_css },
+  { path: "/skymap/script", file: skymap_js },
+  { path: "/skymap/background/script", file: skymap_background_js },
+  { path: "/skymap/constellation/script", file: skymap_constellation_js },
+  {
+    path: "/skymap/constellation_star/script",
+    file: skymap_constellation_star_js,
+  },
+  { path: "/thankyou/page", file: thankyou_page },
+  { path: "/thankyou/style", file: thankyou_css },
+  { path: "/thankyou/script", file: thankyou_js },
+  { path: "/assets/toplevel/style", file: toplevel_css },
+  { path: "/assets/favicon/img", file: favicon_img },
+  { path: "/assets/shootingstars/style", file: shootingstars_css },
+  { path: "/assets/shootingstars/script", file: shootingstars_js },
+  { path: "/assets/background/preview/img", file: background_img },
+  { path: "/assets/background/teller/img", file: teller_img },
+  { path: "/assets/constellation/aries/exp/img", file: aries_exp_img },
+  { path: "/assets/constellation/aries/star/img", file: aries_star_img },
+  { path: "/assets/constellation/aries/base/img", file: aries_base_img },
+  { path: "/assets/constellation/aries/myth/img", file: aries_myth_img },
+  { path: "/assets/constellation/armadillo/exp/img", file: armadillo_exp_img },
+  {
+    path: "/assets/constellation/armadillo/star/img",
+    file: armadillo_star_img,
+  },
+  {
+    path: "/assets/constellation/armadillo/base/img",
+    file: armadillo_base_img,
+  },
+  {
+    path: "/assets/constellation/armadillo/myth/img",
+    file: armadillo_myth_img,
+  },
+  { path: "/assets/constellation/canis/exp/img", file: canis_exp_img },
+  { path: "/assets/constellation/canis/star/img", file: canis_star_img },
+  { path: "/assets/constellation/canis/base/img", file: canis_base_img },
+  { path: "/assets/constellation/canis/myth/img", file: canis_myth_img },
+  { path: "/assets/constellation/carina/exp/img", file: carina_exp_png },
+  { path: "/assets/constellation/carina/star/img", file: carina_star_img },
+  { path: "/assets/constellation/carina/base/img", file: carina_base_img },
+  { path: "/assets/constellation/carina/myth/img", file: carina_myth_img },
+  { path: "/assets/constellation/crux/exp/img", file: crux_exp_img },
+  { path: "/assets/constellation/crux/star/img", file: crux_star_img },
+  { path: "/assets/constellation/crux/base/img", file: crux_base_img },
+  { path: "/assets/constellation/crux/myth/img", file: crux_myth_img },
+  { path: "/assets/constellation/ophi/exp/img", file: ophi_exp_img },
+  { path: "/assets/constellation/ophi/star/img", file: ophi_star_img },
+  { path: "/assets/constellation/ophi/base/img", file: ophi_base_img },
+  { path: "/assets/constellation/ophi/myth/img", file: ophi_myth_img },
+  { path: "/assets/constellation/orion/exp/img", file: orion_exp_img },
+  { path: "/assets/constellation/orion/star/img", file: orion_star_img },
+  { path: "/assets/constellation/orion/base/img", file: orion_base_img },
+  { path: "/assets/constellation/orion/myth/img", file: orion_myth_img },
+  { path: "/assets/constellation/ursa/exp/img", file: ursa_exp_img },
+  { path: "/assets/constellation/ursa/star/img", file: ursa_star_img },
+  { path: "/assets/constellation/ursa/base/img", file: ursa_base_img },
+  { path: "/assets/constellation/ursa/nyth/img", file: ursa_myth_img },
+  { path: "/assets/icons/career/img", file: career_img },
+  { path: "/assets/icons/daily_scope/img", file: daily_scope_img },
+  { path: "/assets/icons/health/img", file: health_img },
+  { path: "/assets/icons/rel/img", file: rel_img },
+  { path: "/assets/music/career/mp", file: career_mp },
+  { path: "/assets/music/daily/mp", file: daily_mp },
+  { path: "/assets/music/default/mp", file: default_mp },
+  { path: "/assets/music/health/mp", file: health_mp },
+  { path: "/assets/music/rel/mp", file: rel_mp },
+  { path: "/assets/music/gae/mp", file: gaze_mp },
+  { path: "/assets/skymap/gaze_asset/img", file: gaze_asset_img },
+  { path: "/assets/skymap/gaze_background_img", file: gaze_background_img },
+  { path: "/assets/skymap/gaze_background/psd", file: gaze_background_psd },
+  { path: "/assets/skymap/gaze_stars/img", file: gaze_stars_img },
+  { path: "/assets/teller/arms/left/img", file: arm_left_img },
+  { path: "/assets/teller/arms/right/img", file: arm_right_img },
+  { path: "/assets/teller/ball/img", file: ball_img },
+  { path: "/assets/teller/fortune/img", file: fortune_img },
+  { path: "/assets/teller/response/img", file: response_img },
+  { path: "/assets/teller/thankyou/img", file: thankyou_img },
+  { path: "/assets/utils/playclick/script", file: play_clicksound_script },
+  { path: "/assets/utils/playmusic/script", file: play_music_script },
+];
 
 export default routes;
