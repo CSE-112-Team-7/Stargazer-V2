@@ -206,7 +206,7 @@ const routes = [
   { path: "/assets/music/default/mp", file: default_mp },
   { path: "/assets/music/health/mp", file: health_mp },
   { path: "/assets/music/rel/mp", file: rel_mp },
-  { path: "/assets/music/gae/mp", file: gaze_mp },
+  { path: "/assets/music/gaze/mp", file: gaze_mp },
   { path: "/assets/skymap/gaze_asset/img", file: gaze_asset_img },
   { path: "/assets/skymap/gaze_background_img", file: gaze_background_img },
   { path: "/assets/skymap/gaze_background/psd", file: gaze_background_psd },
