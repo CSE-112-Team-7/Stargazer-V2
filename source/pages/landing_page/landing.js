@@ -37,15 +37,19 @@ function init() {
   const relationshipButton = document.getElementById("relationship-button");
   const careerButton = document.getElementById("career-button");
   const healthButton = document.getElementById("health-button");
+
+  const historyButton = document.getElementById("history-button");
+
   setCategoryEffect(dailyButton, "daily", dailyIconURL);
   setCategoryEffect(relationshipButton, "relationship", relationshipIconURL);
   setCategoryEffect(careerButton, "career", carrerIconURL);
   setCategoryEffect(healthButton, "health", healthIconURL);
 
-  // Attach onclick to start and continue
+  // Attach onclick to buttons start,continue, history
   const startButton = document.getElementById("start-button");
   startButton.addEventListener("click", handleStart);
   continueButton.addEventListener("click", toSkyMapPage);
+  historyButton.addEventListener("click", toHistoryPage);
 }
 
 /**
@@ -153,6 +157,16 @@ function toSkyMapPage() {
 
   //Update Analytics
   analyticsManager.addSessionCategorySelected(selectedCategory);
+}
+
+
+/**
+ * simple redirect function
+ * here if there needs to be more done on a history redirect click
+ */
+function toHistoryPage(){
+  alert("history clicked");
+  window.location.href = "../history_page/history.html";
 }
 
 /**
