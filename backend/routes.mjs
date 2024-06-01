@@ -1,5 +1,4 @@
 // PAGE DIRECTORY VARIABLES
-
 const login_dir = "pages/login_page/";
 const login_page = login_dir + "login.html";
 const login_js = login_dir + "login.js";
@@ -20,10 +19,9 @@ const explanation_page = explanation_dir + "explanation.html";
 const explanation_css = explanation_dir + "explanation.css";
 const explanation_js = explanation_dir + "explanation.js";
 
-const landing_dir = "pages/landing_page/";
-const landing_page = landing_dir + "landing.html";
-const landing_css = landing_dir + "landing.css";
-const landing_js = landing_dir + "landing.js";
+const starting_dir = "pages/starting_page/";
+const starting_page = starting_dir + "starting.html";
+const starting_css = starting_dir + "starting.css";
 
 const response_dir = "pages/response_page/";
 const response_page = response_dir + "response.html";
@@ -114,6 +112,12 @@ const fortune_img = teller_dir + "FortuneTeller.png";
 const response_img = teller_dir + "responseTeller.png";
 const thankyou_img = teller_dir + "ThankYou_teller.png";
 
+const background_dir = "assets/background/";
+const mountains_img = background_dir + "mountain-and-star.png";
+
+const font_dir = "assets/fonts/"
+const gideon_roman = font_dir + "GideonRoman-Regular.ttf"
+
 const util_dir = "utils/";
 const play_music_script = util_dir + "playBgMusic.js";
 const play_clicksound_script = util_dir + "playClickSound.js";
@@ -131,10 +135,9 @@ const routes = [
   { path: "/explanation/page", file: explanation_page },
   { path: "/explanation/style", file: explanation_css },
   { path: "/explanation/script", file: explanation_js },
-  { path: "/landing/page", file: landing_page },
-  { path: "/landing/style", file: landing_css },
-  { path: "/landing/script", file: landing_js },
-  { path: "/landing/assets/teller/ball/img", file: ball_img },
+  { path: "/starting/page", file: starting_page },
+  { path: "/starting/style", file: starting_css },
+  { path: "/starting/assets/teller/ball/img", file: ball_img },
   { path: "/response/page", file: response_page },
   { path: "/response/style", file: response_css },
   { path: "/response/script", file: response_js },
@@ -217,6 +220,8 @@ const routes = [
   { path: "/assets/teller/fortune/img", file: fortune_img },
   { path: "/assets/teller/response/img", file: response_img },
   { path: "/assets/teller/thankyou/img", file: thankyou_img },
+  { path: "/assets/background/mountain-and-star/img", file: mountains_img},
+  { path: "/assets/fonts/GideonRoman-Regular/ttf", file: gideon_roman},
   { path: "/assets/utils/playclick/script", file: play_clicksound_script },
   { path: "/assets/utils/playmusic/script", file: play_music_script },
 ];
