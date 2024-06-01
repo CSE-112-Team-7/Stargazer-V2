@@ -18,13 +18,13 @@ function handleSelection(element) {
 
   let questionType = clickedButton.innerHTML;
   if (questionType === "RELATIONSHIP") {
-    icon.src = "../../assets/Icons/Relationship.png";
+    icon.src = "/assets/icons/rel/img";
   } else if (questionType === "HEALTH") {
-    icon.src = "../../assets/Icons/Health.png";
+    icon.src = "/assets/icons/health/img";
   } else if (questionType === "CAREER") {
-    icon.src = "../../assets/Icons/Career.png";
+    icon.src = "/assets/icons/career/img";
   } else if (questionType === "HOROSCOPE") {
-    icon.src = "../../assets/Icons/DailyHoroscope.png";
+    icon.src = "/assets/icons/daily_scope/img";
   }
 
   if (selectedButton === null) {

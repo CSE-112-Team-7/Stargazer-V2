@@ -4,10 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Thank You Page</title>
-    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
-    <link rel="stylesheet" href="../toplevel.css" />
-    <link rel="stylesheet" href="./thankyou.css" />
-    <script src="./thankyou.js" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
+    <link rel="stylesheet" href="/assets/toplevel/style" />
+    <link rel="stylesheet" href="/thankyou/style" />
+    <script src="/thankyou/script" type="module"></script>
   </head>
   <body>
     <header>
@@ -24,16 +24,16 @@
         head back to the main page to try and choose another constellation
         reading. Thanks for visiting, hope to see you again!
       </p>
-      <button class="continue" onclick="toLandingPage()">Home</button>
+      <a class="button" href="/starting/page">HOME</a>
     </div>
     <div class="wrap">
       <div id="stars-div" class="sky"></div>
     </div>
     <audio
       id="background-music"
-      src="../../assets/music/starGazingBGMusic.mp3"
+      src="/assets/music/gaze/mp"
       loop
     ></audio>
-    <audio id="clickSound" src="../../assets/music/defaultClick.mp3"></audio>
+    <audio id="clickSound" src="/assets/music/default/mp"></audio>
   </body>
 </html>
