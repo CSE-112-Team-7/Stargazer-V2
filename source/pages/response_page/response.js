@@ -1,6 +1,5 @@
 import { setShootingStars } from "/assets/shootingstars/script";
 import playClickSound from "/assets/utils/playclick/script";
-import * as analyticsManager from "../analyticsmanager.js";
 import playBgMusic from "/assets/utils/playmusic/script";
 
 const analyticsPageName = "response";
