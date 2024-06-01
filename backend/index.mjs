@@ -123,9 +123,9 @@ routes.forEach(({ path, file }) => {
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
     // set correct content type
-    let content_type = "";
+    let content_type
     if (file.includes(".html")) {
-      content_type = html_type;
+      content_type = ""
     } else if (file.includes(".js")) {
       content_type = js_file_type;
     } else if (file.includes(".css")) {

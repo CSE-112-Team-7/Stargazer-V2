@@ -1,8 +1,5 @@
 import playClickSound from "/assets/utils/playclick/script";
 import playBgMusic from "/assets/utils/playmusic/script";
-const analyticsPageName = "landing";
-const analyticsStatus = 1;
-analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
 
 window.addEventListener("DOMContentLoaded", init);
 var selectedCategory = "";
@@ -23,9 +20,6 @@ function init() {
   localStorage.clear();
   populateDropdown();
   initializeVoicing();
-
-  // Create a new session for analytics, tag with page name
-  analyticsManager.setEmptySession();
 
   // Hide continue button
   const continueButton = document.getElementById("continue-button");
@@ -149,9 +143,6 @@ function toSkyMapPage() {
   // Set category
   localStorage.setItem("questionType", selectedCategory);
   console.log(selectedCategory);
-
-  //Update Analytics
-  analyticsManager.addSessionCategorySelected(selectedCategory);
 }
 
 /**

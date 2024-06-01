@@ -2,10 +2,8 @@ import { setShootingStars } from "/assets/shootingstars/script";
 import playClickSound from "/assets/utils/playclick/script";
 import playBgMusic from "/assets/utils/playmusic/script";
 
-const analyticsPageName = "explanation";
-const analyticsStatus = 1;
 let synthExist;
-analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
+
 
 /**
  * @property {Function} init retrieves info from previous page

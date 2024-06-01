@@ -2,9 +2,6 @@ import { setShootingStars } from "/assets/shootingstars/script";
 import playClickSound from "/assets/utils/playclick/script";
 import playBgMusic from "/assets/utils/playmusic/script";
 
-const analyticsPageName = "response";
-const analyticsStatus = 1;
-analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
 
 let synth;
 let synthExist = -1;
