@@ -1,28 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skymap Page</title>
     <!-- Main Stylesheet & Scripts -->
-    <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
-    <link rel="stylesheet" href="/skymap/style" />
-    <script src="/skymap/script" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
+    <link rel="stylesheet" href="../toplevel.css" />
+    <link rel="stylesheet" href="./skymap.css" />
+    <script src="./skymap.js" type="module"></script>
   </head>
   <body>
-    <dialog>
-      Welcome to the skymap! Your destiny shall be determined here.<br />
-      Navigate the nightsky by left clicking your mouse and drag the screen.
-      <br />
-      Click and select five stars as you wish, then your constellation will
-      appear to you!
-      <br /><button id="confirm">Got it!</button
-      ><button id="hide">Click me to hide upper right tutorial button</button>
-    </dialog>
-    <button id="tutorial">Tutorial</button>
+    <p><span>0</span>/5 Selected Stars</p>
     <canvas></canvas>
-    <button id="next-button" class="continue hidden">Next</button>
-    <audio id="background-music" src="/assets/music/gaze/mp" loop></audio>
-    <audio id="clickSound" src="/assets/music/default/mp"></audio>
+    <p id="hint">Drag to explore the whole sky!</p>
+    <a class="button" href="../explanation_page/explanation.html">Next</a>
   </body>
 </html>

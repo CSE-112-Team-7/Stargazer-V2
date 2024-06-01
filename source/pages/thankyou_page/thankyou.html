@@ -4,25 +4,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Thank You Page</title>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
-    <link rel="stylesheet" href="/assets/toplevel/style" />
-    <link rel="stylesheet" href="/assets/shootingstars/style" />
-    <link rel="stylesheet" href="/thankyou/style" />
-    <script src="/thankyou/script" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
+    <link rel="stylesheet" href="../toplevel.css" />
+    <link rel="stylesheet" href="./thankyou.css" />
+    <script src="./thankyou.js" type="module"></script>
   </head>
   <body>
-    <header class="site-header" id="header">
-      <h1 class="site-header__title" data-lead-id="site-header-title">
-        THANK YOU!
-      </h1>
+    <header>
+      <h1>THANK YOU!</h1>
     </header>
-    <div class="main-content">
+    <main>
       <img
         id="fortune-teller-image"
         src="/assets/teller/thankyou/img"
         alt="Image Description"
       />
-      <p class="main-content__body" data-lead-id="main-content-body">
+      <p>
         Thanks for trying out our constellation fortune teller! Feel free to
         head back to the main page to try and choose another constellation
         reading. Thanks for visiting, hope to see you again!
@@ -32,7 +29,11 @@
     <div class="wrap">
       <div id="stars-div" class="sky"></div>
     </div>
-    <audio id="background-music" src="/assets/music/gaze/mp" loop></audio>
-    <audio id="clickSound" src="/assets/music/default/mp"></audio>
+    <audio
+      id="background-music"
+      src="../../assets/music/starGazingBGMusic.mp3"
+      loop
+    ></audio>
+    <audio id="clickSound" src="../../assets/music/defaultClick.mp3"></audio>
   </body>
 </html>

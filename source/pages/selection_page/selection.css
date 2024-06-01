@@ -1,0 +1,60 @@
+h1 {
+  padding-top: 90px;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.5rem);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#selection-buttons {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  align-items: center;
+  height: 50vh;
+  width: 90vw;
+  padding-top: 50px;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  padding-bottom: 63px;
+  display: none;
+}
+
+button {
+  font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
+  width: clamp(180px, 151px + 8.9vw, 280px);
+  z-index: 1;
+}
+
+.button {
+  display: none;
+  position: absolute;
+  bottom: 100px;
+  width: 150px;
+  font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
+}
+
+@media screen and (max-width: 479px) {
+  #selection-buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  img {
+    bottom: 70px;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+}

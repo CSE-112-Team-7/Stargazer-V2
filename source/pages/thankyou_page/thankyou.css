@@ -1,87 +1,34 @@
-html {
-  background: url("/assets/background/preview/img") no-repeat center fixed;
-  background-size: cover;
-  overflow: hidden;
+h1 {
+  padding-top: 50px;
+  font-size: clamp(2.5rem, 1.8rem + 3.6vw, 5rem);
 }
 
-body {
-  margin: 2%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Set the text color to white */
-body,
-.site-header__title,
-p {
-  color: white;
-}
-
-/* Center the content */
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
-div.main-content {
-  text-align: center;
-  width: 1000px;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
-img {
+a.button {
+  width: clamp(9.4rem, 6.7rem + 13.4vw, 18.8rem);
+  font-size: clamp(1.5rem, 1.4rem + 0.04vw, 2rem);
+}
+
+main img {
   display: block;
   margin: 20px auto;
-  max-width: 40%;
-}
-
-h1 {
-  font-size: 40pt;
-}
-
-p {
-  font-size: 16pt;
-}
-
-img#fortune-teller-image {
   width: 14vw;
 }
 
-button.continue {
-  height: 9vh;
-  line-height: 6vh;
-  margin-top: 5vh;
-}
-
-/* Media Query for Small Screens */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 30pt;
-  }
-  div.main-content {
-    width: 80%;
-  }
-  img#fortune-teller-image {
-    width: auto;
-  }
-  button.continue {
-    height: 50px;
-    line-height: 30px;
-  }
-}
-
-/* Media Query for Medium Screens */
-@media (min-width: 601px) and (max-width: 1200px) {
-  h1 {
-    font-size: 30pt;
-  }
-  div.main-content {
-    width: 80%;
-  }
-  button.continue {
-    height: 50px;
-    line-height: 30px;
-  }
+main p {
+  font-size: clamp(1rem, 0.803rem + 1.053vw, 1.75rem);
 }

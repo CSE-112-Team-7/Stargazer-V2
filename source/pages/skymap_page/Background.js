@@ -18,9 +18,6 @@ export class Background {
     this.images = {}; // objects of image info
     this.width = width;
     this.height = height;
-    // Load background images
-    this.load_image("sky_gradient", "/assets/skymap/gaze_background/img");
-    this.load_image("terrian", "/assets/skymap/gaze_asset/img");
   }
 
   /**
@@ -56,7 +53,7 @@ export class Background {
           user_x,
           user_y,
           1920 * scale,
-          1080 * scale,
+          1080 * scale
         );
       }
     });
