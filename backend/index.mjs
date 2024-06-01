@@ -9,6 +9,7 @@ const client_url = // URL where mongodb is stored
   "mongodb+srv://bahorowitz:HxfQTvBgarDEoXTE@stargazercluster.j46iehf.mongodb.net/?retryWrites=true&w=majority&appName=stargazerCluster";
 const db_name = "Stargazer"; // name of database
 const users_collection_name = "users"; // name of user table in database
+const horoscopes_collection_name ="horoscopes" // name of horoscope table in database 
 const client = new MongoClient(client_url, {
   // construct a new client
   useNewUrlParser: true,
@@ -83,6 +84,47 @@ async function place_credentials(username, password) {
   } catch (error) {
     console.error("ERROR WHILE PLACING NEW USER IN DATABASE", error);
     return false;
+  }
+}
+
+
+async function place_horoscope(username, catagory, constellation, horoscope) {
+  try {
+    console.log("ATTEMPTING TO ADD NEW HOROSCOPE TO DB")
+    const database = client.db(db_name)
+    const collection = database.collection(horoscopes_collection_name)
+    console.log("waiting for placement of horoscope in DB to finish")
+    const success = await collection.insertOne({
+      username: username,
+      catagory: catagory,
+      constellation: constellation,
+      horoscope: horoscope,
+      timestamp: Date()
+    })
+    console.log("SUCCESS STATUS: " + success)
+    return success
+  } catch (error) {
+    console.error("ERROR WHILE PLACING NEW HOROSCOPE IN DATABASE", error)
+    return false
+  }
+}
+
+
+async function grab_user_horoscopes(username) {
+  try {
+    console.log("ATTEMPTING TO GRAB USER " + username + " HOROSCOPE DATA")
+    const user_exists = await check_username(username)
+    if(!user_exists) {
+      console.log("ERROR: USER DOES NOT EXIST IN DATABASE")
+      return null
+    }
+    const database = client.db(db_name)
+    const collection = database.collection(horoscopes_collection_name)
+    const horoscopes = await collection.find(username).sort({ timestamp: -1 }) // grabs the previous 20 horoscopes the user has entered, sorted by date
+    return horoscopes
+  } catch(error) {
+    console.error("ERROR WHILE GRABBING HOROSCOPE DATA FROM DATABASE", error)
+    return null
   }
 }
 
@@ -217,3 +259,48 @@ app.post("/signup/attempt", async (req, res) => {
     return;
   }
 });
+
+
+// POST REQUEST ATTEMPTING TO STORE USER HOROSCOPE DATA
+app.post("/horoscope/post", async(req, res) =>  {
+  console.log("RECIEVED REQUEST TO STORE HOROSCOPE DATA IN SERVER")
+  const {catagory, constellation, horoscope} = req.body
+  const loggedin = req.cookie.loggedin
+  if(loggedin != true) {
+    console.log("ERROR: NO USER IS LOGGED IN SO WE CANNOT STORE USER DATA")
+    res.status(422).end("unable to store data as user is not signed in")
+    return 
+  }
+  const username = req.cookie.username
+  console.log("user is signed in! placing data in database")
+  if (await place_horoscope(username, catagory, constellation, horoscope)) {
+    console.log("SUCCEEDED!")
+    res.status(200).end("successfully added new entry to horoscope collection")
+    return 
+  } 
+  console.log("FAILED!")
+  res.status(500).end("unable to process request due to an internal server error")
+  return 
+})
+
+  // GET REQUEST ATTEMPTING TO GRAB USER HOROSCOPE DATA
+  app.get("/horoscope/get", async(req, res) => {
+    console.log("RECIEVED REQUEST TO GRAB HOROSCOPE DATA FROM SERVER")
+    const loggedin = req.cookie.loggedin
+    if(loggedin != true) {
+      console.log("ERROR: NO USER IS LOGGED IN SO WE CANT SEND BACK USER DATA")
+      res.status(422).end("unable to send user data as user is not signed in")
+      return 
+    }
+    const username = req.cookie.username
+    console.log("user is signed in! grabbing its data from database")
+    user_horoscopes = await(grab_user_horoscopes(username))
+    if(user_horoscopes == null) {
+      console.log("FAILED!")
+      res.status(500).end("unable to process request due to an internal server error")
+      return 
+    }
+    console.log("SUCCEEDED!")
+    res.json(user_horoscopes)
+    res.status(200).end("SUCCESS!")
+  })
