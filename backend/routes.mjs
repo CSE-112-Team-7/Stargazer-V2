@@ -23,6 +23,11 @@ const starting_dir = "pages/starting_page/";
 const starting_page = starting_dir + "starting.html";
 const starting_css = starting_dir + "starting.css";
 
+const selection_dir = "pages/selection_page/";
+const selection_page = selection_dir + "selection.html";
+const selection_css = selection_dir + "selection.css";
+const selection_js = selection_dir + "selection.js";
+
 const response_dir = "pages/response_page/";
 const response_page = response_dir + "response.html";
 const response_css = response_dir + "response.css";
@@ -43,11 +48,7 @@ const thankyou_js = thankyou_dir + "thankyou.js";
 
 // GENERAL ASSETS
 const toplevel_css = "pages/toplevel.css";
-const shootingstars_css = "pages/shootingStars.css";
-const shootingstars_js = "pages/shootingStar.js";
 const favicon_img = "assets/favicon.ico";
-const background_img = "assets/background/PreviewMap.png";
-const teller_img = "assets/background/Teller-shack-background.png";
 const constellation_dir = "assets/constellations/";
 const aries_exp_img = constellation_dir + "Aries-explanation.png";
 const aries_star_img = constellation_dir + "Aries-star.png";
@@ -74,11 +75,11 @@ const ursa_exp_img = constellation_dir + "UrsaMajor-explanation.png";
 const ursa_star_img = constellation_dir + "UrsaMajor-star.png";
 const ursa_base_img = constellation_dir + "UrsaMajor.png";
 
-const icons_dir = "assets/Icons";
+const icons_dir = "assets/Icons/";
 const career_img = icons_dir + "Career.png";
 const daily_scope_img = icons_dir + "DailyHoroscope.png";
-const health_img = "Health.png";
-const rel_img = "Relationship.png";
+const health_img = icons_dir + "Health.png";
+const rel_img = icons_dir + "Relationship.png";
 
 const music_dir = "assets/music/";
 const career_mp = music_dir + "careerClick.mp3";
@@ -137,7 +138,9 @@ const routes = [
   { path: "/explanation/script", file: explanation_js },
   { path: "/starting/page", file: starting_page },
   { path: "/starting/style", file: starting_css },
-  { path: "/starting/assets/teller/ball/img", file: ball_img },
+  { path: "/selection/page", file: selection_page },
+  { path: "/selection/style", file: selection_css },
+  { path: "/selection/script", file: selection_js },
   { path: "/response/page", file: response_page },
   { path: "/response/style", file: response_css },
   { path: "/response/script", file: response_js },
@@ -155,10 +158,6 @@ const routes = [
   { path: "/thankyou/script", file: thankyou_js },
   { path: "/assets/toplevel/style", file: toplevel_css },
   { path: "/assets/favicon/img", file: favicon_img },
-  { path: "/assets/shootingstars/style", file: shootingstars_css },
-  { path: "/assets/shootingstars/script", file: shootingstars_js },
-  { path: "/assets/background/preview/img", file: background_img },
-  { path: "/assets/background/teller/img", file: teller_img },
   { path: "/assets/constellation/aries/exp/img", file: aries_exp_img },
   { path: "/assets/constellation/aries/star/img", file: aries_star_img },
   { path: "/assets/constellation/aries/base/img", file: aries_base_img },
