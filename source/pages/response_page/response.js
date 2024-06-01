@@ -1,5 +1,5 @@
-import playClickSound from "../../utils/playClickSound.js";
-import playBgMusic from "../../utils/playBgMusic.js";
+import playClickSound from "/assets/utils/playclick/script";
+import playBgMusic from "/assets/utils/playmusic/script";
 
 let synth;
 let synthExist = -1;
@@ -61,7 +61,7 @@ function toggleText() {
     const answer = errorMsg;
     displayText(answer, text);
     setTimeout(() => {
-      redirectToPage("landing/page");
+      redirectToPage("/starting/page");
     }, 5000);
   }
 }
@@ -136,7 +136,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../thankyou_page/thankyou.html"),
+    () => (window.location.href = "/thankyou/page"),
   );
   stopSpeechSynthesis();
 }
