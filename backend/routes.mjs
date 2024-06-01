@@ -35,6 +35,8 @@ const skymap_constellation_js = skymap_dir + "Constellation.js";
 const skymap_constellation_star_js = skymap_dir + "ConstellationStar.js";
 const skymap_js = skymap_dir + "skymap.js";
 const skymap_css = skymap_dir + "skymap.css";
+const skymap_connected_stars_pair_json = skymap_dir + "connected_stars_pair.json"
+const skymap_constellation_location_json = skymap_dir + "constellation_location.json"
 
 const thankyou_dir = "pages/thankyou_page/";
 const thankyou_page = thankyou_dir + "thankyou.html";
@@ -150,6 +152,10 @@ const routes = [
     path: "/skymap/constellation_star/script",
     file: skymap_constellation_star_js,
   },
+  { path: "/skymap/constellation_location/json", file: skymap_constellation_location_json },
+  { path: "/skymap/skymap/constellation_location/json", file: skymap_constellation_location_json },
+  { path: "/skymap/connected_stars_pair/json", file: skymap_connected_stars_pair_json },
+  { path: "/skymap/skymap/connected_stars_pair/json", file: skymap_connected_stars_pair_json },
   { path: "/thankyou/page", file: thankyou_page },
   { path: "/thankyou/style", file: thankyou_css },
   { path: "/thankyou/script", file: thankyou_js },

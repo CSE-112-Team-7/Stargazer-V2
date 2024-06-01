@@ -336,9 +336,9 @@ function goToPage() {
  * @return cloc, connect constellation location and connect
  */
 async function loadJsonData() {
-  const clocResponse = await fetch("./constellation_location.json");
+  const clocResponse = await fetch("skymap/constellation_location/json");
   const cloc = await clocResponse.json();
-  const connectResponse = await fetch("./connected_stars_pair.json");
+  const connectResponse = await fetch("skymap/connected_stars_pair/json");
   const connect = await connectResponse.json();
   return { cloc, connect };
 }
