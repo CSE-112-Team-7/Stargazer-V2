@@ -1,0 +1,45 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.left-column,
+.right-column {
+  flex: 1;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.middle-column {
+  flex: 2; /* Middle column is wider */
+  background-color: #e0e0e0;
+  padding: 20px;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.scrollable-content {
+  display: grid;
+  height: 200%; /* Example content height to ensure scrolling */
+}
+
+.card {
+  margin: 10px;
+  padding: 10px 20px 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  text-align: center;
+  background-color: #f1f1f1;
+  
+  display:flex
+}
+
+.card-content {
+  float:inline-start
+}
