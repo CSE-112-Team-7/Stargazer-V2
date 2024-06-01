@@ -1,5 +1,5 @@
-import { Background } from "./Background.js";
-import { Constellation } from "./Constellation.js";
+import { Background } from "/skymap/background/script";
+import { Constellation } from "/skymap/constellation/script";
 
 const debug = false;
 

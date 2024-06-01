@@ -1,4 +1,4 @@
-import { BackgroundStar } from "BackgroundStar.js";
+
 
 /**
  * This class draws the background hill and gradient given a
