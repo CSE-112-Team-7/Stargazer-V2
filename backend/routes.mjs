@@ -222,8 +222,8 @@ const routes = [
   { path: "/assets/teller/thankyou/img", file: thankyou_img },
   { path: "/assets/background/mountain-and-star/img", file: mountains_img},
   { path: "/assets/fonts/GideonRoman-Regular/ttf", file: gideon_roman},
-  { path: "/assets/utils/playclick/script", file: play_clicksound_script },
-  { path: "/assets/utils/playmusic/script", file: play_music_script },
+  { path: "/utils/playclick/script", file: play_clicksound_script },
+  { path: "/utils/playmusic/script", file: play_music_script },
 ];
 
 export default routes;
