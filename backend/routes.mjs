@@ -32,6 +32,7 @@ const response_dir = "pages/response_page/";
 const response_page = response_dir + "response.html";
 const response_css = response_dir + "response.css";
 const response_js = response_dir + "response.js";
+const response_json = response_dir + "all_responses.json";
 
 const skymap_dir = "pages/skymap_page/";
 const skymap_page = skymap_dir + "skymap.html";
@@ -40,6 +41,8 @@ const skymap_constellation_js = skymap_dir + "Constellation.js";
 const skymap_constellation_star_js = skymap_dir + "ConstellationStar.js";
 const skymap_js = skymap_dir + "skymap.js";
 const skymap_css = skymap_dir + "skymap.css";
+const skymap_stars_json = skymap_dir + "connected_stars_pair.json";
+const skymap_constellation_json = skymap_dir + "constellation_location.json";
 
 const thankyou_dir = "pages/thankyou_page/";
 const thankyou_page = thankyou_dir + "thankyou.html";
@@ -89,7 +92,7 @@ const health_mp = music_dir + "healthClick.mp3";
 const rel_mp = music_dir + "relationshipClick.mp3";
 const gaze_mp = music_dir + "starGazingBGMusic.mp3";
 
-const myths_dir = "assets/myths";
+const myths_dir = "assets/myths/";
 const aries_myth_img = myths_dir + "Aries-myth.jpeg";
 const armadillo_myth_img = myths_dir + "ArmadilloDragon-myth.jpeg";
 const canis_myth_img = myths_dir + "CanisMajor-myth.jpeg";
@@ -99,17 +102,7 @@ const ophi_myth_img = myths_dir + "Ophiuchus-myth.jpeg";
 const orion_myth_img = myths_dir + "Orion-myth.jpeg";
 const ursa_myth_img = myths_dir + "UrsaMajor-myth.jpeg";
 
-const sky_dir = "assets/skymap";
-const gaze_asset_img = sky_dir + "Stargazer-asset.img";
-const gaze_background_img = sky_dir + "Stargazer-background.png";
-const gaze_background_psd = sky_dir + "Stargazer-background.psd";
-const gaze_stars_img = sky_dir + "Stargazer-fillerStars.png";
-
 const teller_dir = "assets/teller/";
-const arm_left_img = teller_dir + "armadillo-claw-left.png";
-const arm_right_img = teller_dir + "armadillo-claw-right.png";
-const ball_img = teller_dir + "CrystalBall.png";
-const fortune_img = teller_dir + "FortuneTeller.png";
 const response_img = teller_dir + "responseTeller.png";
 const thankyou_img = teller_dir + "ThankYou_teller.png";
 
@@ -144,6 +137,7 @@ const routes = [
   { path: "/response/page", file: response_page },
   { path: "/response/style", file: response_css },
   { path: "/response/script", file: response_js },
+  { path: "/response/json", file: response_json },
   { path: "/skymap/page", file: skymap_page },
   { path: "/skymap/style", file: skymap_css },
   { path: "/skymap/script", file: skymap_js },
@@ -153,6 +147,8 @@ const routes = [
     path: "/skymap/constellation_star/script",
     file: skymap_constellation_star_js,
   },
+  { path: "/skymap/stars/json", file: skymap_stars_json },
+  { path: "/skymap/constellation/json", file: skymap_constellation_json },
   { path: "/thankyou/page", file: thankyou_page },
   { path: "/thankyou/style", file: thankyou_css },
   { path: "/thankyou/script", file: thankyou_js },
@@ -198,7 +194,7 @@ const routes = [
   { path: "/assets/constellation/ursa/exp/img", file: ursa_exp_img },
   { path: "/assets/constellation/ursa/star/img", file: ursa_star_img },
   { path: "/assets/constellation/ursa/base/img", file: ursa_base_img },
-  { path: "/assets/constellation/ursa/nyth/img", file: ursa_myth_img },
+  { path: "/assets/constellation/ursa/myth/img", file: ursa_myth_img },
   { path: "/assets/icons/career/img", file: career_img },
   { path: "/assets/icons/daily_scope/img", file: daily_scope_img },
   { path: "/assets/icons/health/img", file: health_img },
@@ -209,14 +205,6 @@ const routes = [
   { path: "/assets/music/health/mp", file: health_mp },
   { path: "/assets/music/rel/mp", file: rel_mp },
   { path: "/assets/music/gaze/mp", file: gaze_mp },
-  { path: "/assets/skymap/gaze_asset/img", file: gaze_asset_img },
-  { path: "/assets/skymap/gaze_background_img", file: gaze_background_img },
-  { path: "/assets/skymap/gaze_background/psd", file: gaze_background_psd },
-  { path: "/assets/skymap/gaze_stars/img", file: gaze_stars_img },
-  { path: "/assets/teller/arms/left/img", file: arm_left_img },
-  { path: "/assets/teller/arms/right/img", file: arm_right_img },
-  { path: "/assets/teller/ball/img", file: ball_img },
-  { path: "/assets/teller/fortune/img", file: fortune_img },
   { path: "/assets/teller/response/img", file: response_img },
   { path: "/assets/teller/thankyou/img", file: thankyou_img },
   { path: "/assets/background/mountain-and-star/img", file: mountains_img},

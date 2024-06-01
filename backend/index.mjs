@@ -94,10 +94,10 @@ const png_type = "image/png";
 const jpeg_type = "image/jpeg";
 const icon_type = "image/x-icon";
 const image_type = "image/*";
-const js_module_type = "application/javascript";
 const js_file_type = "text/javascript";
 const mp3_type = "audio/mpeg";
-const font_type = "font/ttf"
+const font_type = "font/ttf";
+const json_type = "application/json";
 const root_dir = "../source";
 
 // SERVER SETUP
@@ -126,7 +126,7 @@ routes.forEach(({ path, file }) => {
     // set correct content type
     let content_type
     if (file.includes(".html")) {
-      content_type = ""
+      content_type = html_type;
     } else if (file.includes(".js")) {
       content_type = js_file_type;
     } else if (file.includes(".css")) {
@@ -145,7 +145,9 @@ routes.forEach(({ path, file }) => {
       content_type = image_type;
     } else if (file.includes(".ttf")) {
       content_type = font_type;
-    } else {
+    } else if (file.includes(".json")) {
+      content_type = json_type;
+    }else {
       console.log("ERROR, UNEXPECTED FILE TYPE");
       res.status(404).send("UNSUPPORTED FILE TYPE REQUESTED");
       return;

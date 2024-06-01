@@ -1,5 +1,5 @@
-import playClickSound from "/assets/utils/playclick/script";
-import playBgMusic from "/assets/utils/playmusic/script";
+import playClickSound from "/utils/playclick/script";
+import playBgMusic from "/utils/playmusic/script";
 
 let synth;
 let synthExist = -1;
@@ -74,7 +74,7 @@ function toggleText() {
  * @returns {Promise<string>} A promise that resolves with the fetched response.
  */
 function fetchResponses(questionInput, chosenConstellation) {
-  return fetch("all_responses.json")
+  return fetch("/response/json")
     .then((response) => response.json())
     .then((data) => {
       return data[questionInput][chosenConstellation][
