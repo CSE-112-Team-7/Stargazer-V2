@@ -39,7 +39,7 @@ button {
 .button {
   display: none;
   position: absolute;
-  bottom: 100px;
+  top: 700px;
   width: 150px;
   font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
 }
@@ -52,8 +52,7 @@ button {
   }
 
   img {
-    bottom: 70px;
-    top: auto;
+    top: 500px;
     left: auto;
     transform: none;
   }
