@@ -1,21 +1,64 @@
   //were gonna get an array of a LOT of JSON files
   // 
+
+  //parse db data into formatted json
+
+  //save formatted json into local storage
+
+  //db response format
+  //max of 20
+  // min of 0
+  //gets code 500 if fail
+  //{username:"username", category:"", constellation: "", horoscope: "", timestamp: "timestamp" }
+
+  const dbJSON = [
+    {username:"buba", category:"Relationship", constellation: "MY mom",  text: "flavortown", timestamp: "04/20"},
+    {username:"buba", category:"Relationship", constellation: "ehehehehehehe", text: "guguns", timestamp: "04/20"},
+    {username:"buba", category:"Horoscope", constellation: "fling flong", text: "dunba systems green", timestamp: "04/20"},
+  ]
+
+  const formattedJSON = formatJSON(dbJSON);
+
+  function formatJSON(dbJSON){
+    const jsonList = []
+    
+    dbJSON.forEach(packet => {
+      const simpleDate = packet.timestamp; //THIS IS WRONG!!! what do timestamps look like
+      dateObj = jsonList.find(e => e.date === simpleDate);  
+      
+      // if no date exists yet for this packet, make a new one!
+      if(dateObj === undefined){  
+        const newDate = {date:simpleDate}
+        newDate[packet.category] = {constellation: packet.constellation, text:packet.text}
+        jsonList.push(newDate);
+
+      } else if(dateObj[packet.category] === undefined ) {  //otherwise add on to existing object ONLY IF it doesnt have an existing entry
+        dateObj[packet.category] = {constellation: packet.constellation, text:packet.text}
+      }
+
+    });
+
+    return jsonList;
+  }
+
   const mockJSON = [
-    { date:"04/20",
-        relationship:{constellation:"your mom", text:"heehee"},
-        career:{constellation:"your dad", text:"he went to get milk"},
-        health:{constellation:"your uncle", text:"you're getting touched"},
-        horoscope:{constellation:"rusty nickle", text:"try licking"}
+    { 
+      date:"04/20",
+      relationship:{constellation:"your mom", text:"heehee"},
+      career:{constellation:"your dad", text:"he went to get milk"},
+      health:{constellation:"your uncle", text:"you're getting touched"},
+      horoscope:{constellation:"rusty nickle", text:"try licking"}
     },
 
     { date:"09/11",
-        relationship:{constellation:"your mom", text:"heehee"},
-        // career:{constellation:"your dad", text:"he went to get milk"},
-        // health:{constellation:"your uncle", text:"you're getting touched"},
-        horoscope:{constellation:"rusty nickle", text:"try licking"}
+      relationship:{constellation:"your..son?", text:"boo hoo"},
+      // career:{constellation:"your dad", text:"he went to get milk"},
+      // health:{constellation:"your uncle", text:"you're getting touched"},
+      horoscope:{constellation:"chipped penny", text:"mostly zinc"}
     }
 
   ]
+
   function getBlankButton(){
     const button = document.createElement("input");
     button.type = "button";
@@ -30,8 +73,9 @@
   }
 
   function getRelationshipButton(relationshipJSON){
+    // console.log( "creating relationshipButton w/ data: " +JSON.stringify(relationshipJSON));
     // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
-    if(false){
+    if(relationshipJSON === undefined){
         return getBlankButton();
     }
 
@@ -47,20 +91,95 @@
          * we want to load the json.category.constellation and json.category.text
          * into the place where we display the generated ones
          */
-        console.log("loading category RELATIONSHIP: constellation:[" + relationshipJSON.constellation + "] " + relationshipJSON.text)
+        
+        console.log("loading category RELATIONSHIP: constellation:[" + relationshipJSON.constellation + "] " + relationshipJSON.text);
     });
 
     return button;
   }
-  function getHealthButton(){
-    return getBlankButton();
+  
+
+
+  function getHealthButton(healthJSON){
+    // console.log( "creating healthButton w/ data: " +JSON.stringify(healthJSON));
+    // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
+    if(healthJSON === undefined){
+        return getBlankButton();
+    }
+
+    const button = document.createElement("input");
+    button.type = "image";
+    button.classList.add("card-button")
+    button.src = iconsPath + "Health.png";
+    button.alt = "Health Icon";
+
+    button.onclick = (() => {
+        // HERE we store the text for the specific category
+        /**
+         * we want to load the json.category.constellation and json.category.text
+         * into the place where we display the generated ones
+         */
+        
+        console.log("loading category HEALTH: constellation:[" + healthJSON.constellation + "] " + healthJSON.text);
+    });
+
+    return button;
   }
-  function getHoroscopeButton(){
-    return getBlankButton();
+
+
+  function getHoroscopeButton(horoscopeJSON){
+    // console.log( "creating horoscopeButton w/ data: " +JSON.stringify(horoscopeJSON));
+    // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
+    if(horoscopeJSON === undefined){
+        return getBlankButton();
+    }
+
+    const button = document.createElement("input");
+    button.type = "image";
+    button.classList.add("card-button")
+    button.src = iconsPath + "DailyHoroscope.png";
+    button.alt = "Horoscope Icon";
+
+    button.onclick = (() => {
+        // HERE we store the text for the specific category
+        /**
+         * we want to load the json.category.constellation and json.category.text
+         * into the place where we display the generated ones
+         */
+        
+        console.log("loading category HOROSCOPE: constellation:[" + horoscopeJSON.constellation + "] " + horoscopeJSON.text);
+    });
+
+    return button;
   }
-  function getCareerButton(){
-    return getBlankButton();
+
+  
+  function getCareerButton(careerJSON){
+    // console.log( "creating careerButton w/ data: " +JSON.stringify(relationshipJSON));
+    // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
+    if(careerJSON === undefined){
+        return getBlankButton();
+    }
+
+    const button = document.createElement("input");
+    button.type = "image";
+    button.classList.add("card-button")
+    button.src = iconsPath + "Career.png";
+    button.alt = "Career Icon";
+
+    button.onclick = (() => {
+        // HERE we store the text for the specific category
+        /**
+         * we want to load the json.category.constellation and json.category.text
+         * into the place where we display the generated ones
+         */
+        
+        console.log("loading category CAREER: constellation:[" + careerJSON.constellation + "] " + careerJSON.text);
+    });
+
+    return button;
   }
+  
 
 
   const iconsPath = "../../assets/Icons/"
@@ -71,10 +190,11 @@
     card.classList.add("card");    // set its class to 'item_card'
 
     // create Relationship button
-    const relationshipButton = getRelationshipButton(dateJSON.relationship);
-    const healthButton = getHealthButton(dateJSON.health);
-    const careerButton = getCareerButton(dateJSON.career);
-    const horoscopeButton = getHoroscopeButton(dateJSON.horoscope);
+    console.log(JSON.stringify(dateJSON));
+    const relationshipButton = getRelationshipButton(dateJSON.Relationship);
+    const healthButton = getHealthButton(dateJSON.Health);
+    const careerButton = getCareerButton(dateJSON.Career);
+    const horoscopeButton = getHoroscopeButton(dateJSON.Horoscope);
 
     const date = document.createElement("p");
     date.textContent = dateJSON.date;
@@ -98,7 +218,7 @@
 function loadCards() {
     const cardsContainer = document.getElementById("scrollable-content");
     //for each date JSON, make a new card :D
-    mockJSON.forEach(dateJSON => {
+    formattedJSON.forEach(dateJSON => {
         const singleDateCard = createDateCard(dateJSON);
         cardsContainer.appendChild(singleDateCard);
         console.log("created new card: " + dateJSON.date)
