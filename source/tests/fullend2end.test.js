@@ -11,7 +11,7 @@ describe("Google Sanity Check Test Case", () => {
 describe("Website Load Check", () => {
   beforeAll(async () => {
     await page.goto(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
+      "http://127.0.0.1:8080/source/pages/landing_page/landing.html",
     );
   });
 
@@ -31,7 +31,7 @@ describe("End to end test: select Health, Orion", () => {
 
   beforeAll(async () => {
     await page.goto(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
+      "http://127.0.0.1:8080/source/pages/landing_page/landing.html",
     );
     ratio = await setRatio();
   });
@@ -95,7 +95,7 @@ describe("End to end test: select Health, Orion", () => {
     let desiredHeight = screenHeight * 2;
     return Math.max(
       Math.ceil(desiredHeight / defaultHeight),
-      Math.ceil(desiredWidth / defaultWidth)
+      Math.ceil(desiredWidth / defaultWidth),
     );
   }
 
@@ -119,7 +119,7 @@ describe("End to end test: select Health, Orion", () => {
     // check if page is landing page
     const landingURL = await page.url();
     expect(landingURL).toBe(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
+      "http://127.0.0.1:8080/source/pages/landing_page/landing.html",
     );
 
     // Navigate through the landing page to get to skymap
@@ -150,7 +150,7 @@ describe("End to end test: select Health, Orion", () => {
     // check if page is skymap page
     const skymapURL = await page.url();
     expect(skymapURL).toBe(
-      "http://127.0.0.1:8080/source/pages/skymap_page/skymap.html"
+      "http://127.0.0.1:8080/source/pages/skymap_page/skymap.html",
     );
   });
 
@@ -166,7 +166,7 @@ describe("End to end test: select Health, Orion", () => {
     // check if page is skymap page
     const skymapURL = await page.url();
     expect(skymapURL).toBe(
-      "http://127.0.0.1:8080/source/pages/skymap_page/skymap.html"
+      "http://127.0.0.1:8080/source/pages/skymap_page/skymap.html",
     );
 
     // click to hide tutorial
@@ -185,7 +185,7 @@ describe("End to end test: select Health, Orion", () => {
     await modifiedClick(1242 * ratio, 241 * ratio);
     await modifiedClick(1247 * ratio, 212 * ratio);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -204,7 +204,7 @@ describe("End to end test: select Health, Orion", () => {
     // check if page is explanation page
     const pageURL = await page.url();
     expect(pageURL).toBe(
-      "http://127.0.0.1:8080/source/pages/explanation_page/explanation.html"
+      "http://127.0.0.1:8080/source/pages/explanation_page/explanation.html",
     );
 
     // Check local storage
@@ -224,7 +224,7 @@ describe("End to end test: select Health, Orion", () => {
     // check that title is Canis Major
     await page.waitForSelector("h1");
     const textContent = await page.evaluate(
-      () => document.querySelector("h1").textContent
+      () => document.querySelector("h1").textContent,
     );
 
     expect(textContent).toBe("Orion");
@@ -232,7 +232,7 @@ describe("End to end test: select Health, Orion", () => {
     // check that explanation is not null
     await page.waitForSelector("p");
     const explanation = await page.evaluate(
-      () => document.querySelector("p").textContent
+      () => document.querySelector("p").textContent,
     );
     expect(explanation).not.toBe("");
 
@@ -254,7 +254,7 @@ describe("End to end test: select Health, Orion", () => {
     // check if page is response page
     const responseURL = await page.url();
     expect(responseURL).toBe(
-      "http://127.0.0.1:8080/source/pages/response_page/response.html"
+      "http://127.0.0.1:8080/source/pages/response_page/response.html",
     );
   });
 
@@ -267,7 +267,7 @@ describe("End to end test: select Health, Orion", () => {
     // check if explanation (#hiddenText) is not ""
     await page.waitForSelector("p");
     const textContent = await page.evaluate(
-      () => document.querySelector("p").textContent
+      () => document.querySelector("p").textContent,
     );
     expect(textContent).not.toBe("");
 
@@ -279,7 +279,7 @@ describe("End to end test: select Health, Orion", () => {
     // check if on thank you page
     const thankyouURL = await page.url();
     expect(thankyouURL).toBe(
-      "http://127.0.0.1:8080/source/pages/thankyou_page/thankyou.html"
+      "http://127.0.0.1:8080/source/pages/thankyou_page/thankyou.html",
     );
   });
 
@@ -287,7 +287,7 @@ describe("End to end test: select Health, Orion", () => {
     // check if on thank you page
     const thankyouURL = await page.url();
     expect(thankyouURL).toBe(
-      "http://127.0.0.1:8080/source/pages/thankyou_page/thankyou.html"
+      "http://127.0.0.1:8080/source/pages/thankyou_page/thankyou.html",
     );
 
     const homeButton = await page.$("button");
@@ -296,7 +296,7 @@ describe("End to end test: select Health, Orion", () => {
 
     const landingURL = await page.url();
     expect(landingURL).toBe(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
+      "http://127.0.0.1:8080/source/pages/landing_page/landing.html",
     );
   });
 });

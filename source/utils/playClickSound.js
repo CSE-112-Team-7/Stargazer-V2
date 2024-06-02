@@ -3,7 +3,7 @@ export default function playClickSound(
   clickSound,
   category,
   bgMusicPlayTime = 0,
-  callback = null
+  callback = null,
 ) {
   const categoryToSoundPath = {
     daily: "../../assets/music/dailyClick.mp3",

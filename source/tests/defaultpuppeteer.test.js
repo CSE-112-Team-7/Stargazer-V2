@@ -11,7 +11,7 @@ describe("Google Sanity Check Test Case", () => {
 describe("Website Load Check", () => {
   beforeAll(async () => {
     await page.goto(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
+      "http://127.0.0.1:8080/source/pages/landing_page/landing.html",
     );
   });
 

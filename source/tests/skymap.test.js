@@ -9,7 +9,7 @@ describe("Skymap Usability Test", () => {
 
   beforeAll(async () => {
     await page.goto(
-      "http://127.0.0.1:8080/source/pages/skymap_page/skymap.html"
+      "http://127.0.0.1:8080/source/pages/skymap_page/skymap.html",
     );
     ratio = await setRatio();
   });
@@ -73,7 +73,7 @@ describe("Skymap Usability Test", () => {
     let desiredHeight = screenHeight * 2;
     return Math.max(
       Math.ceil(desiredHeight / defaultHeight),
-      Math.ceil(desiredWidth / defaultWidth)
+      Math.ceil(desiredWidth / defaultWidth),
     );
   }
 
@@ -100,7 +100,7 @@ describe("Skymap Usability Test", () => {
     await confirmButton.click();
     await page.waitForSelector("dialog", { hidden: true });
     const isOpen = await page.$eval("dialog", (dialog) =>
-      dialog.hasAttribute("open")
+      dialog.hasAttribute("open"),
     );
     expect(isOpen).toBe(false);
   });
@@ -112,7 +112,7 @@ describe("Skymap Usability Test", () => {
     await hideButton.click();
     await page.waitForSelector("#tutorial", { hidden: true });
     const isHidden = await page.$eval("#tutorial", (button) =>
-      button.getAttribute("hidden")
+      button.getAttribute("hidden"),
     );
     expect(isHidden).toBe("hidden");
   });
@@ -124,7 +124,7 @@ describe("Skymap Usability Test", () => {
     await page.mouse.click(276 * ratio, 82 * ratio);
     await page.mouse.click(242 * ratio, 128 * ratio);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -144,7 +144,7 @@ describe("Skymap Usability Test", () => {
     await page.mouse.click(242 * ratio, 128 * ratio);
     await page.mouse.click(214 * ratio, 223 * ratio);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -165,12 +165,12 @@ describe("Skymap Usability Test", () => {
     await page.mouse.click(242 * ratio, 128 * ratio);
     await page.mouse.click(214 * ratio, 223 * ratio);
     let nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(true);
     await page.mouse.click(276 * ratio, 82 * ratio);
     nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -203,7 +203,7 @@ describe("Skymap Usability Test", () => {
     await page.mouse.click(587 * ratio - 800, 204 * ratio - 100);
     await page.mouse.click(793 * ratio - 800, 255 * ratio - 100);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -223,7 +223,7 @@ describe("Skymap Usability Test", () => {
     await modifiedClick(1242 * ratio, 241 * ratio);
     await modifiedClick(1247 * ratio, 212 * ratio);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -244,7 +244,7 @@ describe("Skymap Usability Test", () => {
     await modifiedClick(1463 * ratio, 430 * ratio);
     await modifiedClick(1247 * ratio, 212 * ratio);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -265,7 +265,7 @@ describe("Skymap Usability Test", () => {
     await modifiedClick(1651 * ratio, 210 * ratio);
     await modifiedClick(1285 * ratio, 225 * ratio);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -286,7 +286,7 @@ describe("Skymap Usability Test", () => {
     await modifiedClick(983 * ratio, 377 * ratio);
     await modifiedClick(1029 * ratio, 245 * ratio);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {
@@ -307,7 +307,7 @@ describe("Skymap Usability Test", () => {
     await modifiedClick(1348 * ratio, 373 * ratio);
     await modifiedClick(1450 * ratio, 287 * ratio);
     const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
+      Array.from(button.classList),
     );
     expect(nextButtonClassList.includes("hidden")).toBe(false);
     const item = await page.evaluate(() => {

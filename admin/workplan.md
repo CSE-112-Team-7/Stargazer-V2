@@ -9,38 +9,38 @@
 
 > ## **Work Effort:**
 
-- [x] History page
+- [ ] History page
   - [x] Button on the landing page to redirect to the to-be history page
   - [x] Wireframe
   - [x] Pull info from the database
-- [x] Work on user history
+- [ ] Work on user history
   - [ ] Login screen/sign-up screen
     - [ ] Sanitize user info (Front-end)
   - [x] Database to store user information
   - [x] Securely pass login info from the login page to the database
-  - [x] Securely verify users
-  - [x] Configure logout
-  - [x] Store:
+  - [ ] Securely verify users
+  - [ ] Configure logout
+  - [ ] Store:
     - [x] Cookies
-    - [x] Horoscope
-    - [x] Category
-    - [x] Constellation
-    - [x] Date/time
-- [x] Sprite following mouse
-  - [x] Change custom mouse (have a mouse that has a sprite and mouse)
-- [x] Fix DOM tree
+    - [ ] Horoscope
+    - [ ] Category
+    - [ ] Constellation
+    - [ ] Date/time
+- [ ] Sprite following mouse
+  - [ ] Change custom mouse (have a mouse that has a sprite and mouse)
+- [ ] Fix DOM tree
   - [x] Removing animations
   - [x] Restructure HTML
-  - [x] UI Makeover
+  - [ ] UI Makeover
     - [x] Wireframe for UI
     - [x] Implement Wireframe Changes
 - [ ] General settings panel
-  - [x] Light/dark mode
-      - [x] Figure out what tests are failing and add documentation 
-      - [x] Fix failed tests
+  - [ ] Light/dark mode
+    - [x] Figure out what tests are failing and add documentation
+    - [ ] Fix failed tests
   - [ ] Logout on the settings panel
   - [x] Volume control (add to all pages)
-<!-- - [ ] Language settings (different language support) -->
+  <!-- - [ ] Language settings (different language support) -->
 
 <!-- - [ ] Setup linter or change Prettier rules -->
 
@@ -56,7 +56,7 @@
   - Securely pass login info from login page to database (`HIGH`)
   - Securely verify users (`LOW`)
   - Store:
-    - Cookies 
+    - Cookies
     - Horoscope
     - Category
     - Constellation
@@ -74,8 +74,7 @@
 - [Language settings](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/9) (different language support) (`LOW`): _5 day_
 - [General settings panel](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/15) (`HIGH`): _2 days_
 - UI Makeover (`MEDIUM`): _2 days_
-- 
-<!-- - Setup linter or change Prettier rules (`LOW`): _1 day_ -->
+- <!-- - Setup linter or change Prettier rules (`LOW`): _1 day_ -->
 
 > ## **Sequencing:**
 
