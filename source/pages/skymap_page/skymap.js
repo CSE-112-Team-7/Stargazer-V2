@@ -1,40 +1,40 @@
-import { Background } from "./Background.js";
-import { Constellation } from "./Constellation.js";
+import { Background } from "/skymap/background/script";
+import { Constellation } from "/skymap/constellation/script";
 
 const debug = false;
 
 const constellationList = [
   {
     name: "Aries",
-    imageLink: "../../assets/constellations/Aries.png",
+    imageLink: "/assets/constellation/aries/base/img",
   },
   {
     name: "Canis Major",
-    imageLink: "../../assets/constellations/CanisMajor.png",
+    imageLink: "/assets/constellation/canis/base/img",
   },
   {
     name: "Crux",
-    imageLink: "../../assets/constellations/Crux.png",
+    imageLink: "/assets/constellation/crux/base/img",
   },
   {
     name: "Orion",
-    imageLink: "../../assets/constellations/Orion.png",
+    imageLink: "/assets/constellation/orion/base/img",
   },
   {
     name: "Armadillo Dragon",
-    imageLink: "../../assets/constellations/ArmadilloDragon.png",
+    imageLink: "/assets/constellation/armadillo/base/img",
   },
   {
     name: "Carina",
-    imageLink: "../../assets/constellations/Carina.png",
+    imageLink: "/assets/constellation/carina/base/img",
   },
   {
     name: "Ophiuchus",
-    imageLink: "../../assets/constellations/Ophiuchus.png",
+    imageLink: "/assets/constellation/ophi/base/img",
   },
   {
     name: "Ursa Major",
-    imageLink: "../../assets/constellations/UrsaMajor.png",
+    imageLink: "/assets/constellation/ursa/base/img",
   },
 ];
 
@@ -320,13 +320,25 @@ function animate(canvas, ctx, constellation_arr, sky_background, cameraOffset) {
 }
 
 /**
+ * @Property {Function} Navigation
+ */
+function goToPage() {
+  playClickSound(
+    document.getElementById("clickSound"),
+    localStorage.getItem("questionType"),
+    backgroundMusic.currentTime,
+    () => (window.location.href = "/explanation/page"),
+  );
+}
+
+/**
  * @Property {Function} Helper function to load json data for constellation and stars
  * @return cloc, connect constellation location and connect
  */
 async function loadJsonData() {
-  const clocResponse = await fetch("./constellation_location.json");
+  const clocResponse = await fetch("/skymap/constellation/json");
   const cloc = await clocResponse.json();
-  const connectResponse = await fetch("./connected_stars_pair.json");
+  const connectResponse = await fetch("/skymap/stars/json");
   const connect = await connectResponse.json();
   return { cloc, connect };
 }
