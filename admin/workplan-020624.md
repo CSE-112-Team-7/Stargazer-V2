@@ -9,35 +9,35 @@
 
 > ## **Work Effort:**
 
-- [ ] History page
+- [x] History page
   - [x] Button on the landing page to redirect to the to-be history page
   - [x] Wireframe
   - [x] Pull info from the database
-- [ ] Work on user history
+- [x] Work on user history
   - [ ] Login screen/sign-up screen
     - [ ] Sanitize user info (Front-end)
   - [x] Database to store user information
   - [x] Securely pass login info from the login page to the database
-  - [ ] Securely verify users
+  - [x] Securely verify users
   - [ ] Configure logout
-  - [ ] Store:
+  - [x] Store:
     - [x] Cookies
-    - [ ] Horoscope
-    - [ ] Category
-    - [ ] Constellation
-    - [ ] Date/time
-- [ ] Sprite following mouse
-  - [ ] Change custom mouse (have a mouse that has a sprite and mouse)
-- [ ] Fix DOM tree
+    - [x] Horoscope
+    - [x] Category
+    - [x] Constellation
+    - [x] Date/time
+- [x] Sprite following mouse
+  - [x] Change custom mouse (have a mouse that has a sprite and mouse)
+- [x] Fix DOM tree
   - [x] Removing animations
   - [x] Restructure HTML
-  - [ ] UI Makeover
+  - [x] UI Makeover
     - [x] Wireframe for UI
     - [x] Implement Wireframe Changes
 - [ ] General settings panel
-  - [ ] Light/dark mode
+  - [x] Light/dark mode
       - [x] Figure out what tests are failing and add documentation 
-      - [ ] Fix failed tests
+      - [x] Fix failed tests
   - [ ] Logout on the settings panel
   - [x] Volume control (add to all pages)
 <!-- - [ ] Language settings (different language support) -->
