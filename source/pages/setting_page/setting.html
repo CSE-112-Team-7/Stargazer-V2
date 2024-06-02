@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings Panel</title>
+  <link rel="stylesheet" href="/setting/style" />
+</head>
+<body>
+  <h2>Settings Panel</h2>
+  <!-- Add settings options, buttons, etc. -->
+  <button id="closeSettingsBtn">Close</button>
+  <script>
+    const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+
+    closeSettingsBtn.addEventListener('click', () => {
+      window.parent.postMessage('closeSettings', '*');
+    });
+  </script>
+</body>
+</html>

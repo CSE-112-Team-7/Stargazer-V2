@@ -49,6 +49,10 @@ const thankyou_page = thankyou_dir + "thankyou.html";
 const thankyou_css = thankyou_dir + "thankyou.css";
 const thankyou_js = thankyou_dir + "thankyou.js";
 
+const setting_dir = "pages/setting_page/";
+const setting_page = setting_dir + "setting.html";
+const setting_css = setting_dir + "setting.css";
+
 // GENERAL ASSETS
 const toplevel_css = "pages/toplevel.css";
 const favicon_img = "assets/favicon.ico";
@@ -152,6 +156,8 @@ const routes = [
   { path: "/thankyou/page", file: thankyou_page },
   { path: "/thankyou/style", file: thankyou_css },
   { path: "/thankyou/script", file: thankyou_js },
+  { path: "/setting/page", file: setting_page },
+  { path: "/setting/style", file: setting_css },
   { path: "/assets/toplevel/style", file: toplevel_css },
   { path: "/assets/favicon/img", file: favicon_img },
   { path: "/assets/constellation/aries/exp/img", file: aries_exp_img },

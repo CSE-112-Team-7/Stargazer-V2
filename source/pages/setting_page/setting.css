@@ -1,0 +1,18 @@
+/* setting.css */
+
+body {
+    background-color: rgba(240, 240, 240, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h2 {
+    margin-top: 0;
+    font-size: clamp(1.25rem, 0.9rem + 1.8vw, 2.5rem);
+  }
+  
+  button {
+    margin-top: 20px;
+  }

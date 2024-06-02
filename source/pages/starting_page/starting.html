@@ -9,13 +9,31 @@
     <link rel="stylesheet" href="/starting/style" />
   </head>
   <body>
+    <div id="settingsOverlay">
+      <iframe id="settingsIframe" src="/setting/page"></iframe>
+    </div>
     <header>
       <h1><span>welcome to</span><br />STARGAZER</h1>
+      <button id="settingsBtn">Settings</button>
     </header>
     <main>
       <a class="button">LOGIN</a>
       <a class="button">SIGNUP</a>
       <a class="button" href="/selection/page">GUEST</a>
     </main>
+    <script>
+      const settingsBtn = document.getElementById('settingsBtn');
+      const settingsOverlay = document.getElementById('settingsOverlay');
+
+      settingsBtn.addEventListener('click', () => {
+        settingsOverlay.style.display = 'flex';
+      });
+
+      window.addEventListener('message', (event) => {
+        if (event.data === 'closeSettings') {
+          settingsOverlay.style.display = 'none';
+        }
+      });
+    </script>
   </body>
 </html>
