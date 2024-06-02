@@ -19,7 +19,7 @@
   - [x] Database to store user information
   - [x] Securely pass login info from the login page to the database
   - [x] Securely verify users
-  - [ ] Configure logout
+  - [x] Configure logout
   - [x] Store:
     - [x] Cookies
     - [x] Horoscope
