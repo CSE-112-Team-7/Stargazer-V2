@@ -36,11 +36,11 @@
     - [x] Implement Wireframe Changes
 - [ ] General settings panel
   - [ ] Light/dark mode
-      - [x] Figure out what tests are failing and add documentation 
-      - [ ] Fix failed tests
+    - [x] Figure out what tests are failing and add documentation
+    - [ ] Fix failed tests
   - [ ] Logout on the settings panel
   - [x] Volume control (add to all pages)
-<!-- - [ ] Language settings (different language support) -->
+  <!-- - [ ] Language settings (different language support) -->
 
 <!-- - [ ] Setup linter or change Prettier rules -->
 
@@ -56,7 +56,7 @@
   - Securely pass login info from login page to database (`HIGH`)
   - Securely verify users (`LOW`)
   - Store:
-    - Cookies 
+    - Cookies
     - Horoscope
     - Category
     - Constellation
@@ -74,8 +74,7 @@
 - [Language settings](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/9) (different language support) (`LOW`): _5 day_
 - [General settings panel](https://github.com/CSE-112-Team-7/Stargazer-V2/issues/15) (`HIGH`): _2 days_
 - UI Makeover (`MEDIUM`): _2 days_
-- 
-<!-- - Setup linter or change Prettier rules (`LOW`): _1 day_ -->
+- <!-- - Setup linter or change Prettier rules (`LOW`): _1 day_ -->
 
 > ## **Sequencing:**
 
