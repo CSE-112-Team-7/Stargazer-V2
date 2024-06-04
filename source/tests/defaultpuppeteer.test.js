@@ -8,6 +8,7 @@ describe("Google Sanity Check Test Case", () => {
   });
 });
 
+/*
 describe("Website Load Check", () => {
   beforeAll(async () => {
     await page.goto(
@@ -17,5 +18,18 @@ describe("Website Load Check", () => {
 
   it("should be titled ", async () => {
     await expect(page.title()).resolves.toMatch("Landing Page");
+  });
+});
+*/
+
+describe("Website Load Check", () => {
+  beforeAll(async () => {
+    await page.goto(
+      "http://localhost:4000/starting/page",
+    );
+  });
+
+  it("should be titled Starting Page", async () => {
+    await expect(page.title()).resolves.toMatch("Starting Page");
   });
 });
