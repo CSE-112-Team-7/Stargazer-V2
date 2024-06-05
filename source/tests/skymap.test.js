@@ -374,5 +374,11 @@ describe("Skymap Usability Test", () => {
     expect(item).toBe("Ursa Major");
 
     resetXY();
+
+    const nextPageLink = await page.waitForSelector("a");
+    await Promise.all([page.waitForNavigation(), nextPageLink.click()]);
+    await expect(page.title()).resolves.toMatch(
+      "Constellation Explanation Page"
+    );
   });
 });
