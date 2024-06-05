@@ -140,6 +140,9 @@ const font_type = "font/ttf";
 const json_type = "application/json";
 const root_dir = "../source";
 
+const starting_dir = "pages/starting_page/";
+const root_page = starting_dir + "starting.html";
+
 // SERVER SETUP
 // Set up node js and routes
 const app = express();
@@ -196,6 +199,12 @@ routes.forEach(({ path, file }) => {
     res.sendFile(file, { root: root_dir });
   });
 });
+
+// ROOT PAGE OF SERVER
+app.get('/', (req, res) => {
+  console.log("RECIEVED REQUEST FOR ROOT SERVER PAGE")
+  res.sendFile(root_page, { root: root_dir })
+})
 
 // POST REQUEST ATTEMPTING TO LOG IN A USER
 // async and await used to ensure database is checked before continuing
