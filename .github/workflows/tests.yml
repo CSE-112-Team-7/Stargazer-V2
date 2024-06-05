@@ -23,6 +23,6 @@ jobs:
       - name: Install JEST
         run: npm install jest@${{ matrix.jestversion }} jest-puppeteer@${{ matrix.jestpuppeteerversion }} puppeteer@${{ matrix.puppeteerversion }} http-server@${{ matrix.httpserverversion }}; cd backend; npm install;
       - name: Host Server
-        run: node index.mjs
+        run: cd backend; node index.mjs
       - name: Run tests
-        run: cd ..; npm run test
+        run: npm run test
