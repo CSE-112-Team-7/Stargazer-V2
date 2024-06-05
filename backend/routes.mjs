@@ -83,6 +83,7 @@ const career_img = icons_dir + "Career.png";
 const daily_scope_img = icons_dir + "DailyHoroscope.png";
 const health_img = icons_dir + "Health.png";
 const rel_img = icons_dir + "Relationship.png";
+const mouse_gif = icons_dir + "oneko.gif";
 
 const music_dir = "assets/music/";
 const career_mp = music_dir + "careerClick.mp3";
@@ -115,6 +116,7 @@ const gideon_roman = font_dir + "GideonRoman-Regular.ttf";
 const util_dir = "utils/";
 const play_music_script = util_dir + "playBgMusic.js";
 const play_clicksound_script = util_dir + "playClickSound.js";
+const mouse_script = util_dir + "oneko.js";
 
 const routes = [
   { path: "/login/page", file: login_page },
@@ -199,6 +201,7 @@ const routes = [
   { path: "/assets/icons/daily_scope/img", file: daily_scope_img },
   { path: "/assets/icons/health/img", file: health_img },
   { path: "/assets/icons/rel/img", file: rel_img },
+  { path: "/assets/icons/mouse/gif", file: mouse_gif },
   { path: "/assets/music/career/mp", file: career_mp },
   { path: "/assets/music/daily/mp", file: daily_mp },
   { path: "/assets/music/default/mp", file: default_mp },
@@ -211,6 +214,7 @@ const routes = [
   { path: "/assets/fonts/GideonRoman-Regular/ttf", file: gideon_roman },
   { path: "/utils/playclick/script", file: play_clicksound_script },
   { path: "/utils/playmusic/script", file: play_music_script },
+  { path: "/utils/mouse/script", file: mouse_script },
 ];
 
 export default routes;
