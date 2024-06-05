@@ -12,7 +12,6 @@
 <body>
   <div class="container">
     <h2>Settings Panel</h2>
-    <!-- Add settings options, buttons, etc. -->
     <div class="volume-control">
       <label for="volumeSlider">Browser Sound Volume:</label>
       <input type="range" id="volumeSlider" min="0" max="100" value="50">
@@ -29,8 +28,6 @@
 
     volumeSlider.addEventListener('input', () => {
       const volume = volumeSlider.value / 100;
-      // Apply the volume to the browser's audio elements
-      // You may need to use browser-specific APIs or libraries for this
       console.log('Browser sound volume:', volume);
     });
   </script>
