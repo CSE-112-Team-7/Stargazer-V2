@@ -8,25 +8,9 @@ describe("Google Sanity Check Test Case", () => {
   });
 });
 
-/*
 describe("Website Load Check", () => {
   beforeAll(async () => {
-    await page.goto(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html",
-    );
-  });
-
-  it("should be titled ", async () => {
-    await expect(page.title()).resolves.toMatch("Landing Page");
-  });
-});
-*/
-
-describe("Website Load Check", () => {
-  beforeAll(async () => {
-    await page.goto(
-      "http://localhost:4000/starting/page",
-    );
+    await page.goto("http://localhost:4000/starting/page");
   });
 
   it("should be titled Starting Page", async () => {
