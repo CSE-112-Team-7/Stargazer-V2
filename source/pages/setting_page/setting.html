@@ -1,3 +1,5 @@
+<!-- setting.hrml -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +10,28 @@
   <link rel="stylesheet" href="/setting/style" />
 </head>
 <body>
-  <h2>Settings Panel</h2>
-  <!-- Add settings options, buttons, etc. -->
-  <button id="closeSettingsBtn" class="button">Close</button>
+  <div class="container">
+    <h2>Settings Panel</h2>
+    <!-- Add settings options, buttons, etc. -->
+    <div class="volume-control">
+      <label for="volumeSlider">Browser Sound Volume:</label>
+      <input type="range" id="volumeSlider" min="0" max="100" value="50">
+    </div>
+    <button id="closeSettingsBtn" class="button">Close</button>
+  </div>
   <script>
     const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+    const volumeSlider = document.getElementById('volumeSlider');
 
     closeSettingsBtn.addEventListener('click', () => {
       window.parent.postMessage('closeSettings', '*');
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      const volume = volumeSlider.value / 100;
+      // Apply the volume to the browser's audio elements
+      // You may need to use browser-specific APIs or libraries for this
+      console.log('Browser sound volume:', volume);
     });
   </script>
 </body>
