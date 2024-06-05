@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/login/style" />
     <script defer src="/login/script"></script>
+    <title>Login Page</title>
   </head>
   <body>
     <header>
@@ -13,13 +14,24 @@
     
 
     <form action="/login/attempt" method="post">
-      <input type="text" id="rec_username" name="rec_username" /><br />
-      <input type="password" id="rec_password" name="rec_password" />
-      <button type="button" id="togglePassword">&#128065;</button><br /> 
-      <input class="button" type="submit" title="submit" value="Submit"/>
+      <!-- <label for="rec_username"> Username:</label><br /> -->
+      <input type="username" id="rec_username" name="rec_username" title="username" placeholder="username" required/>
+      <!-- <label for="rec_password"> Password:</label><br /> -->
+      <input type="password" id="rec_password" name="rec_password" title="password" placeholder="password" required/>
+      <button type="button" id="togglePassword">&#128065;</button>
+      <input class="button" id="submitButton" type="submit" title="submit" value="Submit"/>
       <!-- <input class="button" type="submit" value="Submit"/> -->
 
     </form>
+
+    <div id="overlay" class="overlay"></div>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <p>Login Failed</p>
+        <button id="popupButton">Button</button>
+      </div>
+    </div>
     <!-- TODO: ADD INPUT SANITIZATION -->
   </body>
 </html>

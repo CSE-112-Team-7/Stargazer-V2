@@ -1,4 +1,4 @@
-h1 {
+/* h1 {
     padding-top: 50px;
     font-size: clamp(2.5rem, 1.8rem + 3.6vw, 5rem);
 }
@@ -19,15 +19,104 @@ form label{
     width: clamp(150px, 107px + 13.4vw, 300px);     
 }
 
-form button{
+/* form button{
     display: inline-block;
-}
+}   */
 
-form input{
+/* form input{
     background-color: var(--button-background);
     color: var(--general-border);
     border-color: var(--general-border);
     border-radius: 12px;
     font-size: 2rem;
     margin-bottom: 1.5rem;
+} */
+/*
+input {
+    background: transparent;
+    outline: none;
+    border: unset;
+    border-bottom:2px solid var(--general-border);
+    width: clamp(9.4rem, 6.7rem + 13.4vw, 18.8rem);
+    font-size: clamp(1.5rem, 1.4rem + 0.04vw, 2rem);
+} */
+
+h1 {
+    padding-top: 50px;
+    font-size: clamp(2.5rem, 1.8rem + 3.6vw, 5rem);
+}
+
+h1 span {
+    font-size: clamp(1.25rem, 0.9rem + 1.8vw, 2.5rem);
+}
+
+h2 {
+    padding-top: 50px;
+    font-size: clamp(1.0rem, 0.8rem + 2.6vw, 3rem);
+}
+
+form {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 6vh;
+}
+
+input {
+    background: transparent;
+    outline: none;
+    border: unset;
+    border-bottom:2px solid var(--general-border);
+    width: clamp(9.4rem, 6.7rem + 13.4vw, 18.8rem);
+    font-size: clamp(1.5rem, 1.4rem + 0.04vw, 2rem);
+}
+
+/* .back{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 3vw;
+    padding-left: 3vw;
+} */
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    backdrop-filter: blur(5px); /* Apply blur effect to the background */
+}
+  
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+  
+  .popup-content {
+margin-bottom: 10px;
+}
+  
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #aaa;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.close:hover {
+    color: black;
 }
