@@ -1,34 +1,48 @@
 window.addEventListener("DOMContentLoaded", init);
 
-const selectionButtons = document.querySelectorAll('button');
-const startButton = document.querySelector('a');
+const selectionButtons = document.querySelectorAll("button");
+const icon = document.querySelector("img");
+const startButton = document.querySelector("a");
 
 let selectedButton = null;
 
 function init() {
-    localStorage.clear();
-    selectionButtons.forEach(function(element) {
-        element.addEventListener("click", handleSelection);
-    });
+  localStorage.clear();
+  selectionButtons.forEach(function (element) {
+    element.addEventListener("click", handleSelection);
+  });
 }
 
 function handleSelection(element) {
-    let clickedButton = element.target;
-    if (selectedButton === null) {
-        // if no button is previously selected, select the clicked button
-        clickedButton.style.backgroundColor = 'var(--button-hover-background)';
+  let clickedButton = element.target;
 
-        localStorage.setItem('questionType', clickedButton.innerHTML);
-        selectedButton = clickedButton;
+  let questionType = clickedButton.innerHTML;
+  if (questionType === "RELATIONSHIP") {
+    icon.src = "/assets/icons/rel/img";
+  } else if (questionType === "HEALTH") {
+    icon.src = "/assets/icons/health/img";
+  } else if (questionType === "CAREER") {
+    icon.src = "/assets/icons/career/img";
+  } else if (questionType === "HOROSCOPE") {
+    icon.src = "/assets/icons/daily_scope/img";
+  }
 
-        startButton.style.display = 'block';
-    } else if (clickedButton != selectedButton) {
-        // unselect the previously selected button, select the clicked button
-        selectedButton.style.backgroundColor = 'var(--button-background)';
+  if (selectedButton === null) {
+    // if no button is previously selected, select the clicked button
+    clickedButton.style.backgroundColor = "var(--button-hover-background)";
 
-        clickedButton.style.backgroundColor = 'var(--button-hover-background)';
-        
-        localStorage.setItem('questionType', clickedButton.innerHTML);
-        selectedButton = clickedButton;
-    }
+    localStorage.setItem("questionType", questionType);
+    selectedButton = clickedButton;
+
+    startButton.style.display = "block";
+    icon.style.display = "block";
+  } else if (clickedButton != selectedButton) {
+    // unselect the previously selected button, select the clicked button
+    selectedButton.style.backgroundColor = "var(--button-background)";
+
+    clickedButton.style.backgroundColor = "var(--button-hover-background)";
+
+    localStorage.setItem("questionType", questionType);
+    selectedButton = clickedButton;
+  }
 }

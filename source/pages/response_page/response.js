@@ -1,5 +1,5 @@
-import playClickSound from "../../utils/playClickSound.js";
-import playBgMusic from "../../utils/playBgMusic.js";
+import playClickSound from "/utils/playclick/script";
+import playBgMusic from "/utils/playmusic/script";
 
 let synth;
 let synthExist = -1;
@@ -61,7 +61,7 @@ function toggleText() {
     const answer = errorMsg;
     displayText(answer, text);
     setTimeout(() => {
-      redirectToPage("../landing_page/landing.html");
+      redirectToPage("/starting/page");
     }, 5000);
   }
 }
@@ -74,7 +74,7 @@ function toggleText() {
  * @returns {Promise<string>} A promise that resolves with the fetched response.
  */
 function fetchResponses(questionInput, chosenConstellation) {
-  return fetch("all_responses.json")
+  return fetch("/response/json")
     .then((response) => response.json())
     .then((data) => {
       return data[questionInput][chosenConstellation][
@@ -136,7 +136,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../thankyou_page/thankyou.html"),
+    () => (window.location.href = "/thankyou/page"),
   );
   stopSpeechSynthesis();
 }

@@ -1,4 +1,4 @@
-import { ConstellationStar } from "./ConstellationStar.js";
+import { ConstellationStar } from "/skymap/constellation_star/script";
 
 /**
  * This class draws and tracks its own stars. Must be given coordinates

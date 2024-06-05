@@ -1,9 +1,11 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="../toplevel.css" />
-    <link rel="stylesheet" href="signup.css" />
-    <script defer src="signup.js"></script>
+
+    <link rel="stylesheet" href="/assets/toplevel/style" />
+    <link rel="stylesheet" href="/signup/style" />
+    <script defer src="/signup/script"></script>
+    <title>Signup Page</title>
   </head>
   <body>
     <header>
@@ -15,7 +17,7 @@
 
     <section>
         <h2>SIGNUP</h2>
-        <form action="/signup_attempt" method="post">
+        <form action="/signup/attempt" method="post">
         <label for="new_username" hidden></label> 
         <input type="text" id="new_username" name="new_username" title="username" placeholder="username" required/> 
         <label for="new_password" hidden> </label>
@@ -27,7 +29,7 @@
         </form>
     </section>
 
-    <a class="back" title="back to menu" href="../starting_page/starting.html">back to menu</a> 
+    <a class="back" title="back to menu" href="/starting/page">back to menu</a> 
 
   </body>
 </html>

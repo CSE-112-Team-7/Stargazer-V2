@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="../toplevel.css" />
-    <link rel="stylesheet" href="login.css" />
-    <script defer src="login.js"></script>
+    <link rel="stylesheet" href="/assets/toplevel/style" />
+    <link rel="stylesheet" href="/login/style" />
+    <script defer src="/login/script"></script>
   </head>
   <body>
     <header>
@@ -12,13 +12,12 @@
     
     
 
-    <form action="/login_attempt" method="post">
-      <label for="rec_username"> Username:</label><br />
+    <form action="/login/attempt" method="post">
       <input type="text" id="rec_username" name="rec_username" /><br />
-      <label for="rec_password"> Password:</label><br />
       <input type="password" id="rec_password" name="rec_password" />
       <button type="button" id="togglePassword">&#128065;</button><br /> 
-      <input type="submit" value="Submit"/>
+      <input class="button" type="submit" title="submit" value="Submit"/>
+      <!-- <input class="button" type="submit" value="Submit"/> -->
 
     </form>
     <!-- TODO: ADD INPUT SANITIZATION -->
