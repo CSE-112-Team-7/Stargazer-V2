@@ -146,7 +146,7 @@ const root_page = starting_dir + "starting.html";
 // SERVER SETUP
 // Set up node js and routes
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(cors());
