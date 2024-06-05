@@ -1,10 +1,6 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-}
+
+
+
 
 .container {
   display: flex;
@@ -14,38 +10,117 @@ html {
 .left-column,
 .right-column {
   flex: 1;
-  background-color: #f4f4f4;
   padding: 20px;
 }
 
 .middle-column {
   flex: 2; /* Middle column is wider */
-  background-color: #e0e0e0;
-  padding: 20px;
+  margin: 2vh;
+  padding: 2vh;
   overflow-y: auto; /* Enable vertical scrolling */
+  border-style: solid;
+  border-color: var(--general-border);
+  border-radius: 0.5rem;
+  max-width: 110%;
 }
 
 .scrollable-content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   height: 200%; /* Example content height to ensure scrolling */
 }
 
 .card {
   margin: 10px;
   padding: 10px 20px 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  text-align: center;
-  background-color: #f1f1f1;
-  
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(17, 89, 255, 0.2); /* this adds the "card" effect */
+  background-color: #fff3b5;
+  border-radius: 1rem;
   display:flex
+}
+
+
+.card > * {
+  min-height: 9vw;
+  min-width: 9vw;
+  max-height: 9vw;
+  max-width: 9vw;
+
+}
+
+.card > p {
+  margin: 0.5vw;
+  color: black;
+  min-height: 5vw;
+  min-width: 5vw;
+  max-height: 5vw;
+  max-width: 5vw;
 }
 
 .card-content {
   float:inline-start
 }
 
-
 .card-button {
-  width: 100px;
-  height: 100px;
+  border: none;
+  background-color: var(--button-background);
+  margin: 0.5vw;
+  border-radius: 1rem;
 }
+
+.card-button[alt="blank button"]:hover {
+  background-color: var(--button-background) !important;
+  box-shadow: none;
+}
+
+.card-button:hover {
+  background-color: var(--button-hover-background) !important;
+  box-shadow: 0rem 0rem 0.5rem beige;
+  color: beige;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.popup-container {
+  display: none;
+  position: fixed;
+  
+  height: 75%;
+  width: 75%;
+
+  /* centering on the page */
+  top: 50%;
+  left: 50%;
+  /*  */
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.popup-container > p {
+  color: black;
+}
+
+.popup-container > button{
+  /* flex: 1; */
+  /* display: block; */
+}
+
+.popup-container > img {
+  /* flex: 2; */
+  
+  /* display: block; */
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+}
+
+/* vw, vh, %, rem */

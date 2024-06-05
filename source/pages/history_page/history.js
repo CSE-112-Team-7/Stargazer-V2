@@ -12,9 +12,16 @@
   //{username:"username", category:"", constellation: "", horoscope: "", timestamp: "timestamp" }
 
   const dbJSON = [
-    {username:"buba", category:"Relationship", constellation: "MY mom",  text: "flavortown", timestamp: "04/20"},
-    {username:"buba", category:"Relationship", constellation: "ehehehehehehe", text: "guguns", timestamp: "04/20"},
-    {username:"buba", category:"Horoscope", constellation: "fling flong", text: "dunba systems green", timestamp: "04/20"},
+    {username:"buba", category:"Relationship", constellation: "Crux",  text: "flavortown", timestamp: "04/20"},
+    {username:"buba", category:"Relationship", constellation: "Aries", text: "guguns", timestamp: "04/20"},
+    {username:"buba", category:"Horoscope", constellation: "Orion", text: "dunba systems green", timestamp: "04/20"},
+    {username:"buba", category:"Horoscope", constellation: "Canis Major", text: "dunba systems green", timestamp: "09/11"},
+    {username:"buba", category:"Career", constellation: "Carina", text: "dunba systems green", timestamp: "09/11"},
+    {username:"buba", category:"Horoscope", constellation: "Ophiuchus", text: "dunba systems green", timestamp: "01/11"},
+    {username:"buba", category:"Career", constellation: "Armadillo Dragon", text: "dunba systems green", timestamp: "01/11"},
+
+
+  
   ]
 
   const formattedJSON = formatJSON(dbJSON);
@@ -67,6 +74,9 @@
     button.alt = "blank button";
     button.onclick = (() => {
         console.log("BLANK BUTTON!!! no data found for this category")
+        const noDataTitle = "No Data Found for this category!"
+        const noDataText = " please choose a different category with an icon!"
+        updateDisplay(noDataTitle, noDataText);
     });
 
     return button;
@@ -93,13 +103,12 @@
          */
         
         console.log("loading category RELATIONSHIP: constellation:[" + relationshipJSON.constellation + "] " + relationshipJSON.text);
+        updateDisplay(relationshipJSON.constellation, relationshipJSON.text);
     });
 
     return button;
   }
   
-
-
   function getHealthButton(healthJSON){
     // console.log( "creating healthButton w/ data: " +JSON.stringify(healthJSON));
     // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
@@ -125,8 +134,6 @@
 
     return button;
   }
-
-
   function getHoroscopeButton(horoscopeJSON){
     // console.log( "creating horoscopeButton w/ data: " +JSON.stringify(horoscopeJSON));
     // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
@@ -148,12 +155,12 @@
          */
         
         console.log("loading category HOROSCOPE: constellation:[" + horoscopeJSON.constellation + "] " + horoscopeJSON.text);
+        updateDisplay(horoscopeJSON.constellation, horoscopeJSON.text);
     });
 
     return button;
   }
 
-  
   function getCareerButton(careerJSON){
     // console.log( "creating careerButton w/ data: " +JSON.stringify(relationshipJSON));
     // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
@@ -175,14 +182,45 @@
          */
         
         console.log("loading category CAREER: constellation:[" + careerJSON.constellation + "] " + careerJSON.text);
+        updateDisplay(careerJSON.constellation, careerJSON.text);
     });
 
     return button;
   }
   
 
+  /**
+   * Function that loads constellation and text body to the right column display
+   * 
+   * TODO: needs to load image
+   * use img = src + constellation + "-response.png" or something???
+   */
+  function updateDisplay(constellation, textbody){
+    const displayTitle = document.getElementById("display-title");
+    const displayBody = document.getElementById("display-body");
+    const imageElem = document.getElementById("popup-img");
+
+    const popup = document.getElementById("popup");
+
+    if(popup.style.display === "block"){
+      popup.style.display = "none"
+    }
+    else {
+      popup.style.display = "block"
+    }
+    imageElem.src = constellationsPath + constellation.replace(' ', '') + "-explanation.png";
+    imageElem.alt = constellationsPath + constellation.replace(' ', '') + "-explanation.png";
+    
+
+
+    displayTitle.textContent =  "Constellation: " + constellation;
+    displayBody.textContent = textbody;
+
+  }
+
 
   const iconsPath = "../../assets/Icons/"
+  const constellationsPath = "../../assets/constellations/"
 
   function createDateCard(dateJSON) {
     // create the HTML element for the card itself
@@ -210,9 +248,6 @@
     return card;
 }
 
-// existsCardWithSameDate(date){
-//     return false;
-// }
 
 // Function to history c
 function loadCards() {

@@ -4,28 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scrollable Column</title>
-    <!-- <link rel="stylesheet" href="../toplevel.css" /> -->
+    <link rel="stylesheet" href="../toplevel.css" />
     <link rel="stylesheet" href="history.css">
     <script defer src="history.js"></script>
 
 </head>
 <body>
-    <div class="container">
+    <div id="main-container" class="container">
         <div class="left-column">
             <p>Left Column Content</p>
+            <p>maybe put instructions and a back button here :D </p>
         </div>
         <div class="middle-column">
                 <div id="scrollable-content" class="scrollable-content">
                     <!-- Add a lot of content here to enable scrolling -->
                     
-                    <!-- Add more content as needed -->
+                    <!--  -->
                 </div>
 
         </div>
         <div class="right-column">
             <p>Right Column Content</p>
+            
+
+        </div>
+        <div id="popup" class="popup-container">
+            <img id="popup-img">
+            <p id="display-title" class="display-title"> display title</p>
+            <!-- <img src="" alt="">        image here???? --> 
+            <p id="display-body" class="display-body"> display body</p>
+            <button onclick="updateDisplay()">Close</button>
         </div>
     </div>
+    
     <!-- <my-custom-element>sup</my-custom-element> -->
 </body>
 </html>
