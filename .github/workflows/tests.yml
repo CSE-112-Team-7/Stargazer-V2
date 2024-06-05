@@ -9,9 +9,9 @@ jobs:
     strategy:
       matrix:
         nodeversion: [16]
-        jestversion: [29.5]
-        jestpuppeteerversion: [9.0.0]
-        puppeteerversion: [20.5.0]
+        jestversion: [29.7.0]
+        jestpuppeteerversion: [10.0.1]
+        puppeteerversion: [22.10.0]
         httpserverversion: [14.1.1]
 
     steps:
@@ -22,7 +22,9 @@ jobs:
           node-version: ${{ matrix.nodeversion }}
       - name: Install JEST
         run: npm install jest@${{ matrix.jestversion }} jest-puppeteer@${{ matrix.jestpuppeteerversion }} puppeteer@${{ matrix.puppeteerversion }} http-server@${{ matrix.httpserverversion }}
+        run: npm install
       - name: Host Server
-        run: $(npm bin)/http-server -c-1 &
+        run: cd backend
+        run: node index.mjs
       - name: Run tests
-        run: $(npm bin)/jest --config ./source/tests/jest.config.json
+        run: npm run test
