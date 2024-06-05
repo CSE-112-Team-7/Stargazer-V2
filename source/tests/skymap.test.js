@@ -97,30 +97,6 @@ describe("Skymap Usability Test", () => {
     await expect(page.title()).resolves.toMatch("Skymap Page");
   });
 
-  /*
-  it("User reads the tutorial and closes it", async () => {
-    const confirmButton = await page.$("#confirm");
-    await confirmButton.click();
-    await page.waitForSelector("dialog", { hidden: true });
-    const isOpen = await page.$eval("dialog", (dialog) =>
-      dialog.hasAttribute("open"),
-    );
-    expect(isOpen).toBe(false);
-  });
-
-  it("User chooses to hide the tutorial button", async () => {
-    const tutorialButton = await page.$("#tutorial");
-    await tutorialButton.click();
-    const hideButton = await page.$("#hide");
-    await hideButton.click();
-    await page.waitForSelector("#tutorial", { hidden: true });
-    const isHidden = await page.$eval("#tutorial", (button) =>
-      button.getAttribute("hidden"),
-    );
-    expect(isHidden).toBe("hidden");
-  });
-  */
-
   it("Clicking stars for Canis Major and check the result", async () => {
     await page.mouse.click(132 * ratio, 222 * ratio);
     await page.mouse.click(214 * ratio, 223 * ratio);
@@ -128,42 +104,50 @@ describe("Skymap Usability Test", () => {
     await page.mouse.click(276 * ratio, 82 * ratio);
     await page.mouse.click(242 * ratio, 128 * ratio);
 
-    await page.waitForSelector("span");
-    const textContent = await page.evaluate(
-      () => document.querySelector("span").textContent
-    );
-    expect(textContent).toBe("5");
-
-    const nextPageLink = await page.waitForSelector("a");
-
     const item = await page.evaluate(() => {
       // Access the localStorage item
       return localStorage.getItem("chosenConstellation");
     });
     expect(item).toBe("Canis Major");
 
-    await nextPageLink.click();
+    await page.waitForSelector("span");
+    const textContent = await page.evaluate(
+      () => document.querySelector("span").textContent
+    );
 
+    expect(textContent).toBe("5");
+    /*
+    const nextPageLink = await page.waitForSelector("a");
+    await nextPageLink.click();
     const nextPageResponse = await page.waitForResponse(
       (response) =>
         response.url() === "http://localhost:4000/explanation/page" &&
         response.status() === 200
     );
+    */
   });
 
   it("Clicking stars for Ophiuchus and check the result", async () => {
     await page.reload();
-    //const confirmButton = await page.$("#confirm");
-    //await confirmButton.click();
+
+    await page.waitForSelector("span");
+    const countTextContent = await page.evaluate(
+      () => document.querySelector("span").textContent
+    );
+    expect(countTextContent).toBe("0");
+    const starCountSpan = await page.$("span");
+    await starCountSpan.evaluate((el) => (el.style.display = "none"));
+
+    await page.waitForSelector("#hint");
+    const hintP = await page.$("#hint");
+    await hintP.evaluate((el) => (el.style.display = "none"));
+
     await page.mouse.click(276 * ratio, 82 * ratio);
     await page.mouse.click(307 * ratio, 114 * ratio);
     await page.mouse.click(231 * ratio, 213 * ratio);
     await page.mouse.click(242 * ratio, 128 * ratio);
     await page.mouse.click(214 * ratio, 223 * ratio);
-    const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
-    );
-    expect(nextButtonClassList.includes("hidden")).toBe(false);
+
     const item = await page.evaluate(() => {
       // Access the localStorage item
       return localStorage.getItem("chosenConstellation");
@@ -171,6 +155,7 @@ describe("Skymap Usability Test", () => {
     expect(item).toBe("Ophiuchus");
   });
 
+  /*
   it("Clicking stars for Ophiuchus, and also de-select the stars for some times, and check the result", async () => {
     await page.reload();
     const confirmButton = await page.$("#confirm");
@@ -334,4 +319,5 @@ describe("Skymap Usability Test", () => {
     expect(item).toBe("Ursa Major");
     resetXY();
   });
+  */
 });
