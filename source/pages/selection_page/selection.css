@@ -9,7 +9,7 @@ main {
   align-items: center;
 }
 
-#selection-buttons {
+div {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
@@ -39,20 +39,20 @@ button {
 .button {
   display: none;
   position: absolute;
-  top: 700px;
+  top: 85vh;
   width: 150px;
   font-size: clamp(1rem, 0.9rem + 1.2vw, 2rem);
 }
 
 @media screen and (max-width: 479px) {
-  #selection-buttons {
+  div {
     display: flex;
     flex-direction: column;
     row-gap: 30px;
   }
 
   img {
-    top: 500px;
+    top: 61.5vh;
     left: auto;
     transform: none;
   }
