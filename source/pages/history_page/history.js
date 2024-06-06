@@ -11,18 +11,16 @@
   //gets code 500 if fail
   //{username:"username", category:"", constellation: "", horoscope: "", timestamp: "timestamp" }
 
-  const dbJSON = [
-    {username:"buba", category:"Relationship", constellation: "Crux",  text: "flavortown", timestamp: "04/20"},
-    {username:"buba", category:"Relationship", constellation: "Aries", text: "guguns", timestamp: "04/20"},
-    {username:"buba", category:"Horoscope", constellation: "Orion", text: "dunba systems green", timestamp: "04/20"},
-    {username:"buba", category:"Horoscope", constellation: "Canis Major", text: "dunba systems green", timestamp: "09/11"},
-    {username:"buba", category:"Career", constellation: "Carina", text: "dunba systems green", timestamp: "09/11"},
-    {username:"buba", category:"Horoscope", constellation: "Ophiuchus", text: "dunba systems green", timestamp: "01/11"},
-    {username:"buba", category:"Career", constellation: "Armadillo Dragon", text: "dunba systems green", timestamp: "01/11"},
-
-
-  
-  ]
+  const dbJSON = "/horoscope/get"
+  // [
+  //   {username:"buba", category:"Relationship", constellation: "Crux",  text: "flavortown", timestamp: "04/20"},
+  //   {username:"buba", category:"Relationship", constellation: "Aries", text: "guguns", timestamp: "04/20"},
+  //   {username:"buba", category:"Horoscope", constellation: "Orion", text: "dunba systems green", timestamp: "04/20"},
+  //   {username:"buba", category:"Horoscope", constellation: "Canis Major", text: "dunba systems green", timestamp: "09/11"},
+  //   {username:"buba", category:"Career", constellation: "Carina", text: "dunba systems green", timestamp: "09/11"},
+  //   {username:"buba", category:"Horoscope", constellation: "Ophiuchus", text: "dunba systems green", timestamp: "01/11"},
+  //   {username:"buba", category:"Career", constellation: "Armadillo Dragon", text: "dunba systems green", timestamp: "01/11"},
+  // ]
 
   const formattedJSON = formatJSON(dbJSON);
 
@@ -31,6 +29,7 @@
     
     dbJSON.forEach(packet => {
       const simpleDate = packet.timestamp; //THIS IS WRONG!!! what do timestamps look like
+      //TODO: properly format the timestamp into month/day
       dateObj = jsonList.find(e => e.date === simpleDate);  
       
       // if no date exists yet for this packet, make a new one!
