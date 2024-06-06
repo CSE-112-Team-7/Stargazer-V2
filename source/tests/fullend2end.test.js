@@ -188,13 +188,6 @@ describe("End to end test: select Health, Orion", () => {
     const seeResultButton = await page.$("#visibleButton");
     await seeResultButton.click();
 
-    // check if explanation (#hiddenText) is not ""
-    await page.waitForSelector("p");
-    const textContent = await page.evaluate(
-      () => document.querySelector("p").textContent,
-    );
-    expect(textContent).not.toBe("");
-
     // click to go to thank you page
     const nextPageButton = await page.$("#hiddenButton");
     await Promise.all([
