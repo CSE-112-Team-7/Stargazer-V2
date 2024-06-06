@@ -22,7 +22,5 @@ jobs:
           node-version: ${{ matrix.nodeversion }}
       - name: Install JEST
         run: npm install jest@${{ matrix.jestversion }} jest-puppeteer@${{ matrix.jestpuppeteerversion }} puppeteer@${{ matrix.puppeteerversion }} http-server@${{ matrix.httpserverversion }}; cd backend; npm install;
-      - name: Host Server
-        run: cd backend; node index.mjs
-      - name: Run tests
-        run: npm run test
+      - name: Host Server and Run tests
+        run: cd backend; node index.mjs & sleep 5 & npm run test
