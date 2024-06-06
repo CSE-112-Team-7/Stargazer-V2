@@ -138,11 +138,7 @@ const js_file_type = "text/javascript";
 const mp3_type = "audio/mpeg";
 const font_type = "font/ttf";
 const json_type = "application/json";
-const root_dir = "../source";
-
-const starting_dir = "pages/starting_page/";
-const root_page = starting_dir + "starting.html";
-
+var root_dir = "/source";
 // SERVER SETUP
 // Set up node js and routes
 const app = express();
@@ -164,6 +160,12 @@ app.listen(port, () => {
 
 // GET REQUESTS GRABBING PAGES AND PAGE ASSETS
 routes.forEach(({ path, file }) => {
+  // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
+  if(port != 4000) {
+    console.log("RUNNING OFF OF A HEROKU DEPLOYMENT")
+    root_dir = "/app" + root_dir
+    console.log("UPDATED ROOT")
+  }
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
     // set correct content type
@@ -200,12 +202,6 @@ routes.forEach(({ path, file }) => {
   });
 });
 
-// ROOT PAGE OF SERVER
-app.get('/', (req, res) => {
-  console.log("RECIEVED REQUEST FOR ROOT SERVER PAGE")
-  console.log("ATTEMPTING TO SEND STARTUP PAGE")
-  res.sendFile(root_page, { root: root_dir })
-})
 
 // POST REQUEST ATTEMPTING TO LOG IN A USER
 // async and await used to ensure database is checked before continuing
