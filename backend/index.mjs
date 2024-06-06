@@ -161,13 +161,13 @@ app.listen(port, () => {
 // GET REQUESTS GRABBING PAGES AND PAGE ASSETS
 routes.forEach(({ path, file }) => {
   // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
-  if(port != 4000) {
-    console.log("RUNNING OFF OF A HEROKU DEPLOYMENT")
-    root_dir = "/app" + root_dir
-    console.log("UPDATED ROOT")
-  }
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
+    if(port != 4000) {
+      console.log("RUNNING OFF OF A HEROKU DEPLOYMENT")
+      root_dir = "/app/source"
+      console.log("UPDATED ROOT TO POINT TO " + root_dir)
+    }
     // set correct content type
     let content_type;
     if (file.includes(".html")) {
