@@ -19,12 +19,16 @@ function handleSelection(element) {
   let questionType = clickedButton.innerHTML;
   if (questionType === "RELATIONSHIP") {
     icon.src = "/assets/icons/rel/img";
+    icon.alt = "relationship icon";
   } else if (questionType === "HEALTH") {
     icon.src = "/assets/icons/health/img";
+    icon.alt = "health icon";
   } else if (questionType === "CAREER") {
     icon.src = "/assets/icons/career/img";
+    icon.alt = "career icon";
   } else if (questionType === "HOROSCOPE") {
     icon.src = "/assets/icons/daily_scope/img";
+    icon.alt = "horoscope icon";
   }
 
   if (selectedButton === null) {
