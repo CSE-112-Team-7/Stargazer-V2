@@ -1,11 +1,5 @@
-import { setShootingStars } from "/assets/shootingstars/script";
-import playClickSound from "/assets/utils/playclick/script";
-import * as analyticsManager from "../analyticsmanager.js";
-import playBgMusic from "/assets/utils/playmusic/script";
-
-const analyticsPageName = "response";
-const analyticsStatus = 1;
-analyticsManager.defaultPageAnalytics(analyticsPageName, analyticsStatus);
+import playClickSound from "/utils/playclick/script";
+import playBgMusic from "/utils/playmusic/script";
 
 let synth;
 let synthExist = -1;
@@ -67,7 +61,7 @@ function toggleText() {
     const answer = errorMsg;
     displayText(answer, text);
     setTimeout(() => {
-      redirectToPage("landing/page");
+      redirectToPage("/starting/page");
     }, 5000);
   }
 }
@@ -80,7 +74,7 @@ function toggleText() {
  * @returns {Promise<string>} A promise that resolves with the fetched response.
  */
 function fetchResponses(questionInput, chosenConstellation) {
-  return fetch("all_responses.json")
+  return fetch("/response/json")
     .then((response) => response.json())
     .then((data) => {
       return data[questionInput][chosenConstellation][
@@ -142,7 +136,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "thankyou/page"),
+    () => (window.location.href = "/thankyou/page"),
   );
   stopSpeechSynthesis();
 }
@@ -181,8 +175,6 @@ window.addEventListener("load", function () {
   const randomSentence =
     openingSentences[Math.floor(Math.random() * openingSentences.length)];
   h2Element.textContent = randomSentence;
-
-  new setShootingStars(document);
 
   window.toggleText = toggleText;
   window.goToPage = goToPage;

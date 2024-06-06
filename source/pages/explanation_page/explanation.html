@@ -4,47 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Constellation Explanation Page</title>
-    <!-- Main Stylesheet & Scripts -->
     <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
     <link rel="stylesheet" href="/assets/toplevel/style" />
-    <link rel="stylesheet" href="/assets/shootingstars/style" />
     <link rel="stylesheet" href="/explanation/style" />
     <script src="/explanation/script" type="module"></script>
   </head>
   <body>
-    <div class="wrap">
-      <div id="stars-div" class="sky"></div>
-    </div>
+    <header>
+      <h1>[Constellation Name]</h1>
+    </header>
     <main>
-      <div class="top-container">
-        <div>
-          <img alt="Armadillo Fortune teller" id="myth-image" />
-        </div>
-        <div>
-          <div id="explanation">
-            <h1 class="constellation_name">[Constellation Name]</h1>
-            <hr />
-            <p id="description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reprehenderit tenetur eaque iusto suscipit optio deleniti,
-              quibusdam eum quis quo cupiditate omnis corporis fuga? Esse
-              tempore molestias aspernatur sed vitae distinctio?
-            </p>
-          </div>
-        </div>
-        <div class="img_container">
-          <img id="constellation-image" alt="Constellation Sign" />
-        </div>
+      <p id="description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+        tenetur eaque iusto suscipit optio deleniti, quibusdam eum quis quo
+        cupiditate omnis corporis fuga? Esse tempore molestias aspernatur sed
+        vitae distinctio?
+      </p>
+      <div class="img-container">
+        <img id="myth-image" alt="Armadillo Fortune teller" />
+        <img id="constellation-image" alt="Constellation Sign" />
       </div>
-      <div class="bot-container">
-        <button id="continue-button" class="continue">See your Fortune</button>
-      </div>
+      <a class="button" id="continue-button" href="/response/page"
+        >See Your Fortune</a
+      >
     </main>
-    <audio
-      id="background-music"
-      src="/assets/music/gaze/mp"
-      loop
-    ></audio>
+    <audio id="background-music" src="/assets/music/gaze/mp" loop></audio>
     <audio id="clickSound" src="/assets/music/default/mp"></audio>
   </body>
 </html>

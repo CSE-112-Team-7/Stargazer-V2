@@ -1,5 +1,3 @@
-import { BackgroundStar } from "BackgroundStar.js";
-
 /**
  * This class draws the background hill and gradient given a
  * relative coordinate to anchor with.
@@ -18,12 +16,6 @@ export class Background {
     this.images = {}; // objects of image info
     this.width = width;
     this.height = height;
-    // Load background images
-    this.load_image(
-      "sky_gradient",
-      "/assets/skymap/gaze_background/img",
-    );
-    this.load_image("terrian", "/assets/skymap/gaze_asset/img");
   }
 
   /**
@@ -32,7 +24,6 @@ export class Background {
    * @param {String} src image source
    */
   load_image(alt, src) {
-    console.log(`loading: ${src}`);
     let image = new Image();
     let image_loaded = false;
     image.src = src;
