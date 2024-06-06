@@ -117,7 +117,6 @@ const play_music_script = util_dir + "playBgMusic.js";
 const play_clicksound_script = util_dir + "playClickSound.js";
 
 const routes = [
-  { path: "/", file: starting_page},
   { path: "/login/page", file: login_page },
   { path: "/login/style", file: login_css },
   { path: "/login/script", file: login_js },

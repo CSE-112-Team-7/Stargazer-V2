@@ -203,6 +203,7 @@ routes.forEach(({ path, file }) => {
 // ROOT PAGE OF SERVER
 app.get('/', (req, res) => {
   console.log("RECIEVED REQUEST FOR ROOT SERVER PAGE")
+  console.log("ATTEMPTING TO SEND STARTUP PAGE")
   res.sendFile(root_page, { root: root_dir })
 })
 
