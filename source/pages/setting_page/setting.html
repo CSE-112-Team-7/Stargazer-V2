@@ -1,5 +1,3 @@
-<!-- setting.hrml -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +14,36 @@
       <label for="volumeSlider">Browser Sound Volume:</label>
       <input type="range" id="volumeSlider" min="0" max="100" value="50">
     </div>
+    <div class="switch-container">
+      <span class="mode-text">Light</span>
+      <div class="switch">
+        <label>
+          <input type="checkbox" id="modeSwitch" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="button-container">
     <button id="closeSettingsBtn" class="button">Close</button>
   </div>
+
+  <script>
+    const modeSwitch = document.getElementById('modeSwitch');
+    const body = document.body;
+    const modeText = document.querySelector('.mode-text');
+
+    modeSwitch.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      updateModeText();
+    });
+
+    function updateModeText() {
+      modeText.textContent = body.classList.contains('dark-mode') ? 'Dark' : 'Light';
+    }
+
+    updateModeText();
+  </script>
   <script>
     const closeSettingsBtn = document.getElementById('closeSettingsBtn');
     const volumeSlider = document.getElementById('volumeSlider');
