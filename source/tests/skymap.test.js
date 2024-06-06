@@ -98,6 +98,20 @@ describe("Skymap Usability Test", () => {
   });
 
   it("Clicking stars for Canis Major and check the result", async () => {
+    await page.reload();
+
+    await page.waitForSelector("span");
+    const countTextContent = await page.evaluate(
+      () => document.querySelector("span").textContent
+    );
+    expect(countTextContent).toBe("0");
+    const starCountSpan = await page.$("span");
+    await starCountSpan.evaluate((el) => (el.style.display = "none"));
+
+    await page.waitForSelector("#hint");
+    const hintP = await page.$("#hint");
+    await hintP.evaluate((el) => (el.style.display = "none"));
+
     await page.mouse.click(132 * ratio, 222 * ratio);
     await page.mouse.click(214 * ratio, 223 * ratio);
     await page.mouse.click(240 * ratio, 296 * ratio);
@@ -114,17 +128,7 @@ describe("Skymap Usability Test", () => {
     const textContent = await page.evaluate(
       () => document.querySelector("span").textContent
     );
-
     expect(textContent).toBe("5");
-    /*
-    const nextPageLink = await page.waitForSelector("a");
-    await nextPageLink.click();
-    const nextPageResponse = await page.waitForResponse(
-      (response) =>
-        response.url() === "http://localhost:4000/explanation/page" &&
-        response.status() === 200
-    );
-    */
   });
 
   it("Clicking stars for Ophiuchus and check the result", async () => {
@@ -378,7 +382,7 @@ describe("Skymap Usability Test", () => {
     const nextPageLink = await page.waitForSelector("a");
     await Promise.all([page.waitForNavigation(), nextPageLink.click()]);
     await expect(page.title()).resolves.toMatch(
-      "Constellation Explanation Page"
+      "Explanation Page"
     );
   });
 });
