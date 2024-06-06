@@ -138,7 +138,7 @@ const js_file_type = "text/javascript";
 const mp3_type = "audio/mpeg";
 const font_type = "font/ttf";
 const json_type = "application/json";
-var root_dir = "/source";
+var root_dir = "../source";
 // SERVER SETUP
 // Set up node js and routes
 const app = express();
