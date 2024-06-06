@@ -138,12 +138,11 @@ const js_file_type = "text/javascript";
 const mp3_type = "audio/mpeg";
 const font_type = "font/ttf";
 const json_type = "application/json";
-const root_dir = "../source";
-
+var root_dir = "/source";
 // SERVER SETUP
 // Set up node js and routes
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(cors());
@@ -161,8 +160,14 @@ app.listen(port, () => {
 
 // GET REQUESTS GRABBING PAGES AND PAGE ASSETS
 routes.forEach(({ path, file }) => {
+  // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
+    if(port != 4000) {
+      console.log("RUNNING OFF OF A HEROKU DEPLOYMENT")
+      root_dir = "/app/source"
+      console.log("UPDATED ROOT TO POINT TO " + root_dir)
+    }
     // set correct content type
     let content_type;
     if (file.includes(".html")) {
@@ -196,6 +201,7 @@ routes.forEach(({ path, file }) => {
     res.sendFile(file, { root: root_dir });
   });
 });
+
 
 // POST REQUEST ATTEMPTING TO LOG IN A USER
 // async and await used to ensure database is checked before continuing
