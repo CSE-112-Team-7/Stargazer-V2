@@ -113,14 +113,15 @@ const thankyou_img = teller_dir + "ThankYou_teller.png";
 const background_dir = "assets/background/";
 const mountains_img = background_dir + "mountain-and-star.png";
 
-const font_dir = "assets/fonts/"
-const gideon_roman = font_dir + "GideonRoman-Regular.ttf"
+const font_dir = "assets/fonts/";
+const gideon_roman = font_dir + "GideonRoman-Regular.ttf";
 
 const util_dir = "utils/";
 const play_music_script = util_dir + "playBgMusic.js";
 const play_clicksound_script = util_dir + "playClickSound.js";
 
 const routes = [
+  { path: "/", file: starting_page },
   { path: "/login/page", file: login_page },
   { path: "/login/style", file: login_css },
   { path: "/login/script", file: login_js },
@@ -213,8 +214,8 @@ const routes = [
   { path: "/assets/music/gaze/mp", file: gaze_mp },
   { path: "/assets/teller/response/img", file: response_img },
   { path: "/assets/teller/thankyou/img", file: thankyou_img },
-  { path: "/assets/background/mountain-and-star/img", file: mountains_img},
-  { path: "/assets/fonts/GideonRoman-Regular/ttf", file: gideon_roman},
+  { path: "/assets/background/mountain-and-star/img", file: mountains_img },
+  { path: "/assets/fonts/GideonRoman-Regular/ttf", file: gideon_roman },
   { path: "/utils/playclick/script", file: play_clicksound_script },
   { path: "/utils/playmusic/script", file: play_music_script },
 ];

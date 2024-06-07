@@ -130,7 +130,7 @@ continueButton.addEventListener("click", function () {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "../response_page/response.html")
+    () => (window.location.href = "/response/page")
   );
   stopSpeechSynthesis();
 });

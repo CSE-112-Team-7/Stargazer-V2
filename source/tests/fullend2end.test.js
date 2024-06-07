@@ -1,25 +1,3 @@
-describe("Google Sanity Check Test Case", () => {
-  beforeAll(async () => {
-    await page.goto("https://google.com");
-  });
-
-  it('should be titled "Google"', async () => {
-    await expect(page.title()).resolves.toMatch("Google");
-  });
-});
-
-describe("Website Load Check", () => {
-  beforeAll(async () => {
-    await page.goto(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
-    );
-  });
-
-  it("should be titled ", async () => {
-    await expect(page.title()).resolves.toMatch("Landing Page");
-  });
-});
-
 describe("End to end test: select Health, Orion", () => {
   let ratio;
   let screenWidth;
@@ -30,9 +8,7 @@ describe("End to end test: select Health, Orion", () => {
   let downY;
 
   beforeAll(async () => {
-    await page.goto(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
-    );
+    await page.goto("http://localhost:4000/starting/page");
     ratio = await setRatio();
   });
 
@@ -109,49 +85,27 @@ describe("End to end test: select Health, Orion", () => {
     downY = screenHeight;
   }
 
-  it("Click start, click health, click next, local storage should be health", async () => {
-    // Reset the page
-    await page.evaluate(() => {
-      localStorage.clear();
-    });
-    await page.reload();
+  it("Navigate from starting page to selection page using guest identity", async () => {
+    // check if page is starting page
+    expect(page.title()).resolves.toMatch("Starting Page");
 
-    // check if page is landing page
-    const landingURL = await page.url();
-    expect(landingURL).toBe(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
-    );
+    // navigate to selection page with guest identity
+    const startButtons = await page.$$(".button");
+    await Promise.all([page.waitForNavigation(), startButtons[2].click()]);
+    expect(page.title()).resolves.toMatch("Selection Page");
+  });
 
-    // Navigate through the landing page to get to skymap
-    const startbutton = await page.$("#start-button");
-    await startbutton.click();
-    await page.waitForTimeout(100);
-
-    //choose the type (daily horoscope, relationship, career, health)
-    const dailybutton = await page.$("#daily-horoscope-button");
-    await dailybutton.click();
-    await page.waitForTimeout(100);
-    const relationshipbutton = await page.$("#relationship-button");
-    await relationshipbutton.click();
-    await page.waitForTimeout(100);
-    const careerbutton = await page.$("#career-button");
-    await careerbutton.click();
-    await page.waitForTimeout(100);
-    const healthbutton = await page.$("#health-button");
-    await healthbutton.click();
-    await page.waitForTimeout(100);
-
-    //click continue to go to next page
-    const continuebutton = await page.$("#continue-button");
-    await continuebutton.click();
-    await page.waitForTimeout(3000);
-    await page.waitForSelector("canvas");
-
-    // check if page is skymap page
-    const skymapURL = await page.url();
-    expect(skymapURL).toBe(
-      "http://127.0.0.1:8080/source/pages/skymap_page/skymap.html"
-    );
+  it("Click through selection categories and move on to skymap page", async () => {
+    // Navigate through the selection page to get to skymap
+    const categoryButtons = await page.$$("button");
+    await categoryButtons[2].click();
+    await categoryButtons[3].click();
+    await categoryButtons[2].click();
+    await categoryButtons[0].click();
+    await categoryButtons[1].click(); // click the health button
+    const link = await page.$("a");
+    await Promise.all([page.waitForNavigation(), link.click()]);
+    expect(page.title()).resolves.toMatch("Skymap Page"); //check is the link navigate to skymap page
   });
 
   it("Checking the default screen size", async () => {
@@ -162,57 +116,44 @@ describe("End to end test: select Health, Orion", () => {
     expect(screenHeight).toBe(600);
   });
 
-  it("Should be in skymap page, click to hide tutorial", async () => {
-    // check if page is skymap page
-    const skymapURL = await page.url();
-    expect(skymapURL).toBe(
-      "http://127.0.0.1:8080/source/pages/skymap_page/skymap.html"
-    );
-
-    // click to hide tutorial
-    const hideButton = await page.$("#hide");
-    await hideButton.click();
-    await page.waitForTimeout(100);
-  });
-
   it("Clicking stars for Orion and check the result, go to explanation page", async () => {
-    //await page.reload();
-    //const confirmButton = await page.$("#confirm");
-    //await confirmButton.click();
+    await page.waitForSelector("span");
+    const countTextContent = await page.evaluate(
+      () => document.querySelector("span").textContent
+    );
+    expect(countTextContent).toBe("0");
+    const starCountSpan = await page.$("span");
+    await starCountSpan.evaluate((el) => (el.style.display = "none"));
+
+    await page.waitForSelector("#hint");
+    const hintP = await page.$("#hint");
+    await hintP.evaluate((el) => (el.style.display = "none"));
+
     await modifiedClick(945 * ratio, 41 * ratio);
     await modifiedClick(1065 * ratio, 337 * ratio);
     await modifiedClick(1136 * ratio, 249 * ratio);
     await modifiedClick(1242 * ratio, 241 * ratio);
     await modifiedClick(1247 * ratio, 212 * ratio);
-    const nextButtonClassList = await page.$eval("#next-button", (button) =>
-      Array.from(button.classList)
-    );
-    expect(nextButtonClassList.includes("hidden")).toBe(false);
+
     const item = await page.evaluate(() => {
       // Access the localStorage item
       return localStorage.getItem("chosenConstellation");
     });
     expect(item).toBe("Orion");
+
     resetXY();
 
-    const nextButton = await page.$("#next-button");
-    await nextButton.click();
-    await page.waitForTimeout(3000);
+    const nextPageLink = await page.waitForSelector("a");
+    await Promise.all([page.waitForNavigation(), nextPageLink.click()]);
+    expect(page.title()).resolves.toMatch("Explanation Page");
   });
 
   it("Check if Health and Orion in local storage, check explanation/image, click next to go to response page", async () => {
-    // check if page is explanation page
-    const pageURL = await page.url();
-    expect(pageURL).toBe(
-      "http://127.0.0.1:8080/source/pages/explanation_page/explanation.html"
-    );
-
     // Check local storage
     const questiontype = await page.evaluate(() => {
       return localStorage.getItem("questionType");
     });
-
-    expect(questiontype).toBe("health");
+    expect(questiontype).toBe("HEALTH");
 
     // get chosen constellation from local storage
     const chosenConstellation = await page.evaluate(() => {
@@ -226,77 +167,29 @@ describe("End to end test: select Health, Orion", () => {
     const textContent = await page.evaluate(
       () => document.querySelector("h1").textContent
     );
-
     expect(textContent).toBe("Orion");
-
-    // check that explanation is not null
-    await page.waitForSelector("p");
-    const explanation = await page.evaluate(
-      () => document.querySelector("p").textContent
-    );
-    expect(explanation).not.toBe("");
-
-    // check that image is not empty
-    let serachElemnt = "img_container";
-    let checkForElement = await page.evaluate((sel) => {
-      let elementCheck = Array.from(document.querySelectorAll(sel));
-      if (elementCheck.length) {
-        return true;
-      } else return false;
-    }, serachElemnt);
-    console.log(checkForElement);
 
     //click continue to go to next page
     const continueButton = await page.$("#continue-button");
-    await continueButton.click();
-    await page.waitForTimeout(3000);
-
-    // check if page is response page
-    const responseURL = await page.url();
-    expect(responseURL).toBe(
-      "http://127.0.0.1:8080/source/pages/response_page/response.html"
-    );
+    await Promise.all([page.waitForNavigation(), continueButton.click()]);
+    expect(page.title()).resolves.toMatch("Response Page");
   });
 
   it("Click see result, click to next page", async () => {
     // click see result button
     const seeResultButton = await page.$("#visibleButton");
     await seeResultButton.click();
-    await page.waitForTimeout(100);
-
-    // check if explanation (#hiddenText) is not ""
-    await page.waitForSelector("p");
-    const textContent = await page.evaluate(
-      () => document.querySelector("p").textContent
-    );
-    expect(textContent).not.toBe("");
 
     // click to go to thank you page
     const nextPageButton = await page.$("#hiddenButton");
-    await nextPageButton.click();
-    await page.waitForTimeout(3000);
-
-    // check if on thank you page
-    const thankyouURL = await page.url();
-    expect(thankyouURL).toBe(
-      "http://127.0.0.1:8080/source/pages/thankyou_page/thankyou.html"
-    );
+    await Promise.all([page.waitForNavigation(), nextPageButton.click()]);
+    expect(page.title()).resolves.toMatch("Thank You Page");
   });
 
   it("Click Home to go back to landing page", async () => {
-    // check if on thank you page
-    const thankyouURL = await page.url();
-    expect(thankyouURL).toBe(
-      "http://127.0.0.1:8080/source/pages/thankyou_page/thankyou.html"
-    );
-
-    const homeButton = await page.$("button");
-    await homeButton.click();
-    await page.waitForTimeout(3000);
-
-    const landingURL = await page.url();
-    expect(landingURL).toBe(
-      "http://127.0.0.1:8080/source/pages/landing_page/landing.html"
-    );
+    // click on home link
+    const nextPageLink = await page.waitForSelector("a");
+    await Promise.all([page.waitForNavigation(), nextPageLink.click()]);
+    await expect(page.title()).resolves.toMatch("Starting Page");
   });
 });

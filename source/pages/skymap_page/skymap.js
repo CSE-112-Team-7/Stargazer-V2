@@ -327,7 +327,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "/explanation/page"),
+    () => (window.location.href = "/explanation/page")
   );
 }
 

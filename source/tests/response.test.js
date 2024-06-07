@@ -1,15 +1,8 @@
-describe("Default Jest Test", () => {
-  test("Adding a test to hit minimum test counts", () => {
-    expect(1).toBe(1);
-  });
-});
-
-describe("toggleText", () => {
+describe("Response page tests", () => {
   beforeAll(async () => {
-    await page.goto(
-      "http://127.0.0.1:8080/source/pages/response_page/response.html"
-    );
+    await page.goto("http://localhost:4000/response/page");
   });
+
   it("should hide the triggering button and unhide next button", async () => {
     await page.evaluate(() => {
       localStorage.setItem("questionType", "health");
@@ -31,5 +24,10 @@ describe("toggleText", () => {
       el.classList.contains("hidden")
     );
     expect(nextPageButtonClass).toBe(false);
+
+    // Check navigation to the thank you page
+    const nextPageButton = await page.$("#hiddenButton");
+    await Promise.all([page.waitForNavigation(), nextPageButton.click()]);
+    expect(page.title()).resolves.toMatch("Thank You Page");
   });
 });

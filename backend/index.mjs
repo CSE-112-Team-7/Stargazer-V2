@@ -9,7 +9,7 @@ const client_url = // URL where mongodb is stored
   "mongodb+srv://bahorowitz:HxfQTvBgarDEoXTE@stargazercluster.j46iehf.mongodb.net/?retryWrites=true&w=majority&appName=stargazerCluster";
 const db_name = "Stargazer"; // name of database
 const users_collection_name = "users"; // name of user table in database
-const horoscopes_collection_name ="horoscopes" // name of horoscope table in database 
+const horoscopes_collection_name = "horoscopes"; // name of horoscope table in database
 const client = new MongoClient(client_url, {
   // construct a new client
   useNewUrlParser: true,
@@ -87,44 +87,42 @@ async function place_credentials(username, password) {
   }
 }
 
-
 async function place_horoscope(username, catagory, constellation, horoscope) {
   try {
-    console.log("ATTEMPTING TO ADD NEW HOROSCOPE TO DB")
-    const database = client.db(db_name)
-    const collection = database.collection(horoscopes_collection_name)
-    console.log("waiting for placement of horoscope in DB to finish")
+    console.log("ATTEMPTING TO ADD NEW HOROSCOPE TO DB");
+    const database = client.db(db_name);
+    const collection = database.collection(horoscopes_collection_name);
+    console.log("waiting for placement of horoscope in DB to finish");
     const success = await collection.insertOne({
       username: username,
       catagory: catagory,
       constellation: constellation,
       horoscope: horoscope,
-      timestamp: Date()
-    })
-    console.log("SUCCESS STATUS: " + success)
-    return success
+      timestamp: Date(),
+    });
+    console.log("SUCCESS STATUS: " + success);
+    return success;
   } catch (error) {
-    console.error("ERROR WHILE PLACING NEW HOROSCOPE IN DATABASE", error)
-    return false
+    console.error("ERROR WHILE PLACING NEW HOROSCOPE IN DATABASE", error);
+    return false;
   }
 }
 
-
 async function grab_user_horoscopes(username) {
   try {
-    console.log("ATTEMPTING TO GRAB USER " + username + " HOROSCOPE DATA")
-    const user_exists = await check_username(username)
-    if(!user_exists) {
-      console.log("ERROR: USER DOES NOT EXIST IN DATABASE")
-      return null
+    console.log("ATTEMPTING TO GRAB USER " + username + " HOROSCOPE DATA");
+    const user_exists = await check_username(username);
+    if (!user_exists) {
+      console.log("ERROR: USER DOES NOT EXIST IN DATABASE");
+      return null;
     }
-    const database = client.db(db_name)
-    const collection = database.collection(horoscopes_collection_name)
-    const horoscopes = await collection.find(username).sort({ timestamp: -1 }) // grabs the previous 20 horoscopes the user has entered, sorted by date
-    return horoscopes
-  } catch(error) {
-    console.error("ERROR WHILE GRABBING HOROSCOPE DATA FROM DATABASE", error)
-    return null
+    const database = client.db(db_name);
+    const collection = database.collection(horoscopes_collection_name);
+    const horoscopes = await collection.find(username).sort({ timestamp: -1 }); // grabs the previous 20 horoscopes the user has entered, sorted by date
+    return horoscopes;
+  } catch (error) {
+    console.error("ERROR WHILE GRABBING HOROSCOPE DATA FROM DATABASE", error);
+    return null;
   }
 }
 
@@ -140,12 +138,11 @@ const js_file_type = "text/javascript";
 const mp3_type = "audio/mpeg";
 const font_type = "font/ttf";
 const json_type = "application/json";
-const root_dir = "../source";
-
+var root_dir = "../source";
 // SERVER SETUP
 // Set up node js and routes
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(cors());
@@ -163,10 +160,16 @@ app.listen(port, () => {
 
 // GET REQUESTS GRABBING PAGES AND PAGE ASSETS
 routes.forEach(({ path, file }) => {
+  // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
+    if (port != 4000) {
+      console.log("RUNNING OFF OF A HEROKU DEPLOYMENT");
+      root_dir = "/app/source";
+      console.log("UPDATED ROOT TO POINT TO " + root_dir);
+    }
     // set correct content type
-    let content_type
+    let content_type;
     if (file.includes(".html")) {
       content_type = html_type;
     } else if (file.includes(".js")) {
@@ -189,7 +192,7 @@ routes.forEach(({ path, file }) => {
       content_type = font_type;
     } else if (file.includes(".json")) {
       content_type = json_type;
-    }else {
+    } else {
       console.log("ERROR, UNEXPECTED FILE TYPE");
       res.status(404).send("UNSUPPORTED FILE TYPE REQUESTED");
       return;
@@ -231,7 +234,7 @@ app.post("/signup/attempt", async (req, res) => {
   console.log("username attempted to signup with " + new_username);
   console.log("password attempted to signup with " + new_password);
   console.log(
-    "password confirmation attempted to signup with " + new_password_conf,
+    "password confirmation attempted to signup with " + new_password_conf
   );
   if (new_password != new_password_conf) {
     // make sure password and confirmation are same
@@ -260,47 +263,64 @@ app.post("/signup/attempt", async (req, res) => {
   }
 });
 
+// POST REQUEST LOGGING OUT A USER
+app.post("/logout/attempt", (req, res) => {
+  console.log("ATTEMPTING TO LOG OUT USER");
+  // check if a user is currently logged in
+  if (req.cookie.loggedin != "true") {
+    console.log("unable to log out as no user is currently logged in");
+    res.status(403).end("can't log out of a profile if you are not logged in!");
+  }
+  console.log("USER INPUT CORRECT, LOGGING THEM OUT");
+  res.clearCookie("username"); // clear the username cookie
+  res.cookie("loggedin", "false");
+  res.status(200).end("successfully logged out user");
+});
 
 // POST REQUEST ATTEMPTING TO STORE USER HOROSCOPE DATA
-app.post("/horoscope/post", async(req, res) =>  {
-  console.log("RECIEVED REQUEST TO STORE HOROSCOPE DATA IN SERVER")
-  const {catagory, constellation, horoscope} = req.body
-  const loggedin = req.cookie.loggedin
-  if(loggedin != true) {
-    console.log("ERROR: NO USER IS LOGGED IN SO WE CANNOT STORE USER DATA")
-    res.status(422).end("unable to store data as user is not signed in")
-    return 
+app.post("/horoscope/post", async (req, res) => {
+  console.log("RECIEVED REQUEST TO STORE HOROSCOPE DATA IN SERVER");
+  const { catagory, constellation, horoscope } = req.body;
+  const loggedin = req.cookie.loggedin;
+  if (loggedin != true) {
+    console.log("ERROR: NO USER IS LOGGED IN SO WE CANNOT STORE USER DATA");
+    res.status(422).end("unable to store data as user is not signed in");
+    return;
   }
-  const username = req.cookie.username
-  console.log("user is signed in! placing data in database")
+  const username = req.cookie.username;
+  console.log("user is signed in! placing data in database");
   if (await place_horoscope(username, catagory, constellation, horoscope)) {
-    console.log("SUCCEEDED!")
-    res.status(200).end("successfully added new entry to horoscope collection")
-    return 
-  } 
-  console.log("FAILED!")
-  res.status(500).end("unable to process request due to an internal server error")
-  return 
-})
+    console.log("SUCCEEDED!");
+    res.status(200).end("successfully added new entry to horoscope collection");
+    return;
+  }
+  console.log("FAILED!");
+  res
+    .status(500)
+    .end("unable to process request due to an internal server error");
+  return;
+});
 
-  // GET REQUEST ATTEMPTING TO GRAB USER HOROSCOPE DATA
-  app.get("/horoscope/get", async(req, res) => {
-    console.log("RECIEVED REQUEST TO GRAB HOROSCOPE DATA FROM SERVER")
-    const loggedin = req.cookie.loggedin
-    if(loggedin != true) {
-      console.log("ERROR: NO USER IS LOGGED IN SO WE CANT SEND BACK USER DATA")
-      res.status(422).end("unable to send user data as user is not signed in")
-      return 
-    }
-    const username = req.cookie.username
-    console.log("user is signed in! grabbing its data from database")
-    user_horoscopes = await(grab_user_horoscopes(username))
-    if(user_horoscopes == null) {
-      console.log("FAILED!")
-      res.status(500).end("unable to process request due to an internal server error")
-      return 
-    }
-    console.log("SUCCEEDED!")
-    res.json(user_horoscopes)
-    res.status(200).end("SUCCESS!")
-  })
+// GET REQUEST ATTEMPTING TO GRAB USER HOROSCOPE DATA
+app.get("/horoscope/get", async (req, res) => {
+  console.log("RECIEVED REQUEST TO GRAB HOROSCOPE DATA FROM SERVER");
+  const loggedin = req.cookie.loggedin;
+  if (loggedin != true) {
+    console.log("ERROR: NO USER IS LOGGED IN SO WE CANT SEND BACK USER DATA");
+    res.status(422).end("unable to send user data as user is not signed in");
+    return;
+  }
+  const username = req.cookie.username;
+  console.log("user is signed in! grabbing its data from database");
+  user_horoscopes = await grab_user_horoscopes(username);
+  if (user_horoscopes == null) {
+    console.log("FAILED!");
+    res
+      .status(500)
+      .end("unable to process request due to an internal server error");
+    return;
+  }
+  console.log("SUCCEEDED!");
+  res.json(user_horoscopes);
+  res.status(200).end("SUCCESS!");
+});

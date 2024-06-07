@@ -136,7 +136,7 @@ function goToPage() {
     document.getElementById("clickSound"),
     localStorage.getItem("questionType"),
     backgroundMusic.currentTime,
-    () => (window.location.href = "/thankyou/page"),
+    () => (window.location.href = "/thankyou/page")
   );
   stopSpeechSynthesis();
 }
