@@ -11,16 +11,22 @@ body {
   align-items: center;
 }
 
-.container {
+/* .container {
   max-width: 500px;
   width: 100%;
   padding: 40px;
-}
+} */
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+  }
 
 h2 {
   margin-top: 0;
   font-size: 2.5rem;
-  color: var(--text-color);
+  color: #d2b78e;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -44,6 +50,21 @@ h2 {
 }
 
 .volume-control {
+    margin-top: 20px;
+  }
+
+  .volume-control label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+    color: #333;
+  }
+
+  .volume-control input[type="range"] {
+    width: 100%;
+  }
+
+/* .volume-control {
   margin-top: 40px;
 }
 
@@ -73,7 +94,7 @@ h2 {
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
+} */
 
 .switch-container {
   margin-top: 30px;
@@ -97,7 +118,7 @@ h2 {
 
 /* Light mode styles */
 :root {
-  --background-color: #f9f9f9;
+  --background-color: rgb(95, 204, 240);
   --text-color: #333;
   --button-background: #007bff;
   --button-hover-background: #0056b3;
@@ -109,7 +130,7 @@ h2 {
 
 /* Dark mode styles */
 .dark-mode {
-  --background-color: #333;
+  --background-color: rgba(9,63,121,1);
   --text-color: #f9f9f9;
   --button-background: #007bff;
   --button-hover-background: #0056b3;
