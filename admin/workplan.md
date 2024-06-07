@@ -12,32 +12,27 @@
 - [ ] History page UI
   - [ ] Finish implementing History Page Front end
   - [ ] Style it to the overall styling
-     
 - [ ] Finish Login and Signup Pages Functionality
   - [ ] Sanitize input
   - [ ] Handle failed logins
-  - [ ] Redirect to other pages   
-  
+  - [ ] Redirect to other pages
 - [ ] History Page Cleanup (Backend/Front End)
+
   - [ ] Tie History Functionality to Front End
 
 - [ ] Settings Panel
   - [ ] Move Settings Panel to new UI
   - [ ] Add buttons and functionality to Settings Panel
-     
 - [ ] Merge all branches with completed tasks
+
   - [ ] Old UI Changes
   - [ ] History Page UI
   - [ ] History Page Backend
   - [ ] Login/Signup Pages
-      
- 
+
 - [ ] Testing
   - [ ] Fix old tests with new UI
   - [ ] Write new tests for new backend
-
-  
-
 
 > ## **Estimations and Priorities:**
 
@@ -52,7 +47,6 @@
 - [Testing]() (`LOW`): _5 days_
 
 - [Finish Login and Signup Pages Functionality]() (`MEDIUM`) _3 days_
-  
 
 > ## **Sequencing:**
 
@@ -67,4 +61,3 @@
 - Merge Branches (`5th`): _Pram, Mary_
 
 - Testing (`6th`): _All_
-  

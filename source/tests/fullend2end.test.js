@@ -8,9 +8,7 @@ describe("End to end test: select Health, Orion", () => {
   let downY;
 
   beforeAll(async () => {
-    await page.goto(
-      "http://localhost:4000/starting/page",
-    );
+    await page.goto("http://localhost:4000/starting/page");
     ratio = await setRatio();
   });
 
@@ -73,7 +71,7 @@ describe("End to end test: select Health, Orion", () => {
     let desiredHeight = screenHeight * 2;
     return Math.max(
       Math.ceil(desiredHeight / defaultHeight),
-      Math.ceil(desiredWidth / defaultWidth),
+      Math.ceil(desiredWidth / defaultWidth)
     );
   }
 
@@ -92,13 +90,10 @@ describe("End to end test: select Health, Orion", () => {
     expect(page.title()).resolves.toMatch("Starting Page");
 
     // navigate to selection page with guest identity
-    const startButtons = await page.$$('.button');
-    await Promise.all([
-      page.waitForNavigation(),
-      startButtons[2].click()
-    ])
+    const startButtons = await page.$$(".button");
+    await Promise.all([page.waitForNavigation(), startButtons[2].click()]);
     expect(page.title()).resolves.toMatch("Selection Page");
-  })
+  });
 
   it("Click through selection categories and move on to skymap page", async () => {
     // Navigate through the selection page to get to skymap
@@ -109,10 +104,7 @@ describe("End to end test: select Health, Orion", () => {
     await categoryButtons[0].click();
     await categoryButtons[1].click(); // click the health button
     const link = await page.$("a");
-    await Promise.all([
-      page.waitForNavigation(),
-      link.click()
-    ])
+    await Promise.all([page.waitForNavigation(), link.click()]);
     expect(page.title()).resolves.toMatch("Skymap Page"); //check is the link navigate to skymap page
   });
 
@@ -173,7 +165,7 @@ describe("End to end test: select Health, Orion", () => {
     // check that title is Canis Major
     await page.waitForSelector("h1");
     const textContent = await page.evaluate(
-      () => document.querySelector("h1").textContent,
+      () => document.querySelector("h1").textContent
     );
     expect(textContent).toBe("Orion");
 
@@ -190,10 +182,7 @@ describe("End to end test: select Health, Orion", () => {
 
     // click to go to thank you page
     const nextPageButton = await page.$("#hiddenButton");
-    await Promise.all([
-      page.waitForNavigation(),
-      nextPageButton.click()
-    ])
+    await Promise.all([page.waitForNavigation(), nextPageButton.click()]);
     expect(page.title()).resolves.toMatch("Thank You Page");
   });
 

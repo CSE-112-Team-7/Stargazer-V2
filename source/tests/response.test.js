@@ -1,8 +1,6 @@
 describe("Response page tests", () => {
   beforeAll(async () => {
-    await page.goto(
-      "http://localhost:4000/response/page",
-    );
+    await page.goto("http://localhost:4000/response/page");
   });
 
   it("should hide the triggering button and unhide next button", async () => {
@@ -23,16 +21,13 @@ describe("Response page tests", () => {
 
     // Assert that the next page button is visible
     const nextPageButtonClass = await page.$eval("#hiddenButton", (el) =>
-      el.classList.contains("hidden"),
+      el.classList.contains("hidden")
     );
     expect(nextPageButtonClass).toBe(false);
 
     // Check navigation to the thank you page
-    const nextPageButton = await page.$('#hiddenButton');
-    await Promise.all([
-      page.waitForNavigation(),
-      nextPageButton.click()
-    ])
+    const nextPageButton = await page.$("#hiddenButton");
+    await Promise.all([page.waitForNavigation(), nextPageButton.click()]);
     expect(page.title()).resolves.toMatch("Thank You Page");
   });
 });

@@ -163,10 +163,10 @@ routes.forEach(({ path, file }) => {
   // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
-    if(port != 4000) {
-      console.log("RUNNING OFF OF A HEROKU DEPLOYMENT")
-      root_dir = "/app/source"
-      console.log("UPDATED ROOT TO POINT TO " + root_dir)
+    if (port != 4000) {
+      console.log("RUNNING OFF OF A HEROKU DEPLOYMENT");
+      root_dir = "/app/source";
+      console.log("UPDATED ROOT TO POINT TO " + root_dir);
     }
     // set correct content type
     let content_type;
@@ -202,7 +202,6 @@ routes.forEach(({ path, file }) => {
   });
 });
 
-
 // POST REQUEST ATTEMPTING TO LOG IN A USER
 // async and await used to ensure database is checked before continuing
 app.post("/login/attempt", async (req, res) => {
@@ -235,7 +234,7 @@ app.post("/signup/attempt", async (req, res) => {
   console.log("username attempted to signup with " + new_username);
   console.log("password attempted to signup with " + new_password);
   console.log(
-    "password confirmation attempted to signup with " + new_password_conf,
+    "password confirmation attempted to signup with " + new_password_conf
   );
   if (new_password != new_password_conf) {
     // make sure password and confirmation are same

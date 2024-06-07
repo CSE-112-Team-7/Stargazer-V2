@@ -381,8 +381,6 @@ describe("Skymap Usability Test", () => {
 
     const nextPageLink = await page.waitForSelector("a");
     await Promise.all([page.waitForNavigation(), nextPageLink.click()]);
-    await expect(page.title()).resolves.toMatch(
-      "Explanation Page"
-    );
+    await expect(page.title()).resolves.toMatch("Explanation Page");
   });
 });
