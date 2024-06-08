@@ -1,6 +1,7 @@
   //were gonna get an array of a LOT of JSON files
   // 
 
+
   //parse db data into formatted json
 
   //save formatted json into local storage
@@ -11,7 +12,7 @@
   //gets code 500 if fail
   //{username:"username", category:"", constellation: "", horoscope: "", timestamp: "timestamp" }
 
-  const dbJSON = "/horoscope/get"
+  const dbJSON = []
   // [
   //   {username:"buba", category:"Relationship", constellation: "Crux",  text: "flavortown", timestamp: "04/20"},
   //   {username:"buba", category:"Relationship", constellation: "Aries", text: "guguns", timestamp: "04/20"},
@@ -260,5 +261,10 @@ function loadCards() {
 }
 
   document.addEventListener("DOMContentLoaded", function() {
+    //set the link to the back button
+    document.getElementById("back-button").addEventListener("click",() => {
+      window.location.href = "/selection/page";
+    });
+
     loadCards();
 });
