@@ -2,12 +2,13 @@ import playBgMusic from "/utils/playmusic/script";
 
 window.addEventListener("DOMContentLoaded", init);
 
+const backgroundMusic = document.getElementById("background-music");
+
 function init() {
-  const backgroundMusic = document.getElementById("background-music");
   playBgMusic(backgroundMusic, true);
 
-  const homeButton = document.querySelector(".button");
-  homeButton.addEventListener("click", () => {
+  const guestButton = document.querySelectorAll(".button")[2];
+  guestButton.addEventListener("click", () => {
     localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
   });
 }

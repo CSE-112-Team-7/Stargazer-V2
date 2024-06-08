@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Selection Page</title>
-    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
     <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/selection/style" />
     <script type="module" src="/selection/script"></script>
+    <script src="/utils/setting/script" type="module"></script>
   </head>
   <body>
     <h1>What do you want to know today?</h1>
@@ -23,5 +24,7 @@
     </main>
     <!-- NOT WORKING: SPAWNS 3 SPRITES AT DIFFERENT STAGES OF THE GIF -->
     <!-- <script src="/utils/mouse/script" data-cat= "/assets/Icons/mouse/gif"></script> -->
+    <setting-panel></setting-panel>
+    <audio id="background-music" src="/assets/music/gaze/mp" loop></audio>
   </body>
 </html>
