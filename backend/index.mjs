@@ -139,6 +139,10 @@ const mp3_type = "audio/mpeg";
 const font_type = "font/ttf";
 const json_type = "application/json";
 const root_dir = "../source";
+const login_success_page = "/pages/selection_page/selection.html";
+const login_fail_page = "/pages/login_fail_page/login_fail.html";
+const signup_success_page = login_success_page;
+const signup_fail_page = "/pages/signup_fail_page/signup_fail.html";
 
 // SERVER SETUP
 // Set up node js and routes
@@ -210,8 +214,7 @@ app.post("/login/attempt", async (req, res) => {
     res.status(200);
     res.cookie("loggedin", "true");
     res.cookie("username", rec_username);
-    
-    res.end("LOGIN SUCCEEDED");
+    res.sendFile(login_success_page, { root: root_dir });
     
     console.log(res);
   } else {
@@ -219,7 +222,7 @@ app.post("/login/attempt", async (req, res) => {
     console.log("FAILED LOGIN!");
     res.status(401);
     res.cookie("loggedin", "false");
-    res.end("LOGIN FAILED");
+    res.sendFile(login_fail_page, { root: root_dir });
     console.log(res);
   }
 });
@@ -236,26 +239,31 @@ app.post("/signup/attempt", async (req, res) => {
   if (new_password != new_password_conf) {
     // make sure password and confirmation are same
     res.status(400);
-    res.end("ERROR: PASSWORD VALUES ARE NOT THE SAME");
+    res.sendFile(signup_fail_page, { root: root_dir });
+    // res.end("ERROR: PASSWORD VALUES ARE NOT THE SAME");
     return;
   }
   if (await check_username(new_username)) {
     // if username is already in database don't let user register
     res.status(200);
-    res.end("SIGNUP FAILED: USERNAME IS ALREADY TAKEN");
+    res.sendFile(signup_fail_page, { root: root_dir });
+    // res.end("SIGNUP FAILED: USERNAME IS ALREADY TAKEN");
     return;
   }
   if (await place_credentials(new_username, new_password)) {
     // if username and password are valid add them to database set cookies and return
-    res.status(200);
+    res.status(201);
     res.cookie("loggedin", "true");
     res.cookie("username", new_username);
-    res.end("SIGNUP SUCCEEDED: REGISTERED NEW USER");
+    res.sendFile(signup_success_page, { root: root_dir });
+    // res.end("SIGNUP SUCCEEDED: REGISTERED NEW USER");
+
     return;
   } else {
     // if there was some issue in the process of creating the credentials let the user know
     res.status(204);
-    res.end("ERROR: UNABLE TO CREATE USER FOR UNKNOWN REASONS");
+    res.sendFile(signup_fail_page, { root: root_dir });
+    // res.end("ERROR: UNABLE TO CREATE USER FOR UNKNOWN REASONS");
     return;
   }
 });

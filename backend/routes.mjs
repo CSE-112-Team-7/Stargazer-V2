@@ -1,4 +1,9 @@
 // PAGE DIRECTORY VARIABLES
+const login_fail_dir = "pages/login_fail_page/";
+const login_fail_page = login_fail_dir + "login_fail.html";
+const login_fail_js = login_fail_dir + "login_fail.js";
+const login_fail_css = login_fail_dir + "login_fail.css";
+
 const login_dir = "pages/login_page/";
 const login_page = login_dir + "login.html";
 const login_js = login_dir + "login.js";
@@ -13,6 +18,11 @@ const signup_dir = "pages/signup_page/";
 const signup_page = signup_dir + "signup.html";
 const signup_js = signup_dir + "signup.js";
 const signup_css = signup_dir + "signup.css";
+
+const signup_fail_dir = "pages/signup_fail_page/";
+const signup_fail_page = signup_fail_dir + "signup_fail.html";
+const signup_fail_js = signup_fail_dir + "signup_fail.js";
+const signup_fail_css = signup_fail_dir + "signup_fail.css";
 
 const explanation_dir = "pages/explanation_page/";
 const explanation_page = explanation_dir + "explanation.html";
@@ -117,6 +127,9 @@ const play_music_script = util_dir + "playBgMusic.js";
 const play_clicksound_script = util_dir + "playClickSound.js";
 
 const routes = [
+  { path: "/login_fail/page", file: login_fail_page }, 
+  { path: "/login_fail/style", file: login_fail_css }, 
+  { path: "/login_fail/script", file: login_fail_js },
   { path: "/login/page", file: login_page },
   { path: "/login/style", file: login_css },
   { path: "/login/script", file: login_js },
@@ -126,6 +139,9 @@ const routes = [
   { path: "/signup/page", file: signup_page },
   { path: "/signup/style", file: signup_css },
   { path: "/signup/script", file: signup_js },
+  { path: "/signup_fail/page", file: signup_fail_page },
+  { path: "/signup_fail/style", file: signup_fail_css },
+  { path: "/signup_fail/script", file: signup_fail_js },
   { path: "/explanation/page", file: explanation_page },
   { path: "/explanation/style", file: explanation_css },
   { path: "/explanation/script", file: explanation_js },
