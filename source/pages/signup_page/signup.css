@@ -1,62 +1,62 @@
 h1 {
-    padding-top: 50px;
-    font-size: clamp(2.5rem, 1.8rem + 3.6vw, 5rem);
+  padding-top: 50px;
+  font-size: clamp(2.5rem, 1.8rem + 3.6vw, 5rem);
 }
 
 h1 span {
-    font-size: clamp(1.25rem, 0.9rem + 1.8vw, 2.5rem);
+  font-size: clamp(1.25rem, 0.9rem + 1.8vw, 2.5rem);
 }
 
 h2 {
-    padding-top: 50px;
-    font-size: clamp(1.0rem, 0.8rem + 2.6vw, 3rem);
+  padding-top: 50px;
+  font-size: clamp(1rem, 0.8rem + 2.6vw, 3rem);
 }
 
 form {
-    margin-top: 5vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 6vh;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 6vh;
 }
 
 input {
-    background: transparent;
-    outline: none;
-    border: unset;
-    border-bottom:2px solid var(--general-border);
-    width: clamp(9.4rem, 6.7rem + 13.4vw, 18.8rem);
-    font-size: clamp(1.5rem, 1.4rem + 0.04vw, 2rem);
+  background: transparent;
+  outline: none;
+  border: unset;
+  border-bottom: 2px solid var(--general-border);
+  width: clamp(9.4rem, 6.7rem + 13.4vw, 18.8rem);
+  font-size: clamp(1.5rem, 1.4rem + 0.04vw, 2rem);
 }
 
-.back{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding-bottom: 3vw;
-    padding-left: 3vw;
+.back {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 3vw;
+  padding-left: 3vw;
 }
 
 #takenUsername {
-    justify-content: center;
-    padding:0;
-    color: red;
-    z-index: 1;
-    margin: 0;
-    padding-top: 2%;
-    font-size: 2rem;
-    pointer-events:none;
-    display: none;
+  justify-content: center;
+  padding: 0;
+  color: red;
+  z-index: 1;
+  margin: 0;
+  padding-top: 2%;
+  font-size: 2rem;
+  pointer-events: none;
+  display: none;
 }
 
 #unknownProblem {
-    justify-content: center;
-    padding: 0;
-    color: red;
-    z-index: 1;
-    margin: 0;
-    padding-top: 2%;
-    font-size: 2rem;
-    pointer-events:none;
-    display: none;
+  justify-content: center;
+  padding: 0;
+  color: red;
+  z-index: 1;
+  margin: 0;
+  padding-top: 2%;
+  font-size: 2rem;
+  pointer-events: none;
+  display: none;
 }
