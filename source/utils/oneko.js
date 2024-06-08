@@ -96,10 +96,10 @@
     nekoEl.style.top = `${nekoPosY - 16}px`;
     nekoEl.style.zIndex = Number.MAX_VALUE;
 
-    let nekoFile = "../assets/Icons/oneko.gif"
-    const curScript = document.currentScript
+    let nekoFile = "../assets/Icons/oneko.gif";
+    const curScript = document.currentScript;
     if (curScript && curScript.dataset.cat) {
-      nekoFile = curScript.dataset.cat
+      nekoFile = curScript.dataset.cat;
     }
     nekoEl.style.backgroundImage = `url(${nekoFile})`;
 
@@ -124,8 +124,8 @@
       lastFrameTimestamp = timestamp;
     }
     if (timestamp - lastFrameTimestamp > 100) {
-      lastFrameTimestamp = timestamp
-      frame()
+      lastFrameTimestamp = timestamp;
+      frame();
     }
     window.requestAnimationFrame(onAnimationFrame);
   }
