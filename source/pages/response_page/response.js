@@ -16,6 +16,8 @@ const openingSentences = [
   "Welcome, dear one! Let the dance of divination commence.",
 ];
 
+let horoscopeText;
+
 const backgroundMusic = document.getElementById("background-music");
 
 window.addEventListener("DOMContentLoaded", init);
@@ -55,6 +57,7 @@ function toggleText() {
   if (chosenConstellation && questionInput) {
     fetchResponses(questionInput, chosenConstellation)
       .then((answer) => {
+        horoscopeText = answer;
         animateText(answer, text);
       })
       .catch((error) => {
@@ -67,9 +70,7 @@ function toggleText() {
       redirectToPage("/starting/page");
     }, 5000);
   }
-  button.addEventListener("click", () => {
-    localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
-  });
+  button.addEventListener("click", makePostRequest);
 }
 
 /**
@@ -131,4 +132,31 @@ function displayText(answer, textElement) {
  */
 function redirectToPage(url) {
   window.location.href = url;
+}
+
+function makePostRequest() {
+  localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "/horoscope/post");
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  const chosenConstellation = localStorage.getItem("chosenConstellation");
+  const questionInput = localStorage.getItem("questionType");
+
+  xhr.send(
+    JSON.stringify({
+      catagory: questionInput,
+      constellation: chosenConstellation,
+      horoscope: horoscopeText,
+    })
+  );
+
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      console.log("post success");
+    } else {
+      console.error("Error", xhr.statusText);
+    }
+  };
 }
