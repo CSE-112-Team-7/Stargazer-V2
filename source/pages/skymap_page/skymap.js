@@ -1,5 +1,6 @@
 import { Background } from "/skymap/background/script";
 import { Constellation } from "/skymap/constellation/script";
+import playBgMusic from "/utils/playmusic/script";
 
 const debug = false;
 
@@ -38,6 +39,7 @@ const constellationList = [
   },
 ];
 
+const backgroundMusic = document.getElementById("background-music");
 let cameraOffset;
 let constellation_arr;
 
@@ -48,6 +50,8 @@ window.addEventListener("DOMContentLoaded", init);
  * @Property {Function} Starts the program, all function calls trace back here
  */
 async function init() {
+  playBgMusic(backgroundMusic, true);
+
   const { cloc, connect } = await loadJsonData();
   const canvas = document.querySelector("canvas");
   const ctx = canvas.getContext("2d");
@@ -298,6 +302,11 @@ function decideConstellation(constellation_arr, sky_background) {
   // Record the result to the local storage
   finalConstellation.setChosen(true);
   localStorage.setItem("chosenConstellation", finalConstellation.name);
+
+  // Store music play time to local storage before navigating to the next page
+  document.querySelector("a").addEventListener("click", () => {
+    localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
+  });
 }
 
 /**
@@ -317,18 +326,6 @@ function animate(canvas, ctx, constellation_arr, sky_background, cameraOffset) {
     // Update offset
     constellation.setOffset(cameraOffset.x, cameraOffset.y);
   }
-}
-
-/**
- * @Property {Function} Navigation
- */
-function goToPage() {
-  playClickSound(
-    document.getElementById("clickSound"),
-    localStorage.getItem("questionType"),
-    backgroundMusic.currentTime,
-    () => (window.location.href = "/explanation/page")
-  );
 }
 
 /**

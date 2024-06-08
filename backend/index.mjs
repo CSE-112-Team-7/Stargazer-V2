@@ -138,6 +138,7 @@ const js_file_type = "text/javascript";
 const mp3_type = "audio/mpeg";
 const font_type = "font/ttf";
 const json_type = "application/json";
+const svg_type = "image/svg+xml";
 var root_dir = "../source";
 // SERVER SETUP
 // Set up node js and routes
@@ -192,6 +193,8 @@ routes.forEach(({ path, file }) => {
       content_type = font_type;
     } else if (file.includes(".json")) {
       content_type = json_type;
+    } else if (file.includes(".svg")) {
+      content_type = svg_type;
     } else {
       console.log("ERROR, UNEXPECTED FILE TYPE");
       res.status(404).send("UNSUPPORTED FILE TYPE REQUESTED");
