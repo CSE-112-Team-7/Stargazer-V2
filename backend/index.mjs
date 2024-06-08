@@ -217,7 +217,6 @@ app.listen(port, () => {
   console.log("stargazer listening on port " + port);
 });
 
-
 // get request for root page will wipe all cookies
 app.get("/", (req, res) => {
   res.cookie("loggedin", "false");
