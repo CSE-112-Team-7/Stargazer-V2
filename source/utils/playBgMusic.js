@@ -5,9 +5,9 @@ export default function playBgMusic(backgroundMusic, setTime) {
   }
   let volume = localStorage.getItem("volume");
   if (volume != null) {
-      backgroundMusic.volume = volume;
+    backgroundMusic.volume = volume;
   } else {
-      backgroundMusic.volume = 0;
+    backgroundMusic.volume = 0;
   }
   backgroundMusic.play().catch((error) => {
     console.error(error);

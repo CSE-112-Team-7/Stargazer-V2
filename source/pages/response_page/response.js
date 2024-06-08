@@ -30,7 +30,7 @@ function init() {
 
   const visibleButton = document.getElementById("visibleButton");
   visibleButton.addEventListener("click", toggleText);
-  
+
   window.toggleText = toggleText;
 }
 
@@ -68,7 +68,7 @@ function toggleText() {
     }, 5000);
   }
   button.addEventListener("click", () => {
-      localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
+    localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
   });
 }
 

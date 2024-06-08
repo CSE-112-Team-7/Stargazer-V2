@@ -1,13 +1,13 @@
 import playBgMusic from "/utils/playmusic/script";
 
 class SettingPanel extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" });
-        shadow.innerHTML = `
+  connectedCallback() {
+    const shadow = this.attachShadow({ mode: "open" });
+    shadow.innerHTML = `
             <button id="setting"><img src="/assets/icons/setting/img" width="50"/></button>
             <div id="setting-panel">
                 <button>&#10006;</button>
@@ -17,8 +17,8 @@ class SettingPanel extends HTMLElement {
                 <a href="">Your History</a>
             </div>
         `;
-        const sheet = new CSSStyleSheet();
-        sheet.replaceSync(`
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(`
             #setting {
                 position: absolute;
                 top: 0;
@@ -81,39 +81,41 @@ class SettingPanel extends HTMLElement {
                 text-decoration: none;
                 margin-top: 20px;
               }
-        `)
-        shadow.adoptedStyleSheets = [sheet];
+        `);
+    shadow.adoptedStyleSheets = [sheet];
 
-        const volumeSlider = this.shadowRoot.querySelector("input");
-        const closeButton = this.shadowRoot.querySelector("#setting-panel > button");
-        const settingButton = this.shadowRoot.querySelector("#setting");
+    const volumeSlider = this.shadowRoot.querySelector("input");
+    const closeButton = this.shadowRoot.querySelector(
+      "#setting-panel > button"
+    );
+    const settingButton = this.shadowRoot.querySelector("#setting");
 
-        let volume = localStorage.getItem("volume");
-        if (volume != null) {
-            volumeSlider.value = volume;
-        }
-
-        volumeSlider.addEventListener("change", this.changeVolume);
-        closeButton.addEventListener("click", this.closeSetting.bind(this));
-        settingButton.addEventListener("click", this.openSetting.bind(this));
+    let volume = localStorage.getItem("volume");
+    if (volume != null) {
+      volumeSlider.value = volume;
     }
 
-    changeVolume(element) {
-        const backgroundMusic = document.getElementById("background-music");
-        let setVolume = element.currentTarget.value;
-        localStorage.setItem("volume", setVolume);
-        playBgMusic(backgroundMusic, false);
-    }
-    
-    closeSetting() {
-        const settingPanel = this.shadowRoot.querySelector("#setting-panel");
-        settingPanel.style.display = "none";
-    }
-    
-    openSetting() {
-        const settingPanel = this.shadowRoot.querySelector("#setting-panel");
-        settingPanel.style.display = "flex";
-    }
+    volumeSlider.addEventListener("change", this.changeVolume);
+    closeButton.addEventListener("click", this.closeSetting.bind(this));
+    settingButton.addEventListener("click", this.openSetting.bind(this));
+  }
+
+  changeVolume(element) {
+    const backgroundMusic = document.getElementById("background-music");
+    let setVolume = element.currentTarget.value;
+    localStorage.setItem("volume", setVolume);
+    playBgMusic(backgroundMusic, false);
+  }
+
+  closeSetting() {
+    const settingPanel = this.shadowRoot.querySelector("#setting-panel");
+    settingPanel.style.display = "none";
+  }
+
+  openSetting() {
+    const settingPanel = this.shadowRoot.querySelector("#setting-panel");
+    settingPanel.style.display = "flex";
+  }
 }
 
-customElements.define('setting-panel', SettingPanel);
+customElements.define("setting-panel", SettingPanel);

@@ -13,8 +13,8 @@ let selectedButton = null;
 function init() {
   playBgMusic(backgroundMusic, true);
 
-  localStorage.removeItem('questionType');
-  localStorage.removeItem('chosenConstellation');
+  localStorage.removeItem("questionType");
+  localStorage.removeItem("chosenConstellation");
   selectionButtons.forEach(function (element) {
     element.addEventListener("click", handleSelection);
   });

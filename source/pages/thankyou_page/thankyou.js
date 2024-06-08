@@ -8,6 +8,6 @@ function init() {
 
   const homeButton = document.querySelector(".button");
   homeButton.addEventListener("click", () => {
-      localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
+    localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
   });
 }
