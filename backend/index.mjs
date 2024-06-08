@@ -29,6 +29,7 @@ const client = new MongoClient(client_url, {
   // construct a new client
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  keepAlive: 1,
 });
 
 /**
@@ -59,13 +60,16 @@ async function check_credentials(username, password) {
     const database = client.db(db_name);
     const collection = database.collection(users_collection_name);
     console.log("WAITING FOR RESULT FROM DB");
-    const user = await collection.findOne({
-      username: username,
-      password: password,
-    });
+    const user = await collection
+      .find({
+        username: username,
+        password: password,
+      })
+      .toArray();
     console.log("RESULT RECIEVED");
     console.log(user);
-    return user != null;
+
+    return user.length != 0;
   } catch (error) {
     console.error("ERROR WHILE CHECKING USERNAME AND PASSWORD:", error);
     return false;
@@ -198,8 +202,12 @@ const font_type = "font/ttf";
 const json_type = "application/json";
 const svg_type = "image/svg+xml";
 var root_dir = "../source";
+const login_success_page = "/pages/selection_page/selection.html";
+const login_fail_page = "/pages/login_fail_page/login_fail.html";
+const signup_success_page = login_success_page;
+const signup_fail_page = "/pages/signup_fail_page/signup_fail.html";
 const app = express();
-const port = process.env.PORT || 4000;
+const port = 4000;
 
 app.use(express.json());
 app.use(cors());
@@ -295,15 +303,15 @@ app.post("/login/attempt", async (req, res) => {
     res.status(200);
     res.cookie("loggedin", "true");
     res.cookie("username", rec_username);
-    res.end("LOGIN SUCCEEDED");
-    console.log(res);
+    res.end();
+    // res.sendFile(login_success_page, { root: root_dir });
   } else {
     // if they don't assign different cookies and return in failure
     console.log("FAILED LOGIN!");
-    res.status(401);
+    res.status(201);
     res.cookie("loggedin", "false");
-    res.end("LOGIN FAILED");
-    console.log(res);
+    res.end();
+    // res.sendFile(login_fail_page, { root: root_dir });
   }
 });
 
@@ -323,26 +331,35 @@ app.post("/signup/attempt", async (req, res) => {
   if (new_password != new_password_conf) {
     // make sure password and confirmation are same
     res.status(400);
-    res.end("ERROR: PASSWORD VALUES ARE NOT THE SAME");
+    res.end();
+    // res.sendFile(signup_fail_page, { root: root_dir });
+    // res.end("ERROR: PASSWORD VALUES ARE NOT THE SAME");
     return;
   }
   if (await check_username(new_username)) {
     // if username is already in database don't let user register
     res.status(200);
-    res.end("SIGNUP FAILED: USERNAME IS ALREADY TAKEN");
+    res.end();
+    // res.sendFile(signup_fail_page, { root: root_dir });
+    // res.end("SIGNUP FAILED: USERNAME IS ALREADY TAKEN");
     return;
   }
   if (await place_credentials(new_username, new_password)) {
     // if username and password are valid add them to database set cookies and return
-    res.status(200);
+    res.status(201);
     res.cookie("loggedin", "true");
     res.cookie("username", new_username);
-    res.end("SIGNUP SUCCEEDED: REGISTERED NEW USER");
+    res.end();
+    // res.sendFile(signup_success_page, { root: root_dir });
+    // res.end("SIGNUP SUCCEEDED: REGISTERED NEW USER");
+
     return;
   } else {
     // if there was some issue in the process of creating the credentials let the user know
     res.status(204);
-    res.end("ERROR: UNABLE TO CREATE USER FOR UNKNOWN REASONS");
+    res.end();
+    // res.sendFile(signup_fail_page, { root: root_dir });
+    // res.end("ERROR: UNABLE TO CREATE USER FOR UNKNOWN REASONS");
     return;
   }
 });
@@ -358,9 +375,9 @@ app.post("/logout/attempt", (req, res) => {
     res.status(403).end("can't log out of a profile if you are not logged in!");
   }
   console.log("USER INPUT CORRECT, LOGGING THEM OUT");
-  res.clearCookie("username"); // clear the username cookie
+  res.cookie("username", ""); // clear the username cookie
   res.cookie("loggedin", "false");
-  res.status(200).end("successfully logged out user");
+  res.status(200).end();
 });
 
 /**
