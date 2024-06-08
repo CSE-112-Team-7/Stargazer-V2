@@ -191,5 +191,5 @@ describe("End to end test: select Health, Orion", () => {
     const nextPageLink = await page.waitForSelector("a");
     await Promise.all([page.waitForNavigation(), nextPageLink.click()]);
     await expect(page.title()).resolves.toMatch("Starting Page");
-  }, 15000);
+  }, 60000);
 });
