@@ -188,7 +188,7 @@ describe("End to end test: select Health, Orion", () => {
 
   it("Click Home to go back to landing page", async () => {
     // click on home link
-    const nextPageLink = await page.waitForSelector("a");
+    const nextPageLink = await page.$("a");
     await Promise.all([page.waitForNavigation(), nextPageLink.click()]);
     await expect(page.title()).resolves.toMatch("Starting Page");
   }, 60000);
