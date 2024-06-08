@@ -1,6 +1,6 @@
 # ADRS 5: Database to store user information
 
-##Context and Problem:
+## Context and Problem:
 
 Context:
 we want to construct a database to store user information, as well as horoscope information so that we can implement two new features:
@@ -19,5 +19,4 @@ a heavy increase in upkeep cost.
    compeletely new language
 3) **MongoDB remote Database** - we ended up choosing this option as MongoDB offers a free 5GB database for people with valid UCSD emails, although this is relatively small
 4) we do not expect to generate a wide user base and believe this will be more then large enough. in addition MongoDB offers an extremely helpful, well documented API
-5) that requires no SQL to use, and handles all input sanitization for us. We decided that these two options outweighed any small amounts of lag that would be caused by
-6) having to access a remote database from our server 
+5) that requires no SQL to use, and handles all input sanitization for us. We decided that these two options outweighed any small amounts of lag that would be caused by having to access a remote database from our server 
