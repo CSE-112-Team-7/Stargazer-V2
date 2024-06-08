@@ -11,10 +11,10 @@ class SettingPanel extends HTMLElement {
             <button id="setting"><img src="/assets/icons/setting/img" width="50"/></button>
             <div id="setting-panel">
                 <button>&#10006;</button>
-                <h2>Setting</h2>
-                <label for="volume-slider">Background Music Volume</label>
+                <h2>Settings</h2>
+                <label for="volume-slider">- Background Music Volume</label>
                 <input type="range" name="volume-slider" min="0" max="1" step="0.01" value="0">
-                <a href="">Your History</a>
+                <a href="">- Your History 🔗</a>
             </div>
         `;
     const sheet = new CSSStyleSheet();
@@ -35,19 +35,19 @@ class SettingPanel extends HTMLElement {
                 position: absolute;
                 top: 0;
                 right: 0;
-                width: 320px;
+                width: 400px;
                 height: 100vh;
-                background-color: #c9c9c9;
+                background-color: #013348;
                 flex-direction: column;
                 box-sizing: border-box;
-                padding-left: 15px;
+                padding-left: 30px;
                 display: none;
                 z-index: 2;
             }
             
             #setting-panel > button {
                 background-color: transparent;
-                color: black;
+                color: #d2b78e;
                 border: none;
                 height: auto;
                 padding: 1px 8px;
@@ -58,28 +58,119 @@ class SettingPanel extends HTMLElement {
             }
             
             h2 {
-                color: black;
+                color: #d2b78e;
                 text-align: left;
-                font-size: 2rem;
-                margin: 0;
+                font-size: 3rem;
+                margin-top: 25px;
+                margin-bottom: 30px;
             }
             
             label {
-                color: black;
+                color: #d2b78e;
                 text-align: left;
-                margin-top: 20px;
+                font-size: 1.2rem;
             }
             
-            input {
-                margin-top: 10px;
+            input[type="range"] {
+                -webkit-appearance: none;
                 width: 60%;
+                margin-top: 30px;
+                background: transparent;
+                position: relative;
+            }
+
+            input[type="range"]::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 8.4px;
+                cursor: pointer;
+                animate: 0.2s;
+                background: #b8916e; /* Inactive track color */
+                border-radius: 10px; /* Increased border radius */
+                border: 0.2px solid #010101;
+                position: relative;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                border: 1px solid #000000;
+                height: 36px;
+                width: 16px;
+                border-radius: 10px; /* Increased border radius */
+                background: #d2b78e; /* Thumb color */
+                cursor: pointer;
+                -webkit-appearance: none;
+                margin-top: -14px;
+                position: relative;
+                z-index: 1;
+            }
+
+            input[type="range"]::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 8.4px;
+                background: #d2b78e; /* Active track color */
+                border-radius: 10px; /* Increased border radius */
+                z-index: 0;
+                width: var(--active-width, 0);
+            }
+
+            input[type="range"]::-moz-range-track {
+                width: 100%;
+                height: 8.4px;
+                cursor: pointer;
+                animate: 0.2s;
+                background: #b8916e; /* Inactive track color */
+                border-radius: 10px; /* Increased border radius */
+                border: 0.2px solid #010101;
+            }
+
+            input[type="range"]::-moz-range-thumb {
+                border: 1px solid #000000;
+                height: 36px;
+                width: 16px;
+                border-radius: 10px; /* Increased border radius */
+                background: #d2b78e; /* Thumb color */
+                cursor: pointer;
+            }
+
+            input[type="range"]::-ms-track {
+                width: 100%;
+                height: 8.4px;
+                cursor: pointer;
+                animate: 0.2s;
+                background: transparent;
+                border-color: transparent;
+                color: transparent;
+            }
+
+            input[type="range"]::-ms-fill-lower {
+                background: #d2b78e; /* Active track color */
+                border: 0.2px solid #010101;
+                border-radius: 10px; /* Increased border radius */
+            }
+
+            input[type="range"]::-ms-fill-upper {
+                background: #b8916e; /* Inactive track color */
+                border: 0.2px solid #010101;
+                border-radius: 10px; /* Increased border radius */
+            }
+
+            input[type="range"]::-ms-thumb {
+                border: 1px solid #000000;
+                height: 36px;
+                width: 16px;
+                border-radius: 10px; /* Increased border radius */
+                background: #d2b78e; /* Thumb color */
+                cursor: pointer;
             }
 
             #setting-panel > a {
                 text-align: left;
-                color: black;
+                color: #d2b78e;
                 text-decoration: none;
-                margin-top: 20px;
+                margin-top: 30px;
+                font-size: 1.2rem;
               }
         `);
     shadow.adoptedStyleSheets = [sheet];

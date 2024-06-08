@@ -1,11 +1,26 @@
+/**
+ * this class contains all source code for the backend server and is
+ * responsible for sending all assets to a client ( mainly JS/CSS/HTML files, and images)
+ * it is also responsible for querying the database for, and verifying user information (username, password, horoscope data)
+ * finally it is also responsible for storing user information in the database if a signup occurs, or a new horoscope is generated
+ */
+
 // express and cors used to handle http request, cookie parser used to generate cookies
 import express from "express";
 import cors from "cors";
 import cookie_parser from "cookie-parser";
 
-// MONGO VARIABLES
+// DATABASE VARIABLES
 import { MongoClient } from "mongodb";
-const client_url = // URL where mongodb is stored
+/**
+ * @constant {string} client_url stores url from which database can be accessed to add/remove/query data
+ * @constant {string} db_name stores the name of the database which holds both user history and registration info
+ * @constant {string} users_collection_name stores name of the collection which holds user's usernames and password info
+ * @constant {string} horoscopes_collection_name stores name of the collection which holds user's horoscope information - foreign key is username
+ * @constant {MongoClient} client mongo object used to make API requests to database
+ */
+
+const client_url =
   "mongodb+srv://bahorowitz:HxfQTvBgarDEoXTE@stargazercluster.j46iehf.mongodb.net/?retryWrites=true&w=majority&appName=stargazerCluster";
 const db_name = "Stargazer"; // name of database
 const users_collection_name = "users"; // name of user table in database
@@ -16,9 +31,10 @@ const client = new MongoClient(client_url, {
   useUnifiedTopology: true,
 });
 
-// MONGODB CODE
-
-// creating a mongoDB connection pool so that a connection between db and server can be maintained at all times
+/**
+ * launches a connection to the database from the server
+ * immediately when the server is started
+ */
 async function run() {
   try {
     await client.connect();
@@ -30,7 +46,13 @@ async function run() {
 
 run().catch(console.dir);
 
-// given a username and a password, checks whether or not the user exists in users database
+/**
+ * checks whether a user with passed through username and password
+ * has a registered stargazer account
+ * @param {string} username username of user to check
+ * @param {string} password password of user to check
+ * @returns {boolean} true if user exists, false if not
+ */
 async function check_credentials(username, password) {
   try {
     console.log("CHECKING IF USERNAME AND PASSWORD COMBO EXISTS IN DB");
@@ -50,7 +72,11 @@ async function check_credentials(username, password) {
   }
 }
 
-// given a username, check whether the username is already in use
+/**
+ * checks whether or not a passed in username is registered to a stargazer account
+ * @param {string} username username to check existence
+ * @returns {boolean} true if user exists, false otherwise
+ */
 async function check_username(username) {
   try {
     console.log("CHECKING IF USERNAME IS ALREADY TAKEN IN DB");
@@ -67,8 +93,12 @@ async function check_username(username) {
   }
 }
 
-// given a username which is not already in our database
-// and a password, place the pair in our database
+/**
+ * registers a new account in the stargazers database
+ * @param {string} username username of new account
+ * @param {string} password password of new account
+ * @returns true if registration was successful, false if any errors occured
+ */
 async function place_credentials(username, password) {
   try {
     console.log("ATTEMPTING TO ADD NEW USER TO DB");
@@ -87,6 +117,14 @@ async function place_credentials(username, password) {
   }
 }
 
+/**
+ * places a new horoscope in the stargazers db and links it to a registered user and a time
+ * @param {string} username username of registered stargazer account to link horoscope data to
+ * @param {string} catagory catagory of horoscope
+ * @param {string} constellation constellation of horoscope
+ * @param {string} horoscope text data of horoscope
+ * @returns {boolean} true if horoscope was placed successfully, false if any error occurs
+ */
 async function place_horoscope(username, catagory, constellation, horoscope) {
   try {
     console.log("ATTEMPTING TO ADD NEW HOROSCOPE TO DB");
@@ -107,7 +145,12 @@ async function place_horoscope(username, catagory, constellation, horoscope) {
     return false;
   }
 }
-
+/**
+ * given a registered user returns up to twenty of the most recently placed horoscopes associated
+ * to the user in a JSON array
+ * @param {string} username registered user's username
+ * @returns {JSON[]} array of up to 20 of the most recently placed horoscopes in stargazers assigned to user
+ */
 async function grab_user_horoscopes(username) {
   try {
     console.log("ATTEMPTING TO GRAB USER " + username + " HOROSCOPE DATA");
@@ -126,7 +169,21 @@ async function grab_user_horoscopes(username) {
   }
 }
 
-// SET GET REQUEST VARIABLES
+/**
+ * @constant {string} content stores beginning of header of response packet
+ * @constant {string} html_type stores ending of header of response packet when sending html file
+ * @constant {string} png_type stores ending of header of response packet when sending css file
+ * @constant {string} jpeg_type stores ending of header of response packet when sending jpeg file
+ * @constant {string} icon_type_type stores ending of header of response packet when sending icon file
+ * @constant {string} image_type stores ending of header of response packet when sending  base image
+ * @constant {string} js_file_type_type stores ending of header of response packet when sending  javascript file
+ * @constant {string} mp3_type_type stores ending of header of response packet when sending mp3 file
+ * @constant {string} font_type stores ending of header of response packet when sending font file
+ * @constant {string} json_type stores ending of header of response packet when sending json file
+ * @constant {string} root_dir stores root directory where all web assets are stored
+ * @constant {express} app express object used to create post/get requests
+ * @constant {Integer} port port number the server is running on, if running locally always set to port 4000, if running on heroku given a random port #
+ */
 const content = "Content-Type";
 const html_type = "text/html";
 const css_type = "text/css";
@@ -134,14 +191,13 @@ const png_type = "image/png";
 const jpeg_type = "image/jpeg";
 const icon_type = "image/x-icon";
 const image_type = "image/*";
+const gif_type = "image/gif";
 const js_file_type = "text/javascript";
 const mp3_type = "audio/mpeg";
 const font_type = "font/ttf";
 const json_type = "application/json";
 const svg_type = "image/svg+xml";
 var root_dir = "../source";
-// SERVER SETUP
-// Set up node js and routes
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -154,10 +210,13 @@ app.use(cookie_parser());
 
 // routes contains a json file storing all routes and files of basic get requests
 import routes from "./routes.mjs";
-
+/**
+ * turns on the server to listen at the specified port number
+ */
 app.listen(port, () => {
   console.log("stargazer listening on port " + port);
 });
+
 
 // get request for root page will wipe all cookies
 app.get("/", (req, res) => {
@@ -165,6 +224,12 @@ app.get("/", (req, res) => {
   res.cookie("username", "");
   res.sendFile("/pages/starting_page/starting.html", { root: root_dir });
 });
+
+/**
+ * given a path, and a file from routes.json creates a get request
+ * allowing a client to ping the path to get the file from the server
+ */
+
 // GET REQUESTS GRABBING PAGES AND PAGE ASSETS
 routes.forEach(({ path, file }) => {
   // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
@@ -199,6 +264,8 @@ routes.forEach(({ path, file }) => {
       content_type = font_type;
     } else if (file.includes(".json")) {
       content_type = json_type;
+    } else if (file.includes(".gif")) {
+      content_type = gif_type;
     } else if (file.includes(".svg")) {
       content_type = svg_type;
     } else {
@@ -211,8 +278,13 @@ routes.forEach(({ path, file }) => {
   });
 });
 
-// POST REQUEST ATTEMPTING TO LOG IN A USER
-// async and await used to ensure database is checked before continuing
+/**
+ * post request which attempts to log a user in by setting their cookies
+ * must be passed in a user name and a password
+ * will check if username and password exist, and if so
+ * will set logged in and username cookies
+ * else won't do anything
+ */
 app.post("/login/attempt", async (req, res) => {
   console.log("RECIEVED LOGIN ATTEMPT!");
   const { rec_username, rec_password } = req.body; // unpack request into variables
@@ -236,7 +308,11 @@ app.post("/login/attempt", async (req, res) => {
   }
 });
 
-// POST REQUEST ATTEMPTING TO MAKE A NEW USER
+/**
+ * given a new stargazer's user information
+ * will attempt to register them, and make sure all information is valid
+ * if username already assigned to a registered account will return fail
+ */
 app.post("/signup/attempt", async (req, res) => {
   console.log("RECIEVED SIGNUP ATTEMPT");
   const { new_username, new_password, new_password_conf } = req.body; // unpack request into variables
@@ -272,7 +348,9 @@ app.post("/signup/attempt", async (req, res) => {
   }
 });
 
-// POST REQUEST LOGGING OUT A USER
+/**
+ * post request logging out a user by wiping cookie values
+ */
 app.post("/logout/attempt", (req, res) => {
   console.log("ATTEMPTING TO LOG OUT USER");
   // check if a user is currently logged in
@@ -286,7 +364,10 @@ app.post("/logout/attempt", (req, res) => {
   res.status(200).end("successfully logged out user");
 });
 
-// POST REQUEST ATTEMPTING TO STORE USER HOROSCOPE DATA
+/**
+ * post request attempting to store generated horoscope information in database
+ * if horoscope was created by a guest account will not store it
+ */
 app.post("/horoscope/post", async (req, res) => {
   console.log("RECIEVED REQUEST TO STORE HOROSCOPE DATA IN SERVER");
   const { catagory, constellation, horoscope } = req.body;
@@ -294,7 +375,7 @@ app.post("/horoscope/post", async (req, res) => {
   console.log(loggedin);
   if (loggedin != "true") {
     console.log("ERROR: NO USER IS LOGGED IN SO WE CANNOT STORE USER DATA");
-    res.status(422).end("unable to store data as user is not signed in");
+    res.status(422).end();
     return;
   }
   const username = req.cookies.username;
@@ -311,13 +392,16 @@ app.post("/horoscope/post", async (req, res) => {
   return;
 });
 
-// GET REQUEST ATTEMPTING TO GRAB USER HOROSCOPE DATA
+/**
+ * get request grabbing 20 most recent horoscopes created by user from server
+ * if guest account will not send anything
+ */
 app.get("/horoscope/get", async (req, res) => {
   console.log("RECIEVED REQUEST TO GRAB HOROSCOPE DATA FROM SERVER");
   const loggedin = req.cookies.loggedin;
   if (loggedin != true) {
     console.log("ERROR: NO USER IS LOGGED IN SO WE CANT SEND BACK USER DATA");
-    res.status(422).end("unable to send user data as user is not signed in");
+    res.status(422).end();
     return;
   }
   const username = req.cookies.username;
