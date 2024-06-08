@@ -205,7 +205,7 @@ const login_fail_page = "/pages/login_fail_page/login_fail.html";
 const signup_success_page = login_success_page;
 const signup_fail_page = "/pages/signup_fail_page/signup_fail.html";
 const app = express();
-const port = 4003;
+const port = 4000;
 
 app.use(express.json());
 app.use(cors());
@@ -232,7 +232,7 @@ routes.forEach(({ path, file }) => {
   // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
-    if (port != 4003) {
+    if (port != 4000) {
       console.log("RUNNING OFF OF A HEROKU DEPLOYMENT");
       root_dir = "/app/source";
       console.log("UPDATED ROOT TO POINT TO " + root_dir);
