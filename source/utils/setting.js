@@ -15,6 +15,9 @@ class SettingPanel extends HTMLElement {
                 <label for="volume-slider">- Background Music Volume</label>
                 <input type="range" name="volume-slider" min="0" max="1" step="0.01" value="0">
                 <a href="">- Your History 🔗</a>
+                <form method="post" action="/logout/attempt/">
+                    <button type="submit" >Logout</button>
+                </form>
             </div>
         `;
     const sheet = new CSSStyleSheet();
@@ -172,6 +175,36 @@ class SettingPanel extends HTMLElement {
                 margin-top: 30px;
                 font-size: 1.2rem;
               }
+            
+            
+            form{
+                text-align: left;
+                padding-top: 10%;
+            }
+
+            form button {
+                background-color: var(--button-background);
+                color: var(--general-border);
+                border-color: var(--general-border);
+                border-radius: 12px;
+                font-size: 1rem;
+            }
+
+            form button {
+                border-style: outset;
+                border-width: 2px;
+                height: auto;
+                padding: 3%;
+                text-decoration: none;
+            }
+
+            form button button:hover{
+                background-color: var(--button-hover-background) !important;
+                box-shadow: 0rem 0rem 0.5rem beige;
+                color: beige;
+                transition: 0.3s;
+                cursor: pointer;
+            }
         `);
     shadow.adoptedStyleSheets = [sheet];
 

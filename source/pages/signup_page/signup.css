@@ -37,3 +37,26 @@ input {
     padding-left: 3vw;
 }
 
+#takenUsername {
+    justify-content: center;
+    padding:0;
+    color: red;
+    z-index: 1;
+    margin: 0;
+    padding-top: 2%;
+    font-size: 2rem;
+    pointer-events:none;
+    display: none;
+}
+
+#unknownProblem {
+    justify-content: center;
+    padding: 0;
+    color: red;
+    z-index: 1;
+    margin: 0;
+    padding-top: 2%;
+    font-size: 2rem;
+    pointer-events:none;
+    display: none;
+}

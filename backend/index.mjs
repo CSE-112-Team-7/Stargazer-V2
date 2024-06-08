@@ -30,6 +30,7 @@ const client = new MongoClient(client_url, {
   // construct a new client
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  keepAlive: 1
 });
 
 /**
@@ -60,13 +61,14 @@ async function check_credentials(username, password) {
     const database = client.db(db_name);
     const collection = database.collection(users_collection_name);
     console.log("WAITING FOR RESULT FROM DB");
-    const user = await collection.findOne({
+    const user = await collection.find({
       username: username,
       password: password,
-    });
+    }).toArray()
     console.log("RESULT RECIEVED");
-    console.log(user);
-    return user != null;
+    console.log(user)
+
+    return user.length != 0;
   } catch (error) {
     console.error("ERROR WHILE CHECKING USERNAME AND PASSWORD:", error);
     return false;
@@ -203,7 +205,7 @@ const login_fail_page = "/pages/login_fail_page/login_fail.html";
 const signup_success_page = login_success_page;
 const signup_fail_page = "/pages/signup_fail_page/signup_fail.html";
 const app = express();
-const port = 4000;
+const port = 4003;
 
 app.use(express.json());
 app.use(cors());
@@ -230,7 +232,7 @@ routes.forEach(({ path, file }) => {
   // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
-    if (port != 4000) {
+    if (port != 4003) {
       console.log("RUNNING OFF OF A HEROKU DEPLOYMENT");
       root_dir = "/app/source";
       console.log("UPDATED ROOT TO POINT TO " + root_dir);
@@ -289,16 +291,15 @@ app.post("/login/attempt", async (req, res) => {
     res.status(200);
     res.cookie("loggedin", "true");
     res.cookie("username", rec_username);
-    res.sendFile(login_success_page, { root: root_dir });
-    
-    console.log(res);
+    res.end();
+    // res.sendFile(login_success_page, { root: root_dir });
   } else {
     // if they don't assign different cookies and return in failure
     console.log("FAILED LOGIN!");
-    res.status(401);
+    res.status(201);
     res.cookie("loggedin", "false");
-    res.sendFile(login_fail_page, { root: root_dir });
-    console.log(res);
+    res.end();
+    // res.sendFile(login_fail_page, { root: root_dir });  
   }
 });
 
@@ -318,14 +319,16 @@ app.post("/signup/attempt", async (req, res) => {
   if (new_password != new_password_conf) {
     // make sure password and confirmation are same
     res.status(400);
-    res.sendFile(signup_fail_page, { root: root_dir });
+    res.end();
+    // res.sendFile(signup_fail_page, { root: root_dir });
     // res.end("ERROR: PASSWORD VALUES ARE NOT THE SAME");
     return;
   }
   if (await check_username(new_username)) {
     // if username is already in database don't let user register
     res.status(200);
-    res.sendFile(signup_fail_page, { root: root_dir });
+    res.end();
+    // res.sendFile(signup_fail_page, { root: root_dir });
     // res.end("SIGNUP FAILED: USERNAME IS ALREADY TAKEN");
     return;
   }
@@ -334,14 +337,16 @@ app.post("/signup/attempt", async (req, res) => {
     res.status(201);
     res.cookie("loggedin", "true");
     res.cookie("username", new_username);
-    res.sendFile(signup_success_page, { root: root_dir });
+    res.end();
+    // res.sendFile(signup_success_page, { root: root_dir });
     // res.end("SIGNUP SUCCEEDED: REGISTERED NEW USER");
 
     return;
   } else {
     // if there was some issue in the process of creating the credentials let the user know
     res.status(204);
-    res.sendFile(signup_fail_page, { root: root_dir });
+    res.end();
+    // res.sendFile(signup_fail_page, { root: root_dir });
     // res.end("ERROR: UNABLE TO CREATE USER FOR UNKNOWN REASONS");
     return;
   }
@@ -353,14 +358,14 @@ app.post("/signup/attempt", async (req, res) => {
 app.post("/logout/attempt", (req, res) => {
   console.log("ATTEMPTING TO LOG OUT USER");
   // check if a user is currently logged in
-  if (req.cookie.loggedin != "true") {
+  if (req.cookies.loggedin != "true") {
     console.log("unable to log out as no user is currently logged in");
     res.status(403).end("can't log out of a profile if you are not logged in!");
   }
   console.log("USER INPUT CORRECT, LOGGING THEM OUT");
-  res.clearCookie("username"); // clear the username cookie
+  res.cookie("username", ""); // clear the username cookie
   res.cookie("loggedin", "false");
-  res.status(200).end("successfully logged out user");
+  res.status(200).end();
 });
 
 /**
