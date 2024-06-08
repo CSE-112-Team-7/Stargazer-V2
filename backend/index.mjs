@@ -138,7 +138,8 @@ const js_file_type = "text/javascript";
 const mp3_type = "audio/mpeg";
 const font_type = "font/ttf";
 const json_type = "application/json";
-var root_dir = "/source";
+const svg_type = "image/svg+xml";
+var root_dir = "../source";
 // SERVER SETUP
 // Set up node js and routes
 const app = express();
@@ -163,10 +164,10 @@ routes.forEach(({ path, file }) => {
   // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
   app.get(path, (req, res) => {
     console.log("recieved request for " + file);
-    if(port != 4000) {
-      console.log("RUNNING OFF OF A HEROKU DEPLOYMENT")
-      root_dir = "/app/source"
-      console.log("UPDATED ROOT TO POINT TO " + root_dir)
+    if (port != 4000) {
+      console.log("RUNNING OFF OF A HEROKU DEPLOYMENT");
+      root_dir = "/app/source";
+      console.log("UPDATED ROOT TO POINT TO " + root_dir);
     }
     // set correct content type
     let content_type;
@@ -192,6 +193,8 @@ routes.forEach(({ path, file }) => {
       content_type = font_type;
     } else if (file.includes(".json")) {
       content_type = json_type;
+    } else if (file.includes(".svg")) {
+      content_type = svg_type;
     } else {
       console.log("ERROR, UNEXPECTED FILE TYPE");
       res.status(404).send("UNSUPPORTED FILE TYPE REQUESTED");
@@ -201,7 +204,6 @@ routes.forEach(({ path, file }) => {
     res.sendFile(file, { root: root_dir });
   });
 });
-
 
 // POST REQUEST ATTEMPTING TO LOG IN A USER
 // async and await used to ensure database is checked before continuing
@@ -235,7 +237,7 @@ app.post("/signup/attempt", async (req, res) => {
   console.log("username attempted to signup with " + new_username);
   console.log("password attempted to signup with " + new_password);
   console.log(
-    "password confirmation attempted to signup with " + new_password_conf,
+    "password confirmation attempted to signup with " + new_password_conf
   );
   if (new_password != new_password_conf) {
     // make sure password and confirmation are same

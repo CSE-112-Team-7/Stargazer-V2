@@ -1,21 +1,7 @@
-import playClickSound from "/utils/playclick/script";
 import playBgMusic from "/utils/playmusic/script";
 
-let synth;
-let synthExist = -1;
-const categories = ["relationship", "career", "health", "daily"];
-const constellations = [
-  "Crux",
-  "Aries",
-  "Orion",
-  "Canis Major",
-  "Ursa Major",
-  "Carina",
-  "Ophiuchus",
-  "Armadillo Dragon",
-];
 const errorMsg =
-  "Please try again later by selecting both your question and your constellation. You will now be taken to the home page.";
+  "Please try again later by selecting both your question and your constellation. You will be taken to the home page in 5 seconds.";
 
 const openingSentences = [
   "Welcome, seeker of destiny! Step into the realm of possibilities.",
@@ -29,14 +15,31 @@ const openingSentences = [
   "Greetings, seeker of answers! Trust in the whispers of the universe that brought you here.",
   "Welcome, dear one! Let the dance of divination commence.",
 ];
-let backgroundMusic;
+
+const backgroundMusic = document.getElementById("background-music");
+
+window.addEventListener("DOMContentLoaded", init);
+
+function init() {
+  playBgMusic(backgroundMusic, true);
+
+  const h2Element = document.getElementById("fortune-opening");
+  const randomSentence =
+    openingSentences[Math.floor(Math.random() * openingSentences.length)];
+  h2Element.textContent = randomSentence;
+
+  const visibleButton = document.getElementById("visibleButton");
+  visibleButton.addEventListener("click", toggleText);
+
+  window.toggleText = toggleText;
+}
 
 /*
 Once called, this function hides away the triggering button, displays 
 the fortune teller response as well as the next page button.
 */
 function toggleText() {
-  let buttonClicked = document.getElementById("visibleButton");
+  const buttonClicked = document.getElementById("visibleButton");
   let explanation = document.getElementById("explanation");
   let text = document.getElementById("hiddenText");
   let button = document.getElementById("hiddenButton");
@@ -64,6 +67,9 @@ function toggleText() {
       redirectToPage("/starting/page");
     }, 5000);
   }
+  button.addEventListener("click", () => {
+    localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
+  });
 }
 
 /**
@@ -93,7 +99,6 @@ function animateText(answer, textElement) {
   let index = 0;
   let interval;
   const words = answer.split(" ");
-  speak(answer);
   interval = setInterval(showNextCharacter, 100);
 
   function showNextCharacter() {
@@ -126,65 +131,4 @@ function displayText(answer, textElement) {
  */
 function redirectToPage(url) {
   window.location.href = url;
-}
-
-/*
-Once called, the window will be showing the thankyou page.
-*/
-function goToPage() {
-  playClickSound(
-    document.getElementById("clickSound"),
-    localStorage.getItem("questionType"),
-    backgroundMusic.currentTime,
-    () => (window.location.href = "/thankyou/page"),
-  );
-  stopSpeechSynthesis();
-}
-
-function speak(text) {
-  const chosenVoice = localStorage.getItem("voiceChoice");
-  if (chosenVoice == -1) {
-    synthExist = -1;
-    return;
-  }
-  let utterance = new SpeechSynthesisUtterance();
-  let list;
-  synthExist = 1;
-  synth = window.speechSynthesis;
-  synth.addEventListener("voiceschanged", () => {
-    list = synth.getVoices();
-    utterance.voice = list[chosenVoice];
-    utterance.text = text;
-    synth.speak(utterance);
-  });
-}
-/*
-Main section rising up to its position (animated transition)
-*/
-window.addEventListener("load", function () {
-  backgroundMusic = document.getElementById("background-music");
-  playBgMusic(backgroundMusic);
-  var mainContent = document.querySelector("main");
-  var desiredPosition = 0;
-
-  setTimeout(function () {
-    mainContent.style.top = desiredPosition + "px";
-  }, 100);
-
-  const h2Element = document.getElementById("fortune-opening");
-  const randomSentence =
-    openingSentences[Math.floor(Math.random() * openingSentences.length)];
-  h2Element.textContent = randomSentence;
-
-  window.toggleText = toggleText;
-  window.goToPage = goToPage;
-});
-
-//These event listeners stop the voicing when user reload or navigate back to the previous page
-window.addEventListener("beforeunload", stopSpeechSynthesis);
-
-function stopSpeechSynthesis() {
-  if (synthExist == 1 && synth.speaking) {
-    synth.cancel();
-  }
 }

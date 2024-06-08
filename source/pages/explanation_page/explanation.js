@@ -1,17 +1,12 @@
-import playClickSound from "/utils/playclick/script";
 import playBgMusic from "/utils/playmusic/script";
-
-let synthExist;
 
 /**
  * @property {Function} init retrieves info from previous page
  * @property {Function} initializeConstellation initalize constellations
- * @property {Function} stopTalkWhenReload stop voice over when reload/back a page
- * @property {Function} stopSpeechSynthesis stop voice over
  */
 
 // array of constellations - name, description, constellation image link, myth image link
-let constellationList = [
+const constellationList = [
   {
     name: "Aries",
     description:
@@ -69,35 +64,21 @@ let constellationList = [
     mythLink: "/assets/constellation/ursa/myth/img",
   },
 ];
-let backgroundMusic;
 
-let synth;
 window.addEventListener("DOMContentLoaded", init);
 /**
  * Retrieves info from previous page
  */
 function init() {
-  backgroundMusic = document.getElementById("background-music");
-  playBgMusic(backgroundMusic);
+  const backgroundMusic = document.getElementById("background-music");
+  playBgMusic(backgroundMusic, true);
 
   initializeConstellation();
-  // get chosen voice from localstorage
-  const chosenVoice = localStorage.getItem("voiceChoice");
-  synth = window.speechSynthesis;
-  let utterance = new SpeechSynthesisUtterance();
-  let list;
-  //Start speaking
-  if (chosenVoice != -1) {
-    synth.addEventListener("voiceschanged", () => {
-      list = synth.getVoices();
-      utterance.voice = list[chosenVoice];
-      utterance.text = document.getElementById("description").textContent;
-      synth.speak(utterance);
-      synthExist = 1;
-    });
-  } else {
-    synthExist = -1;
-  }
+
+  const continueButton = document.getElementById("continue-button");
+  continueButton.addEventListener("click", () => {
+    localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
+  });
 }
 
 /**
@@ -109,7 +90,7 @@ function initializeConstellation() {
   const chosenConstellation =
     constellationList[
       constellationList.findIndex(
-        (item) => item.name === chosenConstellationName,
+        (item) => item.name === chosenConstellationName
       )
     ];
 
@@ -122,34 +103,4 @@ function initializeConstellation() {
   constellationImage.src = chosenConstellation.imageLink;
   const mythImage = document.getElementById("myth-image");
   mythImage.src = chosenConstellation["mythLink"];
-}
-
-const continueButton = document.getElementById("continue-button");
-continueButton.addEventListener("click", function () {
-  playClickSound(
-    document.getElementById("clickSound"),
-    localStorage.getItem("questionType"),
-    backgroundMusic.currentTime,
-    () => (window.location.href = "/response/page"),
-  );
-  stopSpeechSynthesis();
-});
-
-stopTalkWhenReload();
-/**
- * voiceover stops when page reloaded/goes to previuos page.
- */
-function stopTalkWhenReload() {
-  //These event listeners stop the voicing when user reload or navigate back to previous page.
-  window.addEventListener("beforeunload", stopSpeechSynthesis);
-  window.addEventListener("unload", stopSpeechSynthesis);
-}
-
-/**
- * stops speech
- */
-function stopSpeechSynthesis() {
-  if (synthExist == 1 && synth.speaking) {
-    synth.cancel();
-  }
 }

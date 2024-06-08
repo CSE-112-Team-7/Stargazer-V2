@@ -32,7 +32,7 @@ export class BackgroundStar {
       this.radius,
       0,
       Math.PI * 2,
-      false,
+      false
     );
     ctx.fill();
     ctx.stroke();
