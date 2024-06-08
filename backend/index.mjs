@@ -227,6 +227,9 @@ app.listen(port, () => {
 
 // get request for root page will wipe all cookies
 app.get("/", (req, res) => {
+  if(port != 4000) {
+    root_dir = "/app/source"
+  }
   res.cookie("loggedin", "false");
   res.cookie("username", "");
   res.sendFile("/pages/starting_page/starting.html", { root: root_dir });
