@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skymap Page</title>
-    <!-- Main Stylesheet & Scripts -->
     <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
     <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/skymap/style" />
     <script src="/skymap/script" type="module"></script>
+    <script src="/utils/setting/script" type="module"></script>
   </head>
   <body>
     <p><span>0</span>/5 Selected Stars</p>
     <canvas></canvas>
     <p id="hint">Drag to explore the whole sky!</p>
     <a class="button" href="/explanation/page">Next</a>
+    <setting-panel></setting-panel>
+    <audio id="background-music" src="/assets/music/gaze/mp" loop></audio>
   </body>
 </html>

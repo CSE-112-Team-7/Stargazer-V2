@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/response/style" />
     <script src="/response/script" type="module"></script>
+    <script src="/utils/setting/script" type="module"></script>
   </head>
   <body>
     <header>
@@ -20,9 +21,7 @@
           alt="Armadillo fortune teller"
         />
       </picture>
-      <button id="visibleButton" class="response" onclick="toggleText()">
-        See Result
-      </button>
+      <button id="visibleButton" class="response">See Result</button>
     </header>
     <main>
       <div id="explanation" class="text-box hidden">
@@ -32,6 +31,7 @@
         >Continue</a
       >
     </main>
+    <setting-panel></setting-panel>
     <audio id="background-music" src="/assets/music/gaze/mp" loop></audio>
     <audio id="clickSound" src="/assets/music/default/mp"></audio>
   </body>
