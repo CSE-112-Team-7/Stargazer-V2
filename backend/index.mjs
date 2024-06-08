@@ -29,7 +29,7 @@ const client = new MongoClient(client_url, {
   // construct a new client
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  keepAlive: 1
+  keepAlive: 1,
 });
 
 /**
@@ -60,12 +60,14 @@ async function check_credentials(username, password) {
     const database = client.db(db_name);
     const collection = database.collection(users_collection_name);
     console.log("WAITING FOR RESULT FROM DB");
-    const user = await collection.find({
-      username: username,
-      password: password,
-    }).toArray()
+    const user = await collection
+      .find({
+        username: username,
+        password: password,
+      })
+      .toArray();
     console.log("RESULT RECIEVED");
-    console.log(user)
+    console.log(user);
 
     return user.length != 0;
   } catch (error) {
@@ -309,7 +311,7 @@ app.post("/login/attempt", async (req, res) => {
     res.status(201);
     res.cookie("loggedin", "false");
     res.end();
-    // res.sendFile(login_fail_page, { root: root_dir });  
+    // res.sendFile(login_fail_page, { root: root_dir });
   }
 });
 
