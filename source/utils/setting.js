@@ -86,9 +86,8 @@ class SettingPanel extends HTMLElement {
                 width: 100%;
                 height: 8.4px;
                 cursor: pointer;
-                animate: 0.2s;
-                background: #b8916e; /* Inactive track color */
-                border-radius: 10px; /* Increased border radius */
+                background: #b8916e;
+                border-radius: 10px;
                 border: 0.2px solid #010101;
                 position: relative;
             }
@@ -97,8 +96,8 @@ class SettingPanel extends HTMLElement {
                 border: 1px solid #000000;
                 height: 36px;
                 width: 16px;
-                border-radius: 10px; /* Increased border radius */
-                background: #d2b78e; /* Thumb color */
+                border-radius: 10px;
+                background: #d2b78e;
                 cursor: pointer;
                 -webkit-appearance: none;
                 margin-top: -14px;
@@ -112,8 +111,8 @@ class SettingPanel extends HTMLElement {
                 top: 0;
                 left: 0;
                 height: 8.4px;
-                background: #d2b78e; /* Active track color */
-                border-radius: 10px; /* Increased border radius */
+                background: #d2b78e;
+                border-radius: 10px;
                 z-index: 0;
                 width: var(--active-width, 0);
             }
@@ -122,9 +121,8 @@ class SettingPanel extends HTMLElement {
                 width: 100%;
                 height: 8.4px;
                 cursor: pointer;
-                animate: 0.2s;
-                background: #b8916e; /* Inactive track color */
-                border-radius: 10px; /* Increased border radius */
+                background: #b8916e;
+                border-radius: 10px;
                 border: 0.2px solid #010101;
             }
 
@@ -132,8 +130,8 @@ class SettingPanel extends HTMLElement {
                 border: 1px solid #000000;
                 height: 36px;
                 width: 16px;
-                border-radius: 10px; /* Increased border radius */
-                background: #d2b78e; /* Thumb color */
+                border-radius: 10px;
+                background: #d2b78e;
                 cursor: pointer;
             }
 
@@ -141,30 +139,29 @@ class SettingPanel extends HTMLElement {
                 width: 100%;
                 height: 8.4px;
                 cursor: pointer;
-                animate: 0.2s;
                 background: transparent;
                 border-color: transparent;
                 color: transparent;
             }
 
             input[type="range"]::-ms-fill-lower {
-                background: #d2b78e; /* Active track color */
+                background: #d2b78e;
                 border: 0.2px solid #010101;
-                border-radius: 10px; /* Increased border radius */
+                border-radius: 10px;
             }
 
             input[type="range"]::-ms-fill-upper {
-                background: #b8916e; /* Inactive track color */
+                background: #b8916e;
                 border: 0.2px solid #010101;
-                border-radius: 10px; /* Increased border radius */
+                border-radius: 10px;
             }
 
             input[type="range"]::-ms-thumb {
                 border: 1px solid #000000;
                 height: 36px;
                 width: 16px;
-                border-radius: 10px; /* Increased border radius */
-                background: #d2b78e; /* Thumb color */
+                border-radius: 10px;
+                background: #d2b78e;
                 cursor: pointer;
             }
 
