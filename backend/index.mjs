@@ -207,7 +207,7 @@ const login_fail_page = "/pages/login_fail_page/login_fail.html";
 const signup_success_page = login_success_page;
 const signup_fail_page = "/pages/signup_fail_page/signup_fail.html";
 const app = express();
-const port = 4000;
+const port = process.env.port || 4000;
 
 app.use(express.json());
 app.use(cors());
