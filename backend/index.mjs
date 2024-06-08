@@ -159,6 +159,12 @@ app.listen(port, () => {
   console.log("stargazer listening on port " + port);
 });
 
+// get request for root page will wipe all cookies
+app.get("/", (req, res) => {
+  res.cookie("loggedin", "false");
+  res.cookie("username", "");
+  res.sendFile("/pages/starting_page/starting.html", { root: root_dir });
+});
 // GET REQUESTS GRABBING PAGES AND PAGE ASSETS
 routes.forEach(({ path, file }) => {
   // if port is not 4000 we are running on horoku not the app and need to add /app to the root directory
@@ -270,7 +276,7 @@ app.post("/signup/attempt", async (req, res) => {
 app.post("/logout/attempt", (req, res) => {
   console.log("ATTEMPTING TO LOG OUT USER");
   // check if a user is currently logged in
-  if (req.cookie.loggedin != "true") {
+  if (req.cookies.loggedin != "true") {
     console.log("unable to log out as no user is currently logged in");
     res.status(403).end("can't log out of a profile if you are not logged in!");
   }
@@ -284,13 +290,14 @@ app.post("/logout/attempt", (req, res) => {
 app.post("/horoscope/post", async (req, res) => {
   console.log("RECIEVED REQUEST TO STORE HOROSCOPE DATA IN SERVER");
   const { catagory, constellation, horoscope } = req.body;
-  const loggedin = req.cookie.loggedin;
-  if (loggedin != true) {
+  const loggedin = req.cookies.loggedin;
+  console.log(loggedin);
+  if (loggedin != "true") {
     console.log("ERROR: NO USER IS LOGGED IN SO WE CANNOT STORE USER DATA");
     res.status(422).end("unable to store data as user is not signed in");
     return;
   }
-  const username = req.cookie.username;
+  const username = req.cookies.username;
   console.log("user is signed in! placing data in database");
   if (await place_horoscope(username, catagory, constellation, horoscope)) {
     console.log("SUCCEEDED!");
@@ -307,13 +314,13 @@ app.post("/horoscope/post", async (req, res) => {
 // GET REQUEST ATTEMPTING TO GRAB USER HOROSCOPE DATA
 app.get("/horoscope/get", async (req, res) => {
   console.log("RECIEVED REQUEST TO GRAB HOROSCOPE DATA FROM SERVER");
-  const loggedin = req.cookie.loggedin;
+  const loggedin = req.cookies.loggedin;
   if (loggedin != true) {
     console.log("ERROR: NO USER IS LOGGED IN SO WE CANT SEND BACK USER DATA");
     res.status(422).end("unable to send user data as user is not signed in");
     return;
   }
-  const username = req.cookie.username;
+  const username = req.cookies.username;
   console.log("user is signed in! grabbing its data from database");
   user_horoscopes = await grab_user_horoscopes(username);
   if (user_horoscopes == null) {
