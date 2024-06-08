@@ -1,10 +1,9 @@
 /**
  * this class contains all source code for the backend server and is
  * responsible for sending all assets to a client ( mainly JS/CSS/HTML files, and images)
- * it is also responsible for querying the database for, and verifying user information (username, password, horoscope data) 
+ * it is also responsible for querying the database for, and verifying user information (username, password, horoscope data)
  * finally it is also responsible for storing user information in the database if a signup occurs, or a new horoscope is generated
  */
-
 
 // express and cors used to handle http request, cookie parser used to generate cookies
 import express from "express";
@@ -15,13 +14,13 @@ import cookie_parser from "cookie-parser";
 import { MongoClient } from "mongodb";
 /**
  * @constant {string} client_url stores url from which database can be accessed to add/remove/query data
- * @constant {string} db_name stores the name of the database which holds both user history and registration info 
+ * @constant {string} db_name stores the name of the database which holds both user history and registration info
  * @constant {string} users_collection_name stores name of the collection which holds user's usernames and password info
  * @constant {string} horoscopes_collection_name stores name of the collection which holds user's horoscope information - foreign key is username
  * @constant {MongoClient} client mongo object used to make API requests to database
  */
 
-const client_url = 
+const client_url =
   "mongodb+srv://bahorowitz:HxfQTvBgarDEoXTE@stargazercluster.j46iehf.mongodb.net/?retryWrites=true&w=majority&appName=stargazerCluster";
 const db_name = "Stargazer"; // name of database
 const users_collection_name = "users"; // name of user table in database
@@ -34,7 +33,7 @@ const client = new MongoClient(client_url, {
 
 /**
  * launches a connection to the database from the server
- * immediately when the server is started 
+ * immediately when the server is started
  */
 async function run() {
   try {
@@ -49,9 +48,9 @@ run().catch(console.dir);
 
 /**
  * checks whether a user with passed through username and password
- * has a registered stargazer account 
+ * has a registered stargazer account
  * @param {string} username username of user to check
- * @param {string} password password of user to check 
+ * @param {string} password password of user to check
  * @returns {boolean} true if user exists, false if not
  */
 async function check_credentials(username, password) {
@@ -95,10 +94,10 @@ async function check_username(username) {
 }
 
 /**
- * registers a new account in the stargazers database 
+ * registers a new account in the stargazers database
  * @param {string} username username of new account
  * @param {string} password password of new account
- * @returns true if registration was successful, false if any errors occured 
+ * @returns true if registration was successful, false if any errors occured
  */
 async function place_credentials(username, password) {
   try {
@@ -119,9 +118,9 @@ async function place_credentials(username, password) {
 }
 
 /**
- * places a new horoscope in the stargazers db and links it to a registered user and a time 
- * @param {string} username username of registered stargazer account to link horoscope data to 
- * @param {string} catagory catagory of horoscope 
+ * places a new horoscope in the stargazers db and links it to a registered user and a time
+ * @param {string} username username of registered stargazer account to link horoscope data to
+ * @param {string} catagory catagory of horoscope
  * @param {string} constellation constellation of horoscope
  * @param {string} horoscope text data of horoscope
  * @returns {boolean} true if horoscope was placed successfully, false if any error occurs
@@ -147,7 +146,7 @@ async function place_horoscope(username, catagory, constellation, horoscope) {
   }
 }
 /**
- * given a registered user returns up to twenty of the most recently placed horoscopes associated 
+ * given a registered user returns up to twenty of the most recently placed horoscopes associated
  * to the user in a JSON array
  * @param {string} username registered user's username
  * @returns {JSON[]} array of up to 20 of the most recently placed horoscopes in stargazers assigned to user
@@ -181,7 +180,7 @@ async function grab_user_horoscopes(username) {
  * @constant {string} mp3_type_type stores ending of header of response packet when sending mp3 file
  * @constant {string} font_type stores ending of header of response packet when sending font file
  * @constant {string} json_type stores ending of header of response packet when sending json file
- * @constant {string} root_dir stores root directory where all web assets are stored 
+ * @constant {string} root_dir stores root directory where all web assets are stored
  * @constant {express} app express object used to create post/get requests
  * @constant {Integer} port port number the server is running on, if running locally always set to port 4000, if running on heroku given a random port #
  */
@@ -303,7 +302,7 @@ app.post("/login/attempt", async (req, res) => {
 /**
  * given a new stargazer's user information
  * will attempt to register them, and make sure all information is valid
- * if username already assigned to a registered account will return fail 
+ * if username already assigned to a registered account will return fail
  */
 app.post("/signup/attempt", async (req, res) => {
   console.log("RECIEVED SIGNUP ATTEMPT");
@@ -340,9 +339,9 @@ app.post("/signup/attempt", async (req, res) => {
   }
 });
 
-/** 
-* post request logging out a user by wiping cookie values 
-*/
+/**
+ * post request logging out a user by wiping cookie values
+ */
 app.post("/logout/attempt", (req, res) => {
   console.log("ATTEMPTING TO LOG OUT USER");
   // check if a user is currently logged in
@@ -385,7 +384,7 @@ app.post("/horoscope/post", async (req, res) => {
 
 /**
  * get request grabbing 20 most recent horoscopes created by user from server
- * if guest account will not send anything 
+ * if guest account will not send anything
  */
 app.get("/horoscope/get", async (req, res) => {
   console.log("RECIEVED REQUEST TO GRAB HOROSCOPE DATA FROM SERVER");
