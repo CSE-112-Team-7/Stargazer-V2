@@ -74,7 +74,7 @@ class SettingPanel extends HTMLElement {
             input[type="range"] {
                 -webkit-appearance: none;
                 width: 60%;
-                margin-top: 30px;
+                margin-top: 20px;
                 background: transparent;
                 position: relative;
             }
@@ -166,7 +166,7 @@ class SettingPanel extends HTMLElement {
                 text-align: left;
                 color: #d2b78e;
                 text-decoration: none;
-                margin-top: 30px;
+                margin-top: 40px;
                 font-size: 1.2rem;
             }
         `);
