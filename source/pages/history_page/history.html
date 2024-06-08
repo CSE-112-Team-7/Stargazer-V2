@@ -7,17 +7,20 @@
     <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/history/style" />
     <script src="/history/script" type="module"></script>
+    <script>
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+    </script>
 
 </head>
 <body>
     <div id="main-container" class="container">
         <div class="left-column">
-            <p>Left Column Content</p>
-            <button id="back-button">Back To Selection Page</button>
-            <p>Instructinos:</p>
-            <p>A card for each date you did a horoscope will show up!</p>
-            <p>Click on the buttons to see the horoscope you got for that date + category</p>
-            <p>If no cards are there, try getting a horoscope for any category and coming back!</p>
+            <p>Click here to go back to the Selection Page!</p>
+            <button id="back-button">To Selection</button>
+            
         </div>
         <div class="middle-column">
                 <div id="scrollable-content" class="scrollable-content">
@@ -28,7 +31,10 @@
 
         </div>
         <div class="right-column">
-            <p>Right Column Content</p>
+            <p>Instructions:</p>
+            <p>A card for each date you did a horoscope will show up!</p>
+            <p>Click on the buttons to see the horoscope you got for that date + category</p>
+            <p>If no cards are there, try getting a horoscope for any category and coming back!</p>
             
 
         </div>
@@ -37,7 +43,7 @@
             <p id="display-title" class="display-title"> display title</p>
             <!-- <img src="" alt="">        image here???? --> 
             <p id="display-body" class="display-body"> display body</p>
-            <button onclick="updateDisplay()">Close</button>
+            <button onclick="closePopup()">Close</button>
         </div>
     </div>
     
