@@ -111,14 +111,12 @@ async function place_horoscope(username, catagory, constellation, horoscope) {
 async function grab_user_horoscopes(username) {
   try {
     console.log("ATTEMPTING TO GRAB USER " + username + " HOROSCOPE DATA");
-    const user_exists = await check_username(username);
-    if (!user_exists) {
-      console.log("ERROR: USER DOES NOT EXIST IN DATABASE");
-      return null;
-    }
     const database = client.db(db_name);
     const collection = database.collection(horoscopes_collection_name);
-    const horoscopes = await collection.find(username).sort({ timestamp: -1 }); // grabs the previous 20 horoscopes the user has entered, sorted by date
+    console.log("GRABBING HOROSCOPES")
+    const horoscopes = await collection.find({username:username}).sort({ timestamp: -1 }).toArray(); // grabs the previous 20 horoscopes the user has entered, sorted by date
+    console.log("GRABBED HOROSCOPES")
+    console.log(horoscopes)
     return horoscopes;
   } catch (error) {
     console.error("ERROR WHILE GRABBING HOROSCOPE DATA FROM DATABASE", error);
@@ -225,7 +223,7 @@ app.post("/login/attempt", async (req, res) => {
     res.cookie("loggedin", "true");
     res.cookie("username", rec_username);
     res.end("LOGIN SUCCEEDED");
-    console.log(res);
+    // console.log(res);
   } else {
     // if they don't assign different cookies and return in failure
     console.log("FAILED LOGIN!");
@@ -313,15 +311,18 @@ app.post("/horoscope/post", async (req, res) => {
 
 // GET REQUEST ATTEMPTING TO GRAB USER HOROSCOPE DATA
 app.get("/horoscope/get", async (req, res) => {
+  let user_horoscopes;
   console.log("RECIEVED REQUEST TO GRAB HOROSCOPE DATA FROM SERVER");
   const loggedin = req.cookies.loggedin;
-  if (loggedin != true) {
+  if (loggedin != "true") {
     console.log("ERROR: NO USER IS LOGGED IN SO WE CANT SEND BACK USER DATA");
+    console.log("loggedin=" + loggedin);
     res.status(422).end("unable to send user data as user is not signed in");
     return;
   }
   const username = req.cookies.username;
   console.log("user is signed in! grabbing its data from database");
+
   user_horoscopes = await grab_user_horoscopes(username);
   if (user_horoscopes == null) {
     console.log("FAILED!");
@@ -331,6 +332,7 @@ app.get("/horoscope/get", async (req, res) => {
     return;
   }
   console.log("SUCCEEDED!");
-  res.json(user_horoscopes);
-  res.status(200).end("SUCCESS!");
+
+  return res.json(user_horoscopes);
+  // res.status(200).end("SUCCESS!");
 });

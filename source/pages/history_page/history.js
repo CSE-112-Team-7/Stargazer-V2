@@ -12,6 +12,18 @@
   //gets code 500 if fail
   //{username:"username", category:"", constellation: "", horoscope: "", timestamp: "timestamp" }
 
+  var req = new XMLHttpRequest();
+  req.open("GET", "http://localhost:4000/horoscope/get", true);
+
+  req.onload = function() {
+    if (req.status === 200) {
+      console.log(this.responseText);
+    } else {
+      console.log('Error:', req.statusText);
+    }
+  };
+  req.send();
+
   const dbJSON = []
   // [
   //   {username:"buba", category:"Relationship", constellation: "Crux",  text: "flavortown", timestamp: "04/20"},
