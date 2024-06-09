@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Page</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
+    <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/signup/style" />
     <script defer src="/signup/script"></script>
   </head>
   <body>
-    SIGN UP PAGE <br />
-
-    RETURN TO LOGIN INDEX <br />
-    <a href="/login_index/page"> link to login index </a> <br />
-
-    <form action="/signup/attempt" method="post">
-      <label for="new_username"> Input your Username: </label> <br />
-      <input type="text" id="new_username" name="new_username" /> <br />
-      <label for="new_password"> Input your Password: </label> <br />
-      <input type="text" id="new_password" name="new_password" /> <br />
-      <label for="new_password_conf"> Confirm your Password: </label> <br />
-      <input type="text" id="new_password_conf" name="new_password_conf" />
-      <!-- TODO: ADD CHECK TO ENSURE CONFIRMATION AND NEW PASSWORD ARE THE SAME + SANITIZE INPUT-->
-      <input type="submit" value="Submit" />
-    </form>
+    <h1 id="takenUsername">Username is Taken</h1>
+    <h1 id="unknownProblem">Unable to Make Account</h1>
+    <header>
+      <h1><span>sign up with</span><br />STARGAZER</h1>
+    </header>
+    <section>
+      <form id="myForm">
+        <label for="new_username" hidden></label>
+        <input
+          type="text"
+          id="new_username"
+          name="new_username"
+          title="username"
+          placeholder="username"
+          required
+        />
+        <label for="new_password" hidden> </label>
+        <input
+          type="password"
+          id="new_password"
+          name="new_password"
+          title="password"
+          placeholder="password"
+          required
+        />
+        <label for="new_password_conf" hidden> </label>
+        <input
+          type="password"
+          id="new_password_conf"
+          name="new_password_conf"
+          title="confirm password"
+          placeholder="confirm password"
+          required
+        />
+        <!-- TODO: ADD CHECK TO ENSURE CONFIRMATION AND NEW PASSWORD ARE THE SAME + SANITIZE INPUT-->
+        <button type="submit" id="submitButton" title="submit" value="Submit">
+          Submit
+        </button>
+      </form>
+    </section>
   </body>
 </html>

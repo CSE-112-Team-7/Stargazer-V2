@@ -63,10 +63,12 @@ function getStarPath(constellation){
   }
 }
 
-  // Send GET request to server
+  // Send GET request to server to fetch DB user data
   var req = new XMLHttpRequest();
   req.open("GET", "/horoscope/get", true);
   req.setRequestHeader("Content-Type", "application/json");
+
+  let loginStatus = false;
 
   req.onload = function() {
     if (req.status === 200) {
@@ -76,9 +78,23 @@ function getStarPath(constellation){
       const formattedJSONArr = formatJSON(dbJSONArr);
       loadCards(formattedJSONArr);
 
-      console.log(this.responseText);
+      loginStatus = true;
     } else {
-      console.log('Error:', req.statusText);
+      // When GET fails to fetch data
+      let scrollContainter = document.getElementById("scrollable-content");
+      let backButton = document.getElementById("back-button");
+      let backText = document.getElementById("back-text");
+
+      const errorMsg = document.createElement("h2");
+      errorMsg.classList.add("error-msg");
+      errorMsg.textContent = "please login to view your user history";
+
+      backButton.textContent = "To Menu";
+      backText.textContent = "Click here to go back to the login menu."
+
+      scrollContainter.appendChild(errorMsg);
+
+      loginStatus = false;
     }
   };
   req.send();
@@ -270,6 +286,10 @@ function loadCards(formattedJSON) {
   document.addEventListener("DOMContentLoaded", function() {
     //set the link to the back button
     document.getElementById("back-button").addEventListener("click",() => {
-      window.location.href = "/selection/page";
+      if (loginStatus == true) {
+        window.location.href = "/selection/page";
+      } else {
+        window.location.href = "/starting/page";
+      }
     });
 });

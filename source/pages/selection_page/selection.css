@@ -55,5 +55,6 @@ button {
     top: 61.5vh;
     left: auto;
     transform: none;
+    display: none !important;
   }
 }

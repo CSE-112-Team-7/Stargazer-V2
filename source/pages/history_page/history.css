@@ -28,6 +28,10 @@ h2 {
   padding: 0.75rem;
 }
 
+.right-column > p {
+  margin: 1rem;
+}
+
 .middle-column {
   flex: 2; /* Middle column is wider */
   margin: 2vh;
@@ -126,4 +130,8 @@ h2 {
   max-height:50%;
   width: auto;
   height: auto;
+}
+
+.error-msg {
+  opacity: 70%;
 }
