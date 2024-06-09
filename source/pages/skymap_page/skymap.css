@@ -23,6 +23,8 @@ p:first-of-type {
   left: 50vw;
   transform: translate(-50%);
   font-size: 20px;
+  padding: 0 5px;
+  background-color: var(--hint-background);
 }
 
 canvas {
