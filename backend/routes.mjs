@@ -15,6 +15,11 @@ const signup_page = signup_dir + "signup.html";
 const signup_js = signup_dir + "signup.js";
 const signup_css = signup_dir + "signup.css";
 
+const history_dir = "pages/history_page/";
+const history_page = history_dir + "history.html";
+const history_js = history_dir + "history.js";
+const history_css = history_dir + "history.css";
+
 const explanation_dir = "pages/explanation_page/";
 const explanation_page = explanation_dir + "explanation.html";
 const explanation_css = explanation_dir + "explanation.css";
@@ -118,7 +123,6 @@ const gideon_roman = font_dir + "GideonRoman-Regular.ttf";
 
 const util_dir = "utils/";
 const play_music_script = util_dir + "playBgMusic.js";
-const play_clicksound_script = util_dir + "playClickSound.js";
 const mouse_script = util_dir + "oneko.js";
 const setting_script = util_dir + "setting.js";
 
@@ -133,6 +137,9 @@ const routes = [
   { path: "/signup/page", file: signup_page },
   { path: "/signup/style", file: signup_css },
   { path: "/signup/script", file: signup_js },
+  { path: "/history/page", file: history_page },
+  { path: "/history/style", file: history_css },
+  { path: "/history/script", file: history_js },
   { path: "/explanation/page", file: explanation_page },
   { path: "/explanation/style", file: explanation_css },
   { path: "/explanation/script", file: explanation_js },

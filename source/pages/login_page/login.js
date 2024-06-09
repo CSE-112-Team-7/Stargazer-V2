@@ -1,9 +1,8 @@
-// // testUser1 testPassOne
+// testUser1 testPassOne
 document.getElementById("myForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
   let formData = new FormData(this);
-  console.log(formData);
 
   let xhr = new XMLHttpRequest();
 
@@ -21,10 +20,6 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
       errorMsg.style.display = "block";
       console.error("Error:", xhr.statusText);
     }
-  };
-
-  xhr.onerror = function () {
-    console.error("Network Error");
   };
 
   xhr.send(JSON.stringify(Object.fromEntries(formData)));
