@@ -1,4 +1,5 @@
 // PAGE DIRECTORY VARIABLES
+
 const login_dir = "pages/login_page/";
 const login_page = login_dir + "login.html";
 const login_js = login_dir + "login.js";
