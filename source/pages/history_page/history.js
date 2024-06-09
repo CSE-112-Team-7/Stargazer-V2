@@ -100,8 +100,6 @@ function getStarPath(constellation){
   req.send();
 
   function formatJSON(dbJSONArr){
-    console.log("formatJSON() working with: ");
-    console.log(dbJSONArr);
     const jsonList = [];
     
     dbJSONArr.forEach(packet => {
@@ -116,11 +114,9 @@ function getStarPath(constellation){
       if(dateObj === undefined){  
         const newDate = {date:simpleDate}
         newDate[packet.catagory] = {constellation: packet.constellation, text:packet.horoscope}
-        console.log("created new date card: " + newDate.date + " | " + JSON.stringify([packet.catagory]));
         jsonList.push(newDate);
 
       } else if(dateObj[packet.catagory] === undefined ) {  //otherwise add on to existing object ONLY IF it doesnt have an existing entry
-        console.log("updated existing card: " + dateObj);
         dateObj[packet.catagory] = {constellation: packet.constellation, text:packet.horoscope}
       }
 
@@ -136,7 +132,6 @@ function getStarPath(constellation){
     button.alt = "blank button";
 
     button.onclick = (() => {
-        console.log("BLANK BUTTON!!! no data found for this category")
         const noDataTitle = "No Data Found for this category!"
         const noDataText = " (please choose a different category with an icon!)"
         openPopup(noDataTitle, noDataText);
@@ -146,7 +141,6 @@ function getStarPath(constellation){
   }
 
   function getRelationshipButton(relationshipJSON){
-    // console.log( "creating relationshipButton w/ data: " +JSON.stringify(relationshipJSON));
     // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
     if(relationshipJSON === undefined){
         return getBlankButton();
@@ -165,7 +159,6 @@ function getStarPath(constellation){
          * into the place where we display the generated ones
          */
         
-        console.log("loading category RELATIONSHIP: constellation:[" + relationshipJSON.constellation + "] " + relationshipJSON.text);
         openPopup(relationshipJSON.constellation, relationshipJSON.text);
     });
 
@@ -173,7 +166,6 @@ function getStarPath(constellation){
   }
   
   function getHealthButton(healthJSON){
-    // console.log( "creating healthButton w/ data: " +JSON.stringify(healthJSON));
     // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
     if(healthJSON === undefined){
         return getBlankButton();
@@ -192,14 +184,12 @@ function getStarPath(constellation){
          * into the place where we display the generated ones
          */
         
-        console.log("loading category HEALTH: constellation:[" + healthJSON.constellation + "] " + healthJSON.text);
         openPopup(healthJSON.constellation, healthJSON.text);
     });
 
     return button;
   }
   function getHoroscopeButton(horoscopeJSON){
-    // console.log( "creating horoscopeButton w/ data: " +JSON.stringify(horoscopeJSON));
     // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
     if(horoscopeJSON === undefined){
         return getBlankButton();
@@ -218,7 +208,6 @@ function getStarPath(constellation){
          * into the place where we display the generated ones
          */
         
-        console.log("loading category HOROSCOPE: constellation:[" + horoscopeJSON.constellation + "] " + horoscopeJSON.text);
         openPopup(horoscopeJSON.constellation, horoscopeJSON.text);
     });
 
@@ -226,7 +215,6 @@ function getStarPath(constellation){
   }
 
   function getCareerButton(careerJSON){
-    // console.log( "creating careerButton w/ data: " +JSON.stringify(relationshipJSON));
     // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
     if(careerJSON === undefined){
         return getBlankButton();
@@ -240,7 +228,6 @@ function getStarPath(constellation){
 
     button.onclick = (() => {
         // HERE we store the text for the specific category
-        console.log("loading category CAREER: constellation:[" + careerJSON.constellation + "] " + careerJSON.text);
         openPopup(careerJSON.constellation, careerJSON.text);
     });
 
@@ -253,7 +240,6 @@ function getStarPath(constellation){
     card.classList.add("card");    // set its class to 'item_card'
 
     // create Relationship button
-    console.log("making card for: " + JSON.stringify(dateJSON));
     const relationshipButton = getRelationshipButton(dateJSON.RELATIONSHIP);
     const healthButton = getHealthButton(dateJSON.HEALTH);
     const careerButton = getCareerButton(dateJSON.CAREER);
@@ -279,7 +265,6 @@ function loadCards(formattedJSON) {
     formattedJSON.forEach(dateJSON => {
         const singleDateCard = createDateCard(dateJSON);
         cardsContainer.appendChild(singleDateCard);
-        console.log("created new card: " + dateJSON.date)
     });
 }
 
