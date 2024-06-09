@@ -10,32 +10,36 @@
     <script defer src="/login/script"></script>
   </head>
   <body>
-    <h1 id="errorMsg">Login Failed Please Try Again</h1>
     <header>
       <h1><span>login to</span><br />STARGAZER</h1>
     </header>
 
-    <form id="myForm">
-      <input
-        type="username"
-        id="rec_username"
-        name="rec_username"
-        title="username"
-        placeholder="username"
-        required
-      />
-      <input
-        type="password"
-        id="rec_password"
-        name="rec_password"
-        title="password"
-        placeholder="password"
-        required
-      />
-      <button type="submit" id="submitButton" title="submit" value="Submit">
-        Submit
-      </button>
-    </form>
-    <!-- TODO: ADD INPUT SANITIZATION -->
+    <main>
+      <p id="errorMsg">Login Failed. Please Try Again.</p>
+      <form id="myForm">
+        <input
+          type="username"
+          id="rec_username"
+          name="rec_username"
+          title="username"
+          placeholder="username"
+          required
+        />
+        <input
+          type="password"
+          id="rec_password"
+          name="rec_password"
+          title="password"
+          placeholder="password"
+          required
+        />
+        <button type="submit" id="submitButton" title="submit" value="Submit">
+          Log In
+        </button>
+      </form>
+      <!-- TODO: ADD INPUT SANITIZATION -->
+      <p>Do not have an account? <a href="/signup/page">Sign up now &rarr;</a></p>
+      <a href="/">&larr; Back to Home Page</a>
+    </main>
   </body>
 </html>

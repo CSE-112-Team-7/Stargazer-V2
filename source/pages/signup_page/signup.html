@@ -10,12 +10,12 @@
     <script defer src="/signup/script"></script>
   </head>
   <body>
-    <h1 id="takenUsername">Username is Taken</h1>
-    <h1 id="unknownProblem">Unable to Make Account</h1>
     <header>
       <h1><span>sign up with</span><br />STARGAZER</h1>
     </header>
-    <section>
+    <main>
+      <p id="takenUsername">Username is Taken</p>
+      <p id="unknownProblem">Unable to Make Account. Try Again Later.</p>
       <form id="myForm">
         <label for="new_username" hidden></label>
         <input
@@ -46,9 +46,11 @@
         />
         <!-- TODO: ADD CHECK TO ENSURE CONFIRMATION AND NEW PASSWORD ARE THE SAME + SANITIZE INPUT-->
         <button type="submit" id="submitButton" title="submit" value="Submit">
-          Submit
+          Sign Up
         </button>
       </form>
-    </section>
+      <p>Already have an account? <a href="/login/page">Log in now &rarr;</a></p>
+      <a href="/">&larr; Back to Home Page</a>
+    </main>
   </body>
 </html>

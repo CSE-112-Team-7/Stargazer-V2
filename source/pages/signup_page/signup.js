@@ -16,7 +16,6 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
   let formData = new FormData(this);
-  console.log(formData);
 
   let xhr = new XMLHttpRequest();
 
@@ -24,26 +23,22 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onload = function () {
+    const takenUser = document.getElementById("takenUsername");
+    const ukProb = document.getElementById("unknownProblem");
     if (xhr.status === 201) {
       console.log("Successful login");
-      const errorMsg = document.getElementById("takenUsername");
-      errorMsg.style.display = "none";
-      const ukProb = document.getElementById("unknownProblem");
+      takenUser.style.visibility = "hidden";
       ukProb.style.display = "none";
       window.location.href = "/selection/page";
     } else if (xhr.status === 200) {
-      const takenUser = document.getElementById("takenUsername");
-      takenUser.style.display = "block";
+      takenUser.style.visibility = "visible";
+      ukProb.style.display = "none"
       console.error("Error:", xhr.statusText);
     } else if (xhr.status === 204) {
-      const ukProb = document.getElementById("unknownProblem");
+      takenUser.style.visibility = "hidden";
       ukProb.style.display = "block";
       console.error("Error:", xhr.statusText);
     }
-  };
-
-  xhr.onerror = function () {
-    console.error("Network Error");
   };
 
   xhr.send(JSON.stringify(Object.fromEntries(formData)));
