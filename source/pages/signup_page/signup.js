@@ -32,7 +32,7 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
       window.location.href = "/selection/page";
     } else if (xhr.status === 200) {
       takenUser.style.visibility = "visible";
-      ukProb.style.display = "none"
+      ukProb.style.display = "none";
       console.error("Error:", xhr.statusText);
     } else if (xhr.status === 204) {
       takenUser.style.visibility = "hidden";
