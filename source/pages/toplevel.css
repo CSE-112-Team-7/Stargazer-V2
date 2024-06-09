@@ -13,8 +13,12 @@
 }
 
 [data-theme="light"] {
-  --background-color: linear-gradient(180deg, rgba(0,32,122,1) 10%, rgba(0,164,219,1) 92%);
-  --hint-background: rgba(0,32,122,1);
+  --background-color: linear-gradient(
+    180deg,
+    rgba(0, 32, 122, 1) 10%,
+    rgba(0, 164, 219, 1) 92%
+  );
+  --hint-background: rgba(0, 32, 122, 1);
   --explanation-background: rgba(0, 0, 0, 0.5);
 }
 
