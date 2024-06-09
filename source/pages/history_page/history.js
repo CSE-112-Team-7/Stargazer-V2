@@ -1,90 +1,69 @@
-  //were gonna get an array of a LOT of JSON files
-  // 
-
-
-  //parse db data into formatted json
-
-  //save formatted json into local storage
-
-  //db response format
-  //max of 20
-  // min of 0
-  //gets code 500 if fail
-  //{username:"username", category:"", constellation: "", horoscope: "", timestamp: "timestamp" }
-
   const iconsPath = "/assets/icons/"
   const constellationsPath = "/assets/constellation/"
 
+  /**
+   * Function that loads constellation and text body to the popup
+   */
+function openPopup(constellation, textbody){
+  const displayTitle = document.getElementById("display-title");
+  const displayBody = document.getElementById("display-body");
+  const imageElem = document.getElementById("popup-img");
+
+  const popup = document.getElementById("popup");
+  if (popup.style.display === "flex") {
+    popup.style.display = "none"
+  }
+  else {
+    popup.style.display = "flex"
+  }
+
+  const starPath = getStarPath(constellation)
+
+  if (starPath == "undefined") {
+    imageElem.src = "";
+    imageElem.alt = "";
+  } else {
+  imageElem.src = constellationsPath + starPath + "/exp/img";
+  imageElem.alt = constellationsPath + starPath + "/exp/img";
+  }
   
+  displayTitle.textContent =  "Constellation: " + constellation;
+  displayBody.textContent = textbody;
+}
 
-  function openPopup(constellation, textbody){
-    const displayTitle = document.getElementById("display-title");
-    const displayBody = document.getElementById("display-body");
-    const imageElem = document.getElementById("popup-img");
+function getStarPath(constellation){
 
-    const popup = document.getElementById("popup");
+  switch (constellation) {
+    case "Aries":
+      return "aries";
 
-    if(popup.style.display === "block"){
-      popup.style.display = "none"
-    }
-    else {
-      popup.style.display = "block"
-    }
+    case "ArmadilloDragon":
+      return "armadillo";
 
-    const starPath = getStarPath(constellation)
+    case "Canis Major":
+      return "canis";
 
-    imageElem.src = constellationsPath + starPath + "/exp/img";
-    imageElem.alt = constellationsPath + starPath + "/exp/img";
-    
+    case "Carina":
+      return "carina";
 
+    case "Crux":
+      return "crux";
 
-    displayTitle.textContent =  "Constellation: " + constellation;
-    displayBody.textContent = textbody;
+    case "Ophiuchus":
+      return "ophi";
 
+    case "Orion":
+      return "orion";
+
+    case "UrsaMajor":
+      return "ursa";
+
+    default:
+      return "undefined";
   }
+}
 
-  function getStarPath(constellation){
-
-    switch (constellation) {
-      case "Aries":
-        return "aries"
-        break;
-
-      case "ArmadilloDragon":
-        return "armadillo"
-        break;
-
-      case "CanisMajor":
-        return "canis"
-        break;
-
-      case "Carina":
-        return "carina"
-        break;
-
-      case "Crux":
-        return "crux"
-        break;
-
-      case "Ophiuchus":
-        return "ophi"
-        break;
-
-      case "Orion":
-        return "orion"
-        break;
-
-      case "UrsaMajor":
-        return "ursa"
-        break;
-
-      default:
-        break;
-    }
-  }
-
-
-
+  // Send GET request to server
   var req = new XMLHttpRequest();
   req.open("GET", "/horoscope/get", true);
   req.setRequestHeader("Content-Type", "application/json");
@@ -92,7 +71,8 @@
   req.onload = function() {
     if (req.status === 200) {
 
-      const dbJSONArr = JSON.parse(req.response); // this is an array of JSON files
+      // Array of JSON files
+      const dbJSONArr = JSON.parse(req.response);
       const formattedJSONArr = formatJSON(dbJSONArr);
       loadCards(formattedJSONArr);
 
@@ -103,17 +83,6 @@
   };
   req.send();
 
-  
-  // [
-  //   {username:"buba", category:"Relationship", constellation: "Crux",  text: "flavortown", timestamp: "04/20"},
-  //   {username:"buba", category:"Relationship", constellation: "Aries", text: "guguns", timestamp: "04/20"},
-  //   {username:"buba", category:"Horoscope", constellation: "Orion", text: "dunba systems green", timestamp: "04/20"},
-  //   {username:"buba", category:"Horoscope", constellation: "Canis Major", text: "dunba systems green", timestamp: "09/11"},
-  //   {username:"buba", category:"Career", constellation: "Carina", text: "dunba systems green", timestamp: "09/11"},
-  //   {username:"buba", category:"Horoscope", constellation: "Ophiuchus", text: "dunba systems green", timestamp: "01/11"},
-  //   {username:"buba", category:"Career", constellation: "Armadillo Dragon", text: "dunba systems green", timestamp: "01/11"},
-  // ]
-
   function formatJSON(dbJSONArr){
     console.log("formatJSON() working with: ");
     console.log(dbJSONArr);
@@ -122,10 +91,9 @@
     dbJSONArr.forEach(packet => {
       const rawDate = new Date(packet.timestamp);
       const day = rawDate.getDate()
-      const month = rawDate.getMonth()
+      const month = rawDate.getMonth() + 1
 
-      const simpleDate = month + "/" + day; //THIS IS WRONG!!! what do timestamps look like
-      //TODO: properly format the timestamp into month/day
+      const simpleDate = month + "/" + day;
       var dateObj = jsonList.find(e => e.date === simpleDate);  
       
       // if no date exists yet for this packet, make a new one!
@@ -145,34 +113,16 @@
     return jsonList;
   }
 
-  const mockJSON = [
-    { 
-      date:"04/20",
-      relationship:{constellation:"your mom", text:"heehee"},
-      career:{constellation:"your dad", text:"he went to get milk"},
-      health:{constellation:"your uncle", text:"you're getting touched"},
-      horoscope:{constellation:"rusty nickle", text:"try licking"}
-    },
-
-    { date:"09/11",
-      relationship:{constellation:"your..son?", text:"boo hoo"},
-      // career:{constellation:"your dad", text:"he went to get milk"},
-      // health:{constellation:"your uncle", text:"you're getting touched"},
-      horoscope:{constellation:"chipped penny", text:"mostly zinc"}
-    }
-
-  ]
-
   function getBlankButton(){
     const button = document.createElement("input");
     button.type = "button";
     button.classList.add("card-button")
-    // button.src = iconsPath + "Relationship.png";
     button.alt = "blank button";
+
     button.onclick = (() => {
         console.log("BLANK BUTTON!!! no data found for this category")
         const noDataTitle = "No Data Found for this category!"
-        const noDataText = " please choose a different category with an icon!"
+        const noDataText = " (please choose a different category with an icon!)"
         openPopup(noDataTitle, noDataText);
     });
 
@@ -274,27 +224,12 @@
 
     button.onclick = (() => {
         // HERE we store the text for the specific category
-        /**
-         * we want to load the json.category.constellation and json.category.text
-         * into the place where we display the generated ones
-         */
-        
         console.log("loading category CAREER: constellation:[" + careerJSON.constellation + "] " + careerJSON.text);
         openPopup(careerJSON.constellation, careerJSON.text);
     });
 
     return button;
   }
-  
-
-  /**
-   * Function that loads constellation and text body to the popup
-   * 
-   * TODO: needs to load image
-   * use img = src + constellation + "-response.png" or something???
-   */
-  
-
 
   function createDateCard(dateJSON) {
     // create the HTML element for the card itself
@@ -311,7 +246,6 @@
     const date = document.createElement("p");
     date.textContent = dateJSON.date;
 
-
     // append card contents to card as children
     card.appendChild(date);
     card.appendChild(relationshipButton);
@@ -322,8 +256,7 @@
     return card;
 }
 
-
-// Function to history c
+// Function to history card
 function loadCards(formattedJSON) {
     const cardsContainer = document.getElementById("scrollable-content");
     //for each date JSON, make a new card :D
@@ -339,6 +272,4 @@ function loadCards(formattedJSON) {
     document.getElementById("back-button").addEventListener("click",() => {
       window.location.href = "/selection/page";
     });
-
-    // loadCards();
 });

@@ -1,6 +1,21 @@
+h2 {
+  margin: 2rem;
+}
 
+.back-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+  margin: 0.5rem;
+}
 
-
+#back-button {
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 
 .container {
   display: flex;
@@ -10,7 +25,7 @@
 .left-column,
 .right-column {
   flex: 1;
-  padding: 20px;
+  padding: 0.75rem;
 }
 
 .middle-column {
@@ -18,57 +33,52 @@
   margin: 2vh;
   padding: 2vh;
   overflow-y: auto; /* Enable vertical scrolling */
-  border-style: solid;
-  border-color: var(--general-border);
+  border: 2px, solid, var(--general-border);
   border-radius: 0.5rem;
-  max-width: 110%;
 }
 
 .scrollable-content {
-  display: flex;
-  flex-direction: column;
   height: 200%; /* Example content height to ensure scrolling */
 }
 
 .card {
-  margin: 10px;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
   padding: 10px 20px 20px;
   display: flex;
-  align-items: center;
-  width: 100%;
-  box-shadow: 0 4px 8px 0 rgba(17, 89, 255, 0.2); /* this adds the "card" effect */
-  background-color: #fff3b5;
-  border-radius: 1rem;
-  display:flex
+  align-items:center;
+  display: inline-flex;
+  border: unset;
+  border-bottom:2px solid var(--general-border);
 }
 
-
 .card > * {
-  min-height: 9vw;
-  min-width: 9vw;
-  max-height: 9vw;
-  max-width: 9vw;
+  min-height: 7vw;
+  min-width: 7vw;
+  max-height: 7vw;
+  max-width: 7vw;
 
 }
 
 .card > p {
-  margin: 0.5vw;
-  color: black;
-  min-height: 5vw;
-  min-width: 5vw;
-  max-height: 5vw;
-  max-width: 5vw;
-}
+  padding-right: 2vw;
 
-.card-content {
-  float:inline-start
+  color:var(--general-border);
+  min-width: 3vw;
+  min-height: 0;
+  font-size: 1.25rem;
 }
 
 .card-button {
-  border: none;
   background-color: var(--button-background);
-  margin: 0.5vw;
+  margin: 0.5rem;
+  border: 2px, solid, var(--general-border);
   border-radius: 1rem;
+}
+
+.card-button[alt="blank button"]{
+  width: inherit;
 }
 
 .card-button[alt="blank button"]:hover {
@@ -87,40 +97,33 @@
 
 .popup-container {
   display: none;
+  flex-direction:column;
   position: fixed;
+  align-items: center;
+  justify-content: space-between;
   
   height: 75%;
-  width: 75%;
+  width: 50vw;
 
-  /* centering on the page */
   top: 50%;
   left: 50%;
-  /*  */
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: var(--button-background);
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--general-border);
+  border-radius: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-}
-
-.popup-container > p {
-  color: black;
 }
 
 .popup-container > button{
-  /* flex: 1; */
-  /* display: block; */
+  height: auto;
+  width: auto;
+  padding: 0.25rem; 
 }
 
 .popup-container > img {
-  /* flex: 2; */
-  
-  /* display: block; */
-  max-width:230px;
-  max-height:95px;
+  max-width:50%;
+  max-height:50%;
   width: auto;
   height: auto;
 }
-
-/* vw, vh, %, rem */

@@ -17,36 +17,33 @@
 </head>
 <body>
     <div id="main-container" class="container">
+
         <div class="left-column">
-            <p>Click here to go back to the Selection Page!</p>
-            <button id="back-button">To Selection</button>
-            
+            <div class="back-section">
+                <button id="back-button">To Selection</button>
+                <p>Click here to go back to the Selection Page!</p>
+            </div>
         </div>
+
         <div class="middle-column">
-                <div id="scrollable-content" class="scrollable-content">
-                    <!-- Add a lot of content here to enable scrolling -->
-                    
-                    <!--  -->
-                </div>
-
+            <div id="scrollable-content" class="scrollable-content">
+            </div>
         </div>
-        <div class="right-column">
-            <p>Instructions:</p>
+
+        <section class="right-column">
+            <h2>Instructions:</h2>
             <p>A card for each date you did a horoscope will show up!</p>
-            <p>Click on the buttons to see the horoscope you got for that date + category</p>
+            <p>Click on the buttons to see the horoscope you got for that date + category.</p>
             <p>If no cards are there, try getting a horoscope for any category and coming back!</p>
-            
+        </section>
 
-        </div>
         <div id="popup" class="popup-container">
             <img id="popup-img">
-            <p id="display-title" class="display-title"> display title</p>
-            <!-- <img src="" alt="">        image here???? --> 
+            <h3 id="display-title" class="display-title"> display title</h3>
             <p id="display-body" class="display-body"> display body</p>
             <button onclick="closePopup()">Close</button>
         </div>
-    </div>
-    
-    <!-- <my-custom-element>sup</my-custom-element> -->
-</body>
+        
+        </div>
+    </body>
 </html>
