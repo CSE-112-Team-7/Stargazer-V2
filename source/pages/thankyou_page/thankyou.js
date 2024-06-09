@@ -9,6 +9,8 @@ function init() {
   const homeButton = document.querySelector(".button");
   if (document.cookie.includes("loggedin=true")) {
     homeButton.href = "/selection/page";
+  } else {
+    homeButton.href = "/";
   }
   homeButton.addEventListener("click", () => {
     localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
