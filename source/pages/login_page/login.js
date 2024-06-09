@@ -13,11 +13,11 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
     if (xhr.status === 200) {
       console.log("Successful login");
       const errorMsg = document.getElementById("errorMsg");
-      errorMsg.style.display = "none";
+      errorMsg.style.visibility = "hidden";
       window.location.href = "/selection/page";
     } else {
       const errorMsg = document.getElementById("errorMsg");
-      errorMsg.style.display = "block";
+      errorMsg.style.visibility = "visible";
       console.error("Error:", xhr.statusText);
     }
   };
