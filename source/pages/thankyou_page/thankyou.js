@@ -7,6 +7,9 @@ function init() {
   playBgMusic(backgroundMusic, true);
 
   const homeButton = document.querySelector(".button");
+  if (document.cookie.includes("loggedin=true")) {
+    homeButton.href = "/selection/page";
+  }
   homeButton.addEventListener("click", () => {
     localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
   });
