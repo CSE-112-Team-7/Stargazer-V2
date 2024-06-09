@@ -14,6 +14,8 @@ class SettingPanel extends HTMLElement {
                 <h2>Settings</h2>
                 <label for="volume-slider">Background Music Volume</label>
                 <input type="range" name="volume-slider" min="0" max="1" step="0.01" value="0">
+                <button id="theme">Light Mode</button>
+                <hr/>
                 <a href="/login/page" id="login">Log In to Save your Fortune &rarr;</a>
                 <a href="/history/page" id="history">Your History &rarr;</a>
                 <button id="logout">Logout</button>
@@ -164,6 +166,24 @@ class SettingPanel extends HTMLElement {
                 cursor: pointer;
             }
             
+            #theme {
+                align-self: flex-start;
+                background-color: var(--button-background);
+                color: var(--general-border);
+                border-color: var(--general-border);
+                border-radius: 12px;
+                font-size: 1.2rem;
+                margin-top: 40px;
+                height: auto;
+                padding: 3%;
+            }
+            
+            hr {
+                width: 260px;
+                border-color: var(--general-border);
+                margin-top: 40px;
+            }
+            
             #setting-panel > a {
                 text-align: left;
                 color: var(--general-border);
@@ -182,7 +202,7 @@ class SettingPanel extends HTMLElement {
                 border-color: var(--general-border);
                 border-radius: 12px;
                 font-size: 1.2rem;
-                margin-top: 40px;
+                margin-top: 30px;
                 height: auto;
                 padding: 3%;
                 display: none;
@@ -196,6 +216,7 @@ class SettingPanel extends HTMLElement {
     const loginLink = this.shadowRoot.querySelector("#login");
     const logoutButton = this.shadowRoot.querySelector("#logout");
     const historyLink = this.shadowRoot.querySelector("#history");
+    const themeButton = this.shadowRoot.querySelector("#theme");
 
     let volume = localStorage.getItem("volume");
     if (volume != null) {
@@ -211,11 +232,35 @@ class SettingPanel extends HTMLElement {
       historyLink.style.display = "none";
       loginLink.style.display = "block";
     }
+    this.setTheme();
 
     logoutButton.addEventListener("click", this.logoutFunction);
     volumeSlider.addEventListener("change", this.changeVolume);
     closeButton.addEventListener("click", this.closeSetting.bind(this));
     settingButton.addEventListener("click", this.openSetting.bind(this));
+    themeButton.addEventListener("click", this.changeTheme);
+  }
+
+  setTheme() {
+    let theme = localStorage.getItem('theme');
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      this.shadowRoot.querySelector("#theme").innerHTML = "Dark Mode";
+    }
+  }
+
+  changeTheme() {
+    let currTheme = document.documentElement.getAttribute("data-theme");
+    if (currTheme == "light") {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      this.innerHTML = "Light Mode";
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      this.innerHTML = "Dark Mode";
+    }
   }
 
   logoutFunction() {

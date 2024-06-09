@@ -8,6 +8,14 @@
   --button-background: #003348;
   --general-border: #d2b78e;
   --button-hover-background: #016f9c;
+  --hint-background: none;
+  --explanation-background: none;
+}
+
+[data-theme="light"] {
+  --background-color: linear-gradient(180deg, rgba(0,32,122,1) 10%, rgba(0,164,219,1) 92%);
+  --hint-background: rgba(0,32,122,1);
+  --explanation-background: rgba(0, 0, 0, 0.5);
 }
 
 * {

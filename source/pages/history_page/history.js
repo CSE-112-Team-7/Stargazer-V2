@@ -1,3 +1,5 @@
+import playBgMusic from "/utils/playmusic/script";
+
 const iconsPath = "/assets/icons/";
 const constellationsPath = "/assets/constellation/";
 
@@ -271,6 +273,14 @@ function loadCards(formattedJSON) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  const backgroundMusic = document.getElementById("background-music");
+  playBgMusic(backgroundMusic, true);
+
+  const backButton = document.querySelector("#back-button");
+  backButton.addEventListener("click", () => {
+    localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
+  });
+
   //set the link to the back button
   document.getElementById("back-button").addEventListener("click", () => {
     if (loginStatus == true) {

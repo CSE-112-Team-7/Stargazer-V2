@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,8 @@
     <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
     <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/signup/style" />
-    <script defer src="/signup/script"></script>
+    <script src="/signup/script" type="module"></script>
+    <script src="/utils/setting/script" type="module"></script>
   </head>
   <body>
     <header>
@@ -54,5 +55,7 @@
       </p>
       <a href="/">&larr; Back to Home Page</a>
     </main>
+    <setting-panel></setting-panel>
+    <audio id="background-music" src="/assets/music/gaze/mp" loop></audio>
   </body>
 </html>
