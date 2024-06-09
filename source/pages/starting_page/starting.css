@@ -22,3 +22,173 @@ main .button {
 main .button:first-of-type {
   margin-top: 100px;
 }
+
+/* The below commented out section is for testing purpose on setting-panel branch, 
+      feel free to delete it's currently on other branches */
+
+/* #setting {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  height: 52px;
+  padding: 1px 8px;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+#setting-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background-color: #013348;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 30px;
+  display: none;
+  z-index: 2;
+}
+
+#close {
+  background-color: transparent;
+  color: var(--general-border);
+  border: none;
+  height: auto;
+  padding: 1px 8px;
+  align-self: flex-end;
+  margin-top: 18px;
+  margin-right: 28px;
+  font-size: 2rem;
+}
+
+h2 {
+  color: var(--general-border);
+  text-align: left;
+  font-size: 2.5rem;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+label {
+  color: var(--general-border);
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+input {
+  -webkit-appearance: none;
+  width: 60%;
+  margin-top: 20px;
+  background: transparent;
+  position: relative;
+}
+
+input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #b8916e;
+  border-radius: 10px;
+  border: 0.2px solid #010101;
+  position: relative;
+}
+
+input::-webkit-slider-thumb {
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 10px;
+  background: var(--general-border);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+  position: relative;
+  z-index: 1;
+}
+
+input::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8.4px;
+  background: var(--general-border);
+  border-radius: 10px;
+  z-index: 0;
+  width: var(--active-width, 0);
+}
+
+input::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: #b8916e;
+  border-radius: 10px;
+  border: 0.2px solid #010101;
+}
+
+input::-moz-range-thumb {
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 10px;
+  background: var(--general-border);
+  cursor: pointer;
+}
+
+input::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input::-ms-fill-lower {
+  background: var(--general-border);
+  border: 0.2px solid #010101;
+  border-radius: 10px;
+}
+
+input::-ms-fill-upper {
+  background: #b8916e;
+  border: 0.2px solid #010101;
+  border-radius: 10px;
+}
+
+input::-ms-thumb {
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 10px;
+  background: var(--general-border);
+  cursor: pointer;
+}
+
+#setting-panel > a {
+  text-align: left;
+  color: var(--general-border);
+  margin-top: 40px;
+  font-size: 1.2rem;
+}
+
+#history {
+  display: none;
+}
+
+#logout {
+  align-self: flex-start;
+  background-color: var(--button-background);
+  color: var(--general-border);
+  border-color: var(--general-border);
+  border-radius: 12px;
+  font-size: 1.2rem;
+  margin-top: 40px;
+  height: auto;
+  padding: 3%;
+  display: none;
+} */

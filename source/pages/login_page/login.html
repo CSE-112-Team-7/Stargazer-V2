@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/img" />
     <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/login/style" />
     <script defer src="/login/script"></script>
-    <title>Login Page</title>
   </head>
   <body>
     <h1 id="errorMsg">Login Failed Please Try Again</h1>
@@ -13,7 +16,6 @@
     </header>
 
     <form id="myForm">
-      <!-- <label for="rec_username"> Username:</label><br /> -->
       <input
         type="username"
         id="rec_username"
@@ -22,7 +24,6 @@
         placeholder="username"
         required
       />
-      <!-- <label for="rec_password"> Password:</label><br /> -->
       <input
         type="password"
         id="rec_password"
@@ -34,12 +35,7 @@
       <button type="submit" id="submitButton" title="submit" value="Submit">
         Submit
       </button>
-      <!-- <input class="button" type="submit" value="Submit"/> -->
     </form>
-    <script
-      src="/utils/mouse/script"
-      data-cat="/assets/Icons/mouse/gif"
-    ></script>
     <!-- TODO: ADD INPUT SANITIZATION -->
   </body>
 </html>

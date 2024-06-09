@@ -118,7 +118,6 @@ const gideon_roman = font_dir + "GideonRoman-Regular.ttf";
 
 const util_dir = "utils/";
 const play_music_script = util_dir + "playBgMusic.js";
-const play_clicksound_script = util_dir + "playClickSound.js";
 const mouse_script = util_dir + "oneko.js";
 const setting_script = util_dir + "setting.js";
 
