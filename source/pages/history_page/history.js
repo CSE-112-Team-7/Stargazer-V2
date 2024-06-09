@@ -37,7 +37,7 @@ function getStarPath(constellation){
     case "Aries":
       return "aries";
 
-    case "ArmadilloDragon":
+    case "Armadillo Dragon":
       return "armadillo";
 
     case "Canis Major":
@@ -55,7 +55,7 @@ function getStarPath(constellation){
     case "Orion":
       return "orion";
 
-    case "UrsaMajor":
+    case "Ursa Major":
       return "ursa";
 
     default:
