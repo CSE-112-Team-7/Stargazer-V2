@@ -160,10 +160,13 @@ async function grab_user_horoscopes(username) {
     console.log("ATTEMPTING TO GRAB USER " + username + " HOROSCOPE DATA");
     const database = client.db(db_name);
     const collection = database.collection(horoscopes_collection_name);
-    console.log("GRABBING HOROSCOPES")
-    const horoscopes = await collection.find({username:username}).sort({ timestamp: -1 }).toArray(); // grabs the previous 20 horoscopes the user has entered, sorted by date
-    console.log("GRABBED HOROSCOPES")
-    console.log(horoscopes)
+    console.log("GRABBING HOROSCOPES");
+    const horoscopes = await collection
+      .find({ username: username })
+      .sort({ timestamp: -1 })
+      .toArray(); // grabs the previous 20 horoscopes the user has entered, sorted by date
+    console.log("GRABBED HOROSCOPES");
+    console.log(horoscopes);
     return horoscopes;
   } catch (error) {
     console.error("ERROR WHILE GRABBING HOROSCOPE DATA FROM DATABASE", error);
@@ -225,8 +228,8 @@ app.listen(port, () => {
 
 // get request for root page will wipe all cookies
 app.get("/", (req, res) => {
-  if(port != 4000) {
-    root_dir = "/app/source"
+  if (port != 4000) {
+    root_dir = "/app/source";
   }
   res.cookie("loggedin", "false");
   res.cookie("username", "");

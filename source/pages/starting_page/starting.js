@@ -3,7 +3,7 @@ import playBgMusic from "/utils/playmusic/script";
 window.addEventListener("DOMContentLoaded", init);
 
 const backgroundMusic = document.getElementById("background-music");
-// The below commented out section is for testing purpose on setting-panel branch, 
+// The below commented out section is for testing purpose on setting-panel branch,
 // feel free to delete it's currently on other branches
 
 // const volumeSlider = document.querySelector("input");

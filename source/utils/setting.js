@@ -233,9 +233,9 @@ class SettingPanel extends HTMLElement {
 
   changeVolume(element) {
     const backgroundMusic = document.getElementById("background-music");
-    let currentVolume = localStorage.getItem("volume")
-    if (currentVolume == null || currentVolume == '0') {
-        backgroundMusic.currentTime = 0;
+    let currentVolume = localStorage.getItem("volume");
+    if (currentVolume == null || currentVolume == "0") {
+      backgroundMusic.currentTime = 0;
     }
     let setVolume = element.currentTarget.value;
     localStorage.setItem("volume", setVolume);

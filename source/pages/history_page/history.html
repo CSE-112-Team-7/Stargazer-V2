@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scrollable Column</title>
     <link rel="stylesheet" href="/assets/toplevel/style" />
     <link rel="stylesheet" href="/history/style" />
     <script src="/history/script" type="module"></script>
     <script>
-        function closePopup() {
-            const popup = document.getElementById("popup");
-            popup.style.display = "none";
-        }
+      function closePopup() {
+        const popup = document.getElementById("popup");
+        popup.style.display = "none";
+      }
     </script>
-
-</head>
-<body>
+  </head>
+  <body>
     <div id="main-container" class="container">
-
-        <div class="left-column">
-            <div class="back-section">
-                <button id="back-button">To Selection</button>
-                <p id="back-text">Click here to go back to the Selection Page!</p>
-            </div>
+      <div class="left-column">
+        <div class="back-section">
+          <button id="back-button">To Selection</button>
+          <p id="back-text">Click here to go back to the Selection Page!</p>
         </div>
+      </div>
 
-        <div class="middle-column">
-            <div id="scrollable-content" class="scrollable-content">
-            </div>
-        </div>
+      <div class="middle-column">
+        <div id="scrollable-content" class="scrollable-content"></div>
+      </div>
 
-        <section class="right-column">
-            <h2>Instructions:</h2>
-            <p>A card for each date you did a horoscope will show up!</p>
-            <p>Click on the buttons to see the horoscope you got for that date + category.</p>
-            <p>If no cards are there, try getting a horoscope for any category and coming back!</p>
-        </section>
+      <section class="right-column">
+        <h2>Instructions:</h2>
+        <p>A card for each date you did a horoscope will show up!</p>
+        <p>
+          Click on the buttons to see the horoscope you got for that date +
+          category.
+        </p>
+        <p>
+          If no cards are there, try getting a horoscope for any category and
+          coming back!
+        </p>
+      </section>
 
-        <div id="popup" class="popup-container">
-            <img id="popup-img">
-            <h3 id="display-title" class="display-title"> display title</h3>
-            <p id="display-body" class="display-body"> display body</p>
-            <button onclick="closePopup()">Close</button>
-        </div>
-
-        </div>
-    </body>
+      <div id="popup" class="popup-container">
+        <img id="popup-img" />
+        <h3 id="display-title" class="display-title">display title</h3>
+        <p id="display-body" class="display-body">display body</p>
+        <button onclick="closePopup()">Close</button>
+      </div>
+    </div>
+  </body>
 </html>
