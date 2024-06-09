@@ -242,10 +242,10 @@ class SettingPanel extends HTMLElement {
   }
 
   setTheme() {
-    let theme = localStorage.getItem('theme');
-    if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
+    let theme = localStorage.getItem("theme");
+    if (theme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
       this.shadowRoot.querySelector("#theme").innerHTML = "Dark Mode";
     }
   }
@@ -253,12 +253,12 @@ class SettingPanel extends HTMLElement {
   changeTheme() {
     let currTheme = document.documentElement.getAttribute("data-theme");
     if (currTheme == "light") {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
       this.innerHTML = "Light Mode";
     } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
       this.innerHTML = "Dark Mode";
     }
   }
