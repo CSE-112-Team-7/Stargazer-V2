@@ -22,6 +22,9 @@ const backgroundMusic = document.getElementById("background-music");
 
 window.addEventListener("DOMContentLoaded", init);
 
+/**
+ * @Property {Function} Starts the program, all function calls trace back here
+ */
 function init() {
   playBgMusic(backgroundMusic, true);
 
@@ -133,6 +136,11 @@ function displayText(answer, textElement) {
 function redirectToPage(url) {
   window.location.href = url;
 }
+
+/**
+ * Function makes a post request to add horoscope entry into database, handles request status
+ *  adds category, constellation, response text as new row for user
+ */
 
 function makePostRequest() {
   localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
