@@ -10,9 +10,13 @@ const nextButton = document.querySelector(".button");
 
 let selectedButton = null;
 
+/**
+ * Play background music, all function calls in selection page trace back here
+ */
 function init() {
   playBgMusic(backgroundMusic, true);
 
+  // clear local storage from previous selection
   localStorage.removeItem("questionType");
   localStorage.removeItem("chosenConstellation");
   selectionButtons.forEach(function (element) {
@@ -24,10 +28,17 @@ function init() {
   });
 }
 
+/**
+ * Handle selection of categories to make sure only one category
+ * is selected at one time, update icon image accordingly, and
+ * store the category into local storage
+ * @param {Element} element category button
+ */
 function handleSelection(element) {
   let clickedButton = element.target;
 
   let questionType = clickedButton.innerHTML;
+  // update icon image based on the selected category
   if (questionType === "RELATIONSHIP") {
     icon.src = "/assets/icons/rel/img";
     icon.alt = "relationship icon";
