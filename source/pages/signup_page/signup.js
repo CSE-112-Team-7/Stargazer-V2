@@ -2,10 +2,18 @@ import playBgMusic from "/utils/playmusic/script";
 
 window.addEventListener("DOMContentLoaded", init);
 
+/**
+ * @constant {string} password stores the id of the new user's password
+ * @constant {string} conf_password stores the id of the new user's confirmation password
+ * @constant {string} backgroundMusic stores the id of the background music
+ */
 const password = document.getElementById("new_password");
 const conf_password = document.getElementById("new_password_conf");
 const backgroundMusic = document.getElementById("background-music");
 
+/**
+ * Sends a POST request with the new user's username and password to the database, and handles request status.
+ */
 function init() {
   playBgMusic(backgroundMusic, true);
 
@@ -47,6 +55,9 @@ function init() {
     });
 }
 
+/**
+ * Checks if the confirmation password and password matches.
+ */
 function confirmPassword() {
   if (password.value != conf_password.value) {
     conf_password.setCustomValidity("Passwords Do Not Match");

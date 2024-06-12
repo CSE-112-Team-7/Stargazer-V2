@@ -1,10 +1,16 @@
 import playBgMusic from "/utils/playmusic/script";
 
+/**
+ * @constant {string} iconsPath stores backend file path to the icon images
+ * @constant {string} constellationsPath stores backend file path to the constellation images
+ */
 const iconsPath = "/assets/icons/";
 const constellationsPath = "/assets/constellation/";
 
 /**
- * Function that loads constellation and text body to the popup
+ * Function that loads constellation and text body to the popup display.
+ * @param {string} constellation constellation of the selected fortune in user history
+ * @param {string} textbody text corresponding to the constellation
  */
 function openPopup(constellation, textbody) {
   const displayTitle = document.getElementById("display-title");
@@ -32,6 +38,10 @@ function openPopup(constellation, textbody) {
   displayBody.textContent = textbody;
 }
 
+/**
+ * Returns the corresponding constellation title in string based on its backend format.
+ * @param {string} constellation constellation of the selected fortune in user history
+ */
 function getStarPath(constellation) {
   switch (constellation) {
     case "Aries":
@@ -63,11 +73,16 @@ function getStarPath(constellation) {
   }
 }
 
-// Send GET request to server to fetch DB user data
+/**
+ * @var {XMLHttpRequest} req GET request to server to fetch database user data
+ */
 var req = new XMLHttpRequest();
 req.open("GET", "/horoscope/get", true);
 req.setRequestHeader("Content-Type", "application/json");
 
+/**
+ * @var {boolean} loginStatus stores if the user is logged in or not
+ */
 let loginStatus = false;
 
 req.onload = function () {
@@ -98,6 +113,10 @@ req.onload = function () {
 };
 req.send();
 
+/**
+ * Formats the db data to match what is displayed and used by user history.
+ * @param {string} dbJSONArr JSON file from the database
+ */
 function formatJSON(dbJSONArr) {
   const jsonList = [];
 
@@ -118,7 +137,7 @@ function formatJSON(dbJSONArr) {
       };
       jsonList.push(newDate);
     } else if (dateObj[packet.catagory] === undefined) {
-      //otherwise add on to existing object ONLY IF it doesnt have an existing entry
+      // otherwise add on to existing object ONLY IF it doesnt have an existing entry
       dateObj[packet.catagory] = {
         constellation: packet.constellation,
         text: packet.horoscope,
@@ -129,6 +148,9 @@ function formatJSON(dbJSONArr) {
   return jsonList;
 }
 
+/**
+ * Creates a blank fortune button and handles when it is clicked.
+ */
 function getBlankButton() {
   const button = document.createElement("input");
   button.type = "button";
@@ -144,8 +166,11 @@ function getBlankButton() {
   return button;
 }
 
+/**
+ * Creates a Relationship fortune button and handles when it is clicked.
+ * @param {string} relationshipJSON JSON array holding database information for the Relationship fortune
+ */
 function getRelationshipButton(relationshipJSON) {
-  // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
   if (relationshipJSON === undefined) {
     return getBlankButton();
   }
@@ -157,20 +182,17 @@ function getRelationshipButton(relationshipJSON) {
   button.alt = "Relationship Icon";
 
   button.onclick = () => {
-    // HERE we store the text for the specific category
-    /**
-     * we want to load the json.category.constellation and json.category.text
-     * into the place where we display the generated ones
-     */
-
     openPopup(relationshipJSON.constellation, relationshipJSON.text);
   };
 
   return button;
 }
 
+/**
+ * Creates a Health fortune button and handles when it is clicked.
+ * @param {string} healthJSON JSON array holding database information for the Health fortune
+ */
 function getHealthButton(healthJSON) {
-  // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
   if (healthJSON === undefined) {
     return getBlankButton();
   }
@@ -182,19 +204,17 @@ function getHealthButton(healthJSON) {
   button.alt = "Health Icon";
 
   button.onclick = () => {
-    // HERE we store the text for the specific category
-    /**
-     * we want to load the json.category.constellation and json.category.text
-     * into the place where we display the generated ones
-     */
-
     openPopup(healthJSON.constellation, healthJSON.text);
   };
 
   return button;
 }
+
+/**
+ * Creates a Horoscope fortune button and handles when it is clicked.
+ * @param {string} horoscopeJSON JSON array holding database information for the Horoscope fortune
+ */
 function getHoroscopeButton(horoscopeJSON) {
-  // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
   if (horoscopeJSON === undefined) {
     return getBlankButton();
   }
@@ -206,20 +226,17 @@ function getHoroscopeButton(horoscopeJSON) {
   button.alt = "Horoscope Icon";
 
   button.onclick = () => {
-    // HERE we store the text for the specific category
-    /**
-     * we want to load the json.category.constellation and json.category.text
-     * into the place where we display the generated ones
-     */
-
     openPopup(horoscopeJSON.constellation, horoscopeJSON.text);
   };
 
   return button;
 }
 
+/**
+ * Creates a Career fortune button and handles when it is clicked.
+ * @param {string} careerJSON JSON array holding database information for the Career fortune
+ */
 function getCareerButton(careerJSON) {
-  // DO A CHECK!!!! see if the JSON is "valid" (null or invalid otherwise). If so, then return a blank button
   if (careerJSON === undefined) {
     return getBlankButton();
   }
@@ -231,13 +248,16 @@ function getCareerButton(careerJSON) {
   button.alt = "Career Icon";
 
   button.onclick = () => {
-    // HERE we store the text for the specific category
     openPopup(careerJSON.constellation, careerJSON.text);
   };
 
   return button;
 }
 
+/**
+ * Creates fortune cards and all the fortune buttons for user's database entries on the given date.
+ * @param {string} dateJSON JSON array holding the user's database information for each fortune
+ */
 function createDateCard(dateJSON) {
   // create the HTML element for the card itself
   const card = document.createElement("div");
@@ -262,10 +282,13 @@ function createDateCard(dateJSON) {
   return card;
 }
 
-// Function to history card
+/**
+ * Create and display the user history cards.
+ * @param {string} formattedJSON JSON array holding database information formatted for the user history
+ */
 function loadCards(formattedJSON) {
   const cardsContainer = document.getElementById("scrollable-content");
-  //for each date JSON, make a new card :D
+  // for each date JSON, make a new card :D
   formattedJSON.forEach((dateJSON) => {
     const singleDateCard = createDateCard(dateJSON);
     cardsContainer.appendChild(singleDateCard);
@@ -281,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
   });
 
-  //set the link to the back button
+  // set the link to the back button
   document.getElementById("back-button").addEventListener("click", () => {
     if (loginStatus == true) {
       window.location.href = "/selection/page";
