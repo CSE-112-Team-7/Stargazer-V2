@@ -11,6 +11,8 @@ describe("Thank You Page Tests", () => {
     // click on home link
     const nextPageLink = await page.waitForSelector("a");
     await Promise.all([page.waitForNavigation(), nextPageLink.click()]);
-    await expect(page.title()).resolves.toMatch(new RegExp("^(Starting Page|Selection Page)$"));
+    await expect(page.title()).resolves.toMatch(
+      new RegExp("^(Starting Page|Selection Page)$")
+    );
   });
 });
