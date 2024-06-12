@@ -16,7 +16,7 @@ function init() {
   } else {
     homeButton.href = "/";
   }
-  
+
   homeButton.addEventListener("click", () => {
     localStorage.setItem("musicPlayTime", backgroundMusic.currentTime);
   });
