@@ -1,4 +1,4 @@
-# CSE 112: Group 7 (Spring 2024) UPDATE
+# CSE 112: Group 7 (Spring 2024)
 
 ### Team 7: Lorem Ipsum
 
