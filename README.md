@@ -3,6 +3,7 @@
 ### Team 7: Lorem Ipsum
 
 This application is Team 7's project for Professor Powell's Spring 2024 CSE-112 Software Engineering course at UCSD.
+[Here](https://stargazer-3360f68b260a.herokuapp.com/) is our deployed website!
 We are extending CSE-110 SP23 Team 16's original Stargazer found [here](https://github.com/cse110-sp23-group16/cse110-sp23-group16).
 
 View [Demo](https://www.youtube.com/watch?v=vcf0brKmHaY) here!
