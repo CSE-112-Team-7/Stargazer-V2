@@ -29,7 +29,7 @@ const client = new MongoClient(client_url, {
   // construct a new client
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  keepAlive: 1,
+  keepAlive: true,
 });
 
 /**
