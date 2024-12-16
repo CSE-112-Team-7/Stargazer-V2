@@ -51,6 +51,7 @@ img#constellation-image {
   width: auto;
   height: auto;
   border-radius: 2%;
+  background-color: var(--explanation-background);
 }
 
 a#continue-button {

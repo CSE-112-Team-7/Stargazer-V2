@@ -13,11 +13,11 @@ h2 {
 }
 
 form {
-  margin-top: 5vh;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 6vh;
+  row-gap: 50px;
 }
 
 input {
@@ -29,34 +29,31 @@ input {
   font-size: clamp(1.5rem, 1.4rem + 0.04vw, 2rem);
 }
 
-.back {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding-bottom: 3vw;
-  padding-left: 3vw;
+form > button {
+  padding: 0 20px;
 }
 
 #takenUsername {
-  justify-content: center;
-  padding: 0;
   color: red;
-  z-index: 1;
-  margin: 0;
-  padding-top: 2%;
-  font-size: 2rem;
+  padding-top: 20px;
+  font-size: clamp(0.938rem, 0.85rem + 0.45vw, 1.25rem);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+#unknownProblem {
+  color: red;
+  padding-top: 20px;
+  font-size: clamp(0.938rem, 0.85rem + 0.45vw, 1.25rem);
   pointer-events: none;
   display: none;
 }
 
-#unknownProblem {
-  justify-content: center;
-  padding: 0;
-  color: red;
-  z-index: 1;
-  margin: 0;
-  padding-top: 2%;
-  font-size: 2rem;
-  pointer-events: none;
-  display: none;
+form + p {
+  font-size: clamp(0.938rem, 0.85rem + 0.45vw, 1.25rem);
+  margin: clamp(10px, 16px - 0.45vw, 15px) 0;
+}
+
+a {
+  font-size: clamp(0.938rem, 0.85rem + 0.45vw, 1.25rem);
 }

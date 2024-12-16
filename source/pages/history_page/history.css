@@ -1,0 +1,136 @@
+h2 {
+  margin: 2rem;
+}
+
+.back-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+#back-button {
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+.left-column,
+.right-column {
+  flex: 1;
+  padding: 0.75rem;
+}
+
+.right-column > p {
+  margin: 1rem;
+}
+
+.middle-column {
+  flex: 2; /* Middle column is wider */
+  margin: 2vh;
+  padding: 2vh;
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 2px, solid, var(--general-border);
+  border-radius: 0.5rem;
+}
+
+.scrollable-content {
+  height: 200%; /* Example content height to ensure scrolling */
+}
+
+.card {
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+  padding: 10px 20px 20px;
+  display: flex;
+  align-items: center;
+  display: inline-flex;
+  border: unset;
+  border-bottom: 2px solid var(--general-border);
+}
+
+.card > * {
+  min-height: 7vw;
+  min-width: 7vw;
+  max-height: 7vw;
+  max-width: 7vw;
+}
+
+.card > p {
+  padding-right: 2vw;
+
+  color: var(--general-border);
+  min-width: 3vw;
+  min-height: 0;
+  font-size: 1.25rem;
+}
+
+.card-button {
+  background-color: var(--button-background);
+  margin: 0.5rem;
+  border: 2px, solid, var(--general-border);
+  border-radius: 1rem;
+}
+
+.card-button[alt="blank button"] {
+  width: inherit;
+}
+
+.card-button[alt="blank button"]:hover {
+  background-color: var(--button-background) !important;
+  box-shadow: none;
+}
+
+.card-button:hover {
+  background-color: var(--button-hover-background) !important;
+  box-shadow: 0rem 0rem 0.5rem beige;
+  color: beige;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.popup-container {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 75%;
+  width: 50vw;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--button-background);
+  padding: 20px;
+  border: 1px solid var(--general-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.popup-container > button {
+  height: auto;
+  width: auto;
+  padding: 0.25rem;
+}
+
+.popup-container > img {
+  max-width: 50%;
+  max-height: 50%;
+  width: auto;
+  height: auto;
+}
+
+.error-msg {
+  opacity: 70%;
+}

@@ -216,8 +216,6 @@ function handleClickCanvas(event, constellation_arr, sky_background) {
     decideConstellation(constellation_arr, sky_background);
     canvas.style.pointerEvents = "none";
   }
-
-  // ----- DEBUG -----
   // Get constellation ratio list
   let ratios = {};
   for (const constellation of constellation_arr) {

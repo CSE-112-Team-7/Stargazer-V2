@@ -2,8 +2,9 @@
 
 ### Team 7: Lorem Ipsum
 
-This application is Team 16's project for Professor Powell's Spring 2023 CSE-110 Software Engineering course at UCSD.
-This application is Team 7's extension of Team 16's original Stargazer found [here](https://github.com/cse110-sp23-group16/cse110-sp23-group16)
+This application is Team 7's project for Professor Powell's Spring 2024 CSE-112 Software Engineering course at UCSD.
+[Here](https://stargazer-3360f68b260a.herokuapp.com/) is our deployed website!
+We are extending CSE-110 SP23 Team 16's original Stargazer found [here](https://github.com/cse110-sp23-group16/cse110-sp23-group16).
 
 View [Demo](https://www.youtube.com/watch?v=vcf0brKmHaY) here!
 
@@ -15,11 +16,15 @@ Curious about your future? Interested in finding the truth among the stars? Star
 
 ## Using Stargazer
 
-[Stargazer](https://cse110-sp23-group16.github.io/cse110-sp23-group16/source/pages/landing_page/landing.html)
+[Stargazer](https://stargazer-3360f68b260a.herokuapp.com/)
 
-On the landing page, first click Start and you will see the options "Daily Horoscope", "Health", "Career", and "Relationship". There is also an option to voice the text for voice accessibility; when you click the "Voicing Text" button you will see a dropdown where you can select the voice type so choose one from the dropdown. If you are not interested in voicing text, then click the button again and you will see a line across the button to signal no voice text selection. To continue with the app, select one of the field options "Daily Horoscope", "Health", "Career", and "Relationship". Feel free to select and unselect by pressing on the button, if it is beige then the button is selected. Then you will see a "Let the stars guide you button" so click that to continue.
+First you will taken to the starting page, in which you have the option to either Login if you are an existing Stargazer user, to Signup as a new user, or continue as a Guest. If you choose to login, you will need to enter your username and password. If you choose to signup as a new user, you will need to provide a username (that hasn't been taken already), and a password which you must then confirm. Please note if you continue as a Guest, your propechies will not be saved.
 
-You are now on the skymap page where you will see a short tutorial text. You can hide the tutorial button on the top right corner by selecting "Click me to hide upper right tutorial button" or if you want to access the tutorial later select "Got it!". Now, navigate the nightsky by left clicking your mouse and drag the screen.
+The settings panel can be opened at any time by clicking on the gear icon at the upper-right of the page. In here, you have the controls to change the volume of the background music, change between light and dark modes, access your horoscope history directly (if you are logged in) at any time, and to log in (if you are a user).
+
+On the selection page you will see the options "Daily Horoscope", "Health", "Career", and "Relationship". To continue with the app, select one of the field options "Daily Horoscope", "Health", "Career", and "Relationship". Feel free to select another category by pressing on the button. Then you will see a "Next" button, so click that to continue.
+
+You are now on the skymap page. As the note at the button says, navigate the nightsky by left clicking your mouse and drag the screen.
 Click and select five stars as you wish, then your constellation will appear to you! Once you select five stars (dots) you will see the constellation and a "next" button so click that to see the explanation.
 
 Now you are on the explanation page which has the name of the constellation, it's description, an image, and a sketch. After reading the explanation/description click the "See your fortune" button to see the response based on your category from landing page and the constellation selection from skymap page.
@@ -46,15 +51,4 @@ View our full [changelog](https://github.com/cse110-sp23-group16/cse110-sp23-gro
 
 ### Contributors
 
-Victor Ku (co-lead), Chi Wong (co-lead), Aiden Chen, Andy Fang, Jerry Gong, Khushi Patel, Cheng Qian, Pramodya Rajapakse, Shashank Venkatramani
-
-### Code Climate
-
-![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/cse110-sp23-group16/cse110-sp23-group16?style=for-the-badge) ![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/cse110-sp23-group16/cse110-sp23-group16?style=for-the-badge) ![Code Climate issues](https://img.shields.io/codeclimate/issues/cse110-sp23-group16/cse110-sp23-group16?style=for-the-badge)
-
-### Github Statistics
-
-|                                                                Issues                                                                |                                                                 Pull Requests                                                                  |
-| :----------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: |
-|        ![GitHub issues](https://img.shields.io/github/issues-raw/cse110-sp23-group16/cse110-sp23-group16?style=for-the-badge)        |        ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/cse110-sp23-group16/cse110-sp23-group16?style=for-the-badge)        |
-| ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/cse110-sp23-group16/cse110-sp23-group16?style=for-the-badge) | ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/cse110-sp23-group16/cse110-sp23-group16?style=for-the-badge) |
+Cole Carter, Sholehani Hafezi, Barak Horowitz, Qijun (Mary) Hu, Mark Ma, Jason Phung, Pramodya Rajapakse, Adrian Ye, Yanbo Yu
